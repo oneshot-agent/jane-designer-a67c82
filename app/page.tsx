@@ -5,483 +5,485 @@ import React from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Palette, Monitor, Rocket, Star } from "lucide-react"
+import { Palette, Monitor, Zap, Star } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 
-export default function Home() {
+export default function Portfolio() {
   return (
-    <main className="min-h-screen">
-      <HeroSection />
-      <AboutSection />
-      <ServicesSection />
-      <PortfolioSection />
-      <ProcessSection />
-      <TestimonialsSection />
-      <CTASection />
-    </main>
-  )
-}
-
-// Hero Section
-function HeroSection() {
-  const [isVisible, setIsVisible] = useState(false)
-
-  useEffect(() => {
-    setIsVisible(true)
-  }, [])
-
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#FAFBFF] via-[#F0F1FF] to-[#FAFBFF] px-4 py-20">
-      {/* Decorative Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-[#6366F1]/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#06FFA5]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-      </div>
-
-      <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className={`space-y-8 text-center lg:text-left transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#6366F1]/20 shadow-sm">
-              <div className="w-2 h-2 bg-[#06FFA5] rounded-full animate-pulse" />
-              <span className="text-sm font-medium text-[#2D1B69]">{'Available for New Projects'}</span>
-            </div>
-            
-            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-[#1E1B4B] leading-tight text-balance">
-              {'Brands That Stand Out, Websites That Convert'}
-            </h1>
-            
-            <p className="text-lg md:text-xl text-[#6B7280] leading-relaxed text-pretty max-w-2xl mx-auto lg:mx-0">
-              {'Professional designer helping startups build memorable identities and high-performing websites that drive growth.'}
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button asChild size="lg" className="bg-[#06FFA5] hover:bg-[#05E094] text-[#1E1B4B] font-semibold shadow-lg shadow-[#06FFA5]/25 hover:shadow-xl hover:shadow-[#06FFA5]/30 transition-all duration-300 hover:scale-105">
-                <Link href="#portfolio">{'View My Work'}</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="border-2 border-[#2D1B69] text-[#2D1B69] hover:bg-[#2D1B69] hover:text-white font-semibold transition-all duration-300 bg-transparent">
-                <Link href="mailto:jane@janedesigner.com">{'Get In Touch'}</Link>
+    <div className="min-h-screen">
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md z-50 border-b border-border">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <Link href="/" className="font-serif text-xl font-bold text-foreground">
+              Jane Designer
+            </Link>
+            <div className="hidden md:flex items-center gap-8">
+              <Link href="#about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                About
+              </Link>
+              <Link href="#services" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                Services
+              </Link>
+              <Link href="#portfolio" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                Portfolio
+              </Link>
+              <Link href="#testimonials" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                Testimonials
+              </Link>
+              <Button asChild className="bg-[#06D6A0] text-[#1E293B] hover:bg-[#05c292]">
+                <Link href="#contact">{"Let's Talk"}</Link>
               </Button>
             </div>
-          </div>
-
-          {/* Right Image */}
-          <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-            <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl shadow-[#2D1B69]/20 border-4 border-white">
-              <Image
-                src="https://images.unsplash.com/photo-1768471125958-78556538fadc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBkZXNpZ25lciUyMHdvcmtzcGFjZSUyMGNyZWF0aXZlJTIwc3R1ZGlvfGVufDB8MHx8fDE3Njk5NjU5ODV8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Professional designer workspace"
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#2D1B69]/20 to-transparent" />
-            </div>
-            {/* Floating accent */}
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#06FFA5] rounded-2xl opacity-80 blur-xl animate-pulse" />
           </div>
         </div>
-      </div>
-    </section>
-  )
-}
+      </nav>
 
-// About Section
-function AboutSection() {
-  return (
-    <section className="py-24 px-4 bg-white">
-      <div className="container mx-auto max-w-7xl">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Image */}
-          <div className="relative order-2 lg:order-1">
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl shadow-[#2D1B69]/10">
-              <Image
-                src="https://images.unsplash.com/photo-1768471125958-78556538fadc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBkZXNpZ25lciUyMHBvcnRyYWl0JTIwY3JlYXRpdmUlMjB3b3Jrc3BhY2V8ZW58MHwwfHx8MTc2OTg5OTE2OXww&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Jane Designer portrait"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="absolute -top-6 -left-6 w-24 h-24 bg-[#6366F1] rounded-full opacity-60 blur-2xl" />
-          </div>
-
-          {/* Content */}
-          <div className="space-y-8 order-1 lg:order-2">
-            <div className="space-y-4">
-              <h2 className="font-serif text-4xl md:text-5xl font-bold text-[#1E1B4B] text-balance">
-                {'Creating Design Solutions That Drive Results'}
-              </h2>
-              <p className="text-lg text-[#6B7280] leading-relaxed text-pretty">
-                {"I'm Jane Designer, a creative professional specializing in brand identity and web design for ambitious startups. With a focus on strategic design thinking, I help emerging businesses establish strong visual foundations that resonate with their target audiences and support sustainable growth."}
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 md:pt-40 md:pb-32 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto">
+          <div className="max-w-4xl mx-auto text-center">
+            <FadeIn>
+              <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 text-balance leading-tight">
+                Transform Your Startup Into a Memorable Brand
+              </h1>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto text-pretty leading-relaxed">
+                Creative designer crafting distinctive brand identities and conversion-focused websites that help startups stand out and grow.
               </p>
-            </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8">
-              <StatCard number="50+" label="Startups Launched" />
-              <StatCard number="95%" label="Client Retention Rate" />
-              <StatCard number="3x" label="Average ROI Increase" />
-            </div>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                <Button asChild size="lg" className="bg-[#06D6A0] text-[#1E293B] hover:bg-[#05c292] text-base font-semibold px-8">
+                  <Link href="#portfolio">View My Work</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="text-base font-semibold px-8 bg-transparent">
+                  <Link href="#contact">Get In Touch</Link>
+                </Button>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.3}>
+              <div className="relative w-full aspect-[16/9] max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="https://images.unsplash.com/photo-1659141170537-6e0aa70329a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMGRlc2lnbmVyJTIwd29ya3NwYWNlJTIwYnJhbmQlMjBpZGVudGl0eSUyMG1vY2t1cHN8ZW58MHwwfHx8MTc2OTk3MDE3NXww&ixlib=rb-4.1.0&q=80&w=1080"
+                  alt="Creative designer workspace with brand identity mockups"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
+              </div>
+            </FadeIn>
           </div>
         </div>
-      </div>
-    </section>
-  )
-}
+      </section>
 
-function StatCard({ number, label }: { number: string; label: string }) {
-  return (
-    <div className="text-center space-y-2 p-4 rounded-xl bg-gradient-to-br from-[#FAFBFF] to-white border border-[#6366F1]/10 hover:border-[#6366F1]/30 transition-all duration-300">
-      <div className="font-serif text-3xl md:text-4xl font-bold text-[#2D1B69]">{number}</div>
-      <div className="text-sm text-[#6B7280] leading-tight">{label}</div>
-    </div>
-  )
-}
-
-// Services Section
-function ServicesSection() {
-  return (
-    <section className="py-24 px-4 bg-gradient-to-br from-[#2D1B69] via-[#3D2879] to-[#2D1B69] relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#06FFA5] rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#6366F1] rounded-full blur-3xl" />
-      </div>
-
-      <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="text-center mb-16 space-y-4">
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-white text-balance">
-            {'Services That Transform Your Business'}
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          <ServiceCard
-            icon={<Palette className="w-10 h-10" />}
-            title="Brand Identity Design"
-            description="Complete visual identity systems including logos, color palettes, typography, and brand guidelines that establish market presence."
-            features={['Logo Design', 'Brand Guidelines', 'Visual Identity', 'Marketing Collateral']}
-          />
-          <ServiceCard
-            icon={<Monitor className="w-10 h-10" />}
-            title="Web Design & Development"
-            description="High-converting websites that combine stunning visuals with seamless user experience to drive engagement and sales."
-            features={['Responsive Design', 'User Experience', 'Conversion Optimization', 'CMS Integration']}
-          />
-          <ServiceCard
-            icon={<Rocket className="w-10 h-10" />}
-            title="Startup Branding Packages"
-            description="Comprehensive branding solutions designed specifically for startups, from concept to market-ready brand presence."
-            features={['Market Research', 'Competitor Analysis', 'Brand Strategy', 'Launch Support']}
-          />
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function ServiceCard({ icon, title, description, features }: { icon: React.ReactNode; title: string; description: string; features: string[] }) {
-  return (
-    <Card className="bg-white/95 backdrop-blur-sm border-none shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group">
-      <CardContent className="p-8 space-y-6">
-        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#6366F1] to-[#06FFA5] flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
-          {icon}
-        </div>
-        <div className="space-y-3">
-          <h3 className="font-serif text-2xl font-bold text-[#1E1B4B]">{title}</h3>
-          <p className="text-[#6B7280] leading-relaxed text-pretty">{description}</p>
-        </div>
-        <ul className="space-y-2 pt-4 border-t border-[#E5E7EB]">
-          {features.map((feature) => (
-            <li key={feature} className="flex items-center gap-2 text-sm text-[#1E1B4B]">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#06FFA5]" />
-              {feature}
-            </li>
-          ))}
-        </ul>
-      </CardContent>
-    </Card>
-  )
-}
-
-// Portfolio Section
-function PortfolioSection() {
-  return (
-    <section id="portfolio" className="py-24 px-4 bg-[#FAFBFF]">
-      <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-16 space-y-4">
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-[#1E1B4B] text-balance">
-            {'Recent Projects That Delivered Results'}
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          <ProjectCard
-            title="TechFlow Startup"
-            category="Brand Identity & Web Design"
-            description="Complete rebrand and website redesign resulting in 200% increase in lead generation within 3 months."
-            tags={['Branding', 'Web Design', 'SaaS']}
-            featured
-          />
-          <ProjectCard
-            title="GreenSpace Co."
-            category="Brand Identity"
-            description="Sustainable brand identity that helped secure $2M in Series A funding through compelling visual storytelling."
-            tags={['Branding', 'Sustainability', 'Identity']}
-          />
-          <ProjectCard
-            title="DataSync Platform"
-            category="Web Design"
-            description="User-focused website redesign that improved conversion rates by 150% and reduced bounce rate by 40%."
-            tags={['Web Design', 'UX/UI', 'Conversion']}
-          />
-          <ProjectCard
-            title="FinTech Innovations"
-            category="Complete Package"
-            description="End-to-end branding and web presence for fintech startup, supporting successful product launch."
-            tags={['Branding', 'Web Design', 'FinTech']}
-          />
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function ProjectCard({ title, category, description, tags, featured }: { title: string; category: string; description: string; tags: string[]; featured?: boolean }) {
-  return (
-    <Card className={`group cursor-pointer border-2 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 ${featured ? 'md:col-span-2 border-[#06FFA5]' : 'border-transparent hover:border-[#6366F1]/30'}`}>
-      <CardContent className="p-8 space-y-6">
-        <div className="flex items-start justify-between gap-4">
-          <div className="space-y-2 flex-1">
-            <Badge variant="secondary" className="bg-[#6366F1]/10 text-[#2D1B69] hover:bg-[#6366F1]/20">
-              {category}
-            </Badge>
-            <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#1E1B4B] group-hover:text-[#6366F1] transition-colors">
-              {title}
-            </h3>
+      {/* About Section */}
+      <section id="about" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-muted/30">
+        <div className="container mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <FadeIn>
+              <div className="relative aspect-square rounded-2xl overflow-hidden shadow-xl">
+                <Image
+                  src="https://images.unsplash.com/photo-1768471125958-78556538fadc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBkZXNpZ25lciUyMHBvcnRyYWl0JTIwY3JlYXRpdmUlMjB3b3Jrc3BhY2V8ZW58MHwwfHx8MTc2OTg5OTE2OXww&ixlib=rb-4.1.0&q=80&w=1080"
+                  alt="Professional designer portrait in creative workspace"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <div>
+                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance">
+                  Building Brands That Connect and Convert
+                </h2>
+                <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                  {"I'm Jane Designer, a creative professional specializing in brand identity and web design for ambitious startups. With a focus on strategic design thinking, I help emerging businesses establish their visual presence and create meaningful connections with their target audience. My approach combines aesthetic excellence with business objectives to deliver designs that not only look exceptional but drive real results."}
+                </p>
+                <div className="grid grid-cols-3 gap-6">
+                  <div>
+                    <div className="font-serif text-3xl md:text-4xl font-bold text-[#6366F1] mb-2">50+</div>
+                    <div className="text-sm text-muted-foreground">Startups Launched</div>
+                  </div>
+                  <div>
+                    <div className="font-serif text-3xl md:text-4xl font-bold text-[#8B5CF6] mb-2">5 Years</div>
+                    <div className="text-sm text-muted-foreground">Design Experience</div>
+                  </div>
+                  <div>
+                    <div className="font-serif text-3xl md:text-4xl font-bold text-[#06D6A0] mb-2">98%</div>
+                    <div className="text-sm text-muted-foreground">Client Satisfaction</div>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
           </div>
-          {featured && (
-            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#06FFA5] flex items-center justify-center">
-              <Star className="w-6 h-6 text-[#1E1B4B] fill-[#1E1B4B]" />
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto">
+          <FadeIn>
+            <div className="max-w-3xl mx-auto text-center mb-16">
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance">
+                Design Solutions That Drive Growth
+              </h2>
             </div>
-          )}
-        </div>
-        
-        <p className="text-[#6B7280] leading-relaxed text-pretty">{description}</p>
-        
-        <div className="flex flex-wrap gap-2 pt-4">
-          {tags.map((tag) => (
-            <Badge key={tag} variant="outline" className="border-[#2D1B69]/20 text-[#2D1B69]">
-              {tag}
-            </Badge>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
-  )
-}
-
-// Process Section
-function ProcessSection() {
-  return (
-    <section className="py-24 px-4 bg-white">
-      <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-16 space-y-4">
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-[#1E1B4B] text-balance">
-            {'A Proven Process That Delivers Excellence'}
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <ProcessStep
-            number="01"
-            title="Discovery & Strategy"
-            description="Deep dive into your business goals, target audience, and competitive landscape to inform design decisions."
-          />
-          <ProcessStep
-            number="02"
-            title="Concept Development"
-            description="Create multiple design concepts and iterations, ensuring alignment with your vision and market positioning."
-          />
-          <ProcessStep
-            number="03"
-            title="Design & Refinement"
-            description="Develop final designs with attention to detail, incorporating feedback and ensuring brand consistency."
-          />
-          <ProcessStep
-            number="04"
-            title="Launch & Support"
-            description="Seamless implementation with ongoing support to ensure your brand performs optimally in the market."
-          />
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function ProcessStep({ number, title, description }: { number: string; title: string; description: string }) {
-  return (
-    <div className="relative group">
-      <div className="space-y-4 p-6 rounded-2xl bg-gradient-to-br from-[#FAFBFF] to-white border border-[#E5E7EB] hover:border-[#6366F1]/50 transition-all duration-300 hover:shadow-lg">
-        <div className="font-serif text-6xl font-bold bg-gradient-to-br from-[#6366F1] to-[#06FFA5] bg-clip-text text-transparent">
-          {number}
-        </div>
-        <h3 className="font-serif text-xl font-bold text-[#1E1B4B]">{title}</h3>
-        <p className="text-sm text-[#6B7280] leading-relaxed text-pretty">{description}</p>
-      </div>
-      
-      {/* Connector line for desktop */}
-      <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-[#6366F1] to-transparent group-last:hidden" />
-    </div>
-  )
-}
-
-// Testimonials Section
-function TestimonialsSection() {
-  const [activeIndex, setActiveIndex] = useState(0)
-  
-  const testimonials = [
-    {
-      quote: "Jane transformed our startup's entire visual presence. Her strategic approach to branding helped us secure funding and establish credibility in our market.",
-      author: "Sarah Chen",
-      title: "CEO, TechFlow Startup",
-      rating: 5
-    },
-    {
-      quote: "The website Jane designed exceeded all our expectations. Our conversion rates tripled within the first month of launch. Absolutely exceptional work.",
-      author: "Michael Rodriguez",
-      title: "Founder, DataSync Platform",
-      rating: 5
-    },
-    {
-      quote: "Professional, creative, and results-driven. Jane doesn't just create beautiful designs—she creates solutions that drive real business growth.",
-      author: "Emma Thompson",
-      title: "Co-founder, GreenSpace Co.",
-      rating: 5
-    }
-  ]
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((current) => (current + 1) % testimonials.length)
-    }, 6000)
-    return () => clearInterval(interval)
-  }, [testimonials.length])
-
-  return (
-    <section className="py-24 px-4 bg-gradient-to-br from-[#6366F1] to-[#2D1B69] relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-[#06FFA5] rounded-full blur-3xl" />
-      </div>
-
-      <div className="container mx-auto max-w-4xl relative z-10">
-        <div className="text-center mb-16 space-y-4">
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-white text-balance">
-            {'What Clients Say About Working Together'}
-          </h2>
-        </div>
-
-        <div className="relative">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className={`transition-all duration-700 ${
-                index === activeIndex 
-                  ? 'opacity-100 translate-x-0 relative' 
-                  : 'opacity-0 absolute inset-0 pointer-events-none'
-              }`}
-            >
-              <Card className="bg-white/95 backdrop-blur-sm border-none shadow-2xl">
-                <CardContent className="p-8 md:p-12 space-y-8">
-                  <div className="flex gap-1 justify-center">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-6 h-6 fill-[#06FFA5] text-[#06FFA5]" />
+          </FadeIn>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <FadeIn delay={0.1}>
+              <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-[#6366F1]/30">
+                <CardContent className="p-8">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <Palette className="w-7 h-7 text-white" />
+                  </div>
+                  <h3 className="font-serif text-2xl font-bold text-foreground mb-4">
+                    Brand Identity Design
+                  </h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    {"Complete visual identity systems including logos, color palettes, typography, and brand guidelines that establish your startup's unique market position."}
+                  </p>
+                  <ul className="space-y-2">
+                    {['Logo Design', 'Brand Guidelines', 'Color Systems', 'Typography Selection'].map((feature) => (
+                      <li key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#6366F1]" />
+                        {feature}
+                      </li>
                     ))}
-                  </div>
-                  
-                  <blockquote className="text-xl md:text-2xl text-[#1E1B4B] leading-relaxed text-center text-balance font-medium">
-                    {`"${testimonial.quote}"`}
-                  </blockquote>
-                  
-                  <div className="text-center space-y-1">
-                    <div className="font-serif text-lg font-bold text-[#2D1B69]">{testimonial.author}</div>
-                    <div className="text-sm text-[#6B7280]">{testimonial.title}</div>
-                  </div>
+                  </ul>
                 </CardContent>
               </Card>
-            </div>
-          ))}
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-[#8B5CF6]/30">
+                <CardContent className="p-8">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#8B5CF6] to-[#6366F1] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <Monitor className="w-7 h-7 text-white" />
+                  </div>
+                  <h3 className="font-serif text-2xl font-bold text-foreground mb-4">
+                    Web Design & Development
+                  </h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    Conversion-optimized websites that showcase your brand beautifully while driving user engagement and business growth.
+                  </p>
+                  <ul className="space-y-2">
+                    {['Responsive Design', 'User Experience', 'Conversion Optimization', 'Content Strategy'].map((feature) => (
+                      <li key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#8B5CF6]" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </FadeIn>
+            <FadeIn delay={0.3}>
+              <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-[#06D6A0]/30">
+                <CardContent className="p-8">
+                  <div className="w-14 h-14 rounded-xl bg-[#06D6A0] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <Zap className="w-7 h-7 text-[#1E293B]" />
+                  </div>
+                  <h3 className="font-serif text-2xl font-bold text-foreground mb-4">
+                    Brand Strategy Consulting
+                  </h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    Strategic guidance to help define your brand positioning, target audience, and visual direction for maximum market impact.
+                  </p>
+                  <ul className="space-y-2">
+                    {['Brand Positioning', 'Competitor Analysis', 'Target Audience Research', 'Visual Strategy'].map((feature) => (
+                      <li key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#06D6A0]" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </FadeIn>
+          </div>
         </div>
+      </section>
 
-        {/* Carousel Indicators */}
-        <div className="flex justify-center gap-3 mt-8">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setActiveIndex(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === activeIndex 
-                  ? 'bg-[#06FFA5] w-8' 
-                  : 'bg-white/50 hover:bg-white/70'
-              }`}
-              aria-label={`Go to testimonial ${index + 1}`}
-            />
-          ))}
+      {/* Portfolio Section */}
+      <section id="portfolio" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-muted/30">
+        <div className="container mx-auto">
+          <FadeIn>
+            <div className="max-w-3xl mx-auto text-center mb-16">
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance">
+                Recent Projects That Made an Impact
+              </h2>
+            </div>
+          </FadeIn>
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                title: 'TechFlow Startup',
+                category: 'Brand Identity & Web Design',
+                description: 'Complete rebrand and website redesign that increased user engagement by 150% and conversion rates by 85%.',
+                tags: ['Branding', 'Web Design', 'Strategy'],
+                gradient: 'from-[#6366F1] to-[#8B5CF6]'
+              },
+              {
+                title: 'GreenSpace App',
+                category: 'Brand Identity',
+                description: 'Sustainable tech startup brand identity that helped secure $2M in Series A funding within 6 months of launch.',
+                tags: ['Logo Design', 'Brand Guidelines', 'Sustainability'],
+                gradient: 'from-[#06D6A0] to-[#6366F1]'
+              },
+              {
+                title: 'DataViz Platform',
+                category: 'Web Design',
+                description: 'SaaS platform redesign focused on user experience, resulting in 40% reduction in bounce rate and improved user retention.',
+                tags: ['UX Design', 'SaaS', 'Data Visualization'],
+                gradient: 'from-[#8B5CF6] to-[#06D6A0]'
+              },
+              {
+                title: 'FinTech Startup',
+                category: 'Complete Brand Package',
+                description: 'End-to-end brand development and web presence for financial technology startup, from concept to market launch.',
+                tags: ['FinTech', 'Complete Package', 'Market Launch'],
+                gradient: 'from-[#6366F1] to-[#06D6A0]'
+              }
+            ].map((project, index) => (
+              <FadeIn key={project.title} delay={index * 0.1}>
+                <Card className="group hover:shadow-xl transition-all duration-300 overflow-hidden">
+                  <div className={`h-48 bg-gradient-to-br ${project.gradient} relative`}>
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-white transition-opacity duration-300" />
+                  </div>
+                  <CardContent className="p-8">
+                    <div className="text-sm font-medium text-[#6366F1] mb-2">{project.category}</div>
+                    <h3 className="font-serif text-2xl font-bold text-foreground mb-3">
+                      {project.title}
+                    </h3>
+                    <p className="text-muted-foreground mb-4 leading-relaxed">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <Badge key={tag} variant="secondary" className="text-xs">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </FadeIn>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Process Section */}
+      <section id="process" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto">
+          <FadeIn>
+            <div className="max-w-3xl mx-auto text-center mb-16">
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance">
+                A Proven Process for Exceptional Results
+              </h2>
+            </div>
+          </FadeIn>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                number: '01',
+                title: 'Discovery & Strategy',
+                description: 'Deep dive into your business goals, target audience, and competitive landscape to inform design decisions.',
+                color: '#6366F1'
+              },
+              {
+                number: '02',
+                title: 'Concept Development',
+                description: 'Create initial design concepts and brand directions based on strategic insights and creative exploration.',
+                color: '#8B5CF6'
+              },
+              {
+                number: '03',
+                title: 'Design & Refinement',
+                description: 'Develop chosen concepts into polished designs with iterative feedback and refinement cycles.',
+                color: '#06D6A0'
+              },
+              {
+                number: '04',
+                title: 'Delivery & Launch',
+                description: 'Final asset delivery with comprehensive guidelines and support for successful brand implementation.',
+                color: '#6366F1'
+              }
+            ].map((step, index) => (
+              <FadeIn key={step.number} delay={index * 0.1}>
+                <div className="relative">
+                  {index < 3 && (
+                    <div className="hidden lg:block absolute top-12 left-full w-full h-0.5 bg-gradient-to-r from-border to-transparent" />
+                  )}
+                  <div className="relative">
+                    <div 
+                      className="font-serif text-6xl font-bold mb-4 opacity-20"
+                      style={{ color: step.color }}
+                    >
+                      {step.number}
+                    </div>
+                    <h3 className="font-serif text-xl font-bold text-foreground mb-3">
+                      {step.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-muted/30">
+        <div className="container mx-auto">
+          <FadeIn>
+            <div className="max-w-3xl mx-auto text-center mb-16">
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance">
+                What Startup Founders Say
+              </h2>
+            </div>
+          </FadeIn>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                content: "Jane's brand design was instrumental in our successful Series A funding. Her strategic approach and creative execution helped us stand out in a crowded market.",
+                author: 'Sarah Chen',
+                title: 'CEO, TechFlow',
+                rating: 5
+              },
+              {
+                content: 'The website Jane designed converted 3x better than our previous site. Her understanding of user psychology and conversion optimization is exceptional.',
+                author: 'Michael Rodriguez',
+                title: 'Founder, DataViz Platform',
+                rating: 5
+              },
+              {
+                content: 'Professional, creative, and results-driven. Jane delivered a complete brand identity that perfectly captured our vision and resonated with our target market.',
+                author: 'Emily Thompson',
+                title: 'Co-founder, GreenSpace',
+                rating: 5
+              }
+            ].map((testimonial, index) => (
+              <FadeIn key={testimonial.author} delay={index * 0.1}>
+                <Card className="h-full">
+                  <CardContent className="p-8">
+                    <div className="flex gap-1 mb-4">
+                      {Array.from({ length: testimonial.rating }).map((_, i) => (
+                        <Star key={i} className="w-5 h-5 fill-[#06D6A0] text-[#06D6A0]" />
+                      ))}
+                    </div>
+                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                      {testimonial.content}
+                    </p>
+                    <div>
+                      <div className="font-semibold text-foreground">{testimonial.author}</div>
+                      <div className="text-sm text-muted-foreground">{testimonial.title}</div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section id="contact" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto">
+          <FadeIn>
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] rounded-3xl p-12 md:p-16 shadow-2xl">
+                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 text-balance">
+                  Ready to Build Your Brand?
+                </h2>
+                <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto text-pretty leading-relaxed">
+                  {"Let's discuss how strategic design can accelerate your startup's growth and market success."}
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button asChild size="lg" className="bg-[#06D6A0] text-[#1E293B] hover:bg-[#05c292] text-base font-semibold px-8">
+                    <a href="mailto:jane@janedesigner.com">Start Your Project</a>
+                  </Button>
+                  <Button asChild size="lg" variant="outline" className="bg-transparent border-2 border-white text-white hover:bg-white/10 text-base font-semibold px-8">
+                    <Link href="#portfolio">View Portfolio</Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-12 px-4 sm:px-6 lg:px-8 border-t border-border">
+        <div className="container mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="font-serif text-xl font-bold text-foreground">
+              Jane Designer
+            </div>
+            <div className="text-sm text-muted-foreground">
+              © 2024 Jane Designer. All rights reserved.
+            </div>
+            <div className="flex gap-6">
+              <Link href="#about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                About
+              </Link>
+              <Link href="#services" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Services
+              </Link>
+              <Link href="#portfolio" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Portfolio
+              </Link>
+              <Link href="mailto:jane@janedesigner.com" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Contact
+              </Link>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
   )
 }
 
-// CTA Section
-function CTASection() {
+// Fade-in animation component
+function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+  const [isVisible, setIsVisible] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => setIsVisible(true), delay * 1000)
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (ref.current) {
+      observer.observe(ref.current)
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current)
+      }
+    }
+  }, [delay])
+
   return (
-    <section className="py-24 px-4 bg-[#FAFBFF] relative overflow-hidden">
-      <div className="container mx-auto max-w-7xl">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Content */}
-          <div className="space-y-8 text-center lg:text-left order-2 lg:order-1">
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-[#1E1B4B] text-balance">
-              {'Ready to Transform Your Brand?'}
-            </h2>
-            <p className="text-lg md:text-xl text-[#6B7280] leading-relaxed text-pretty">
-              {"Let's discuss how strategic design can accelerate your startup's growth and market presence."}
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button asChild size="lg" className="bg-[#06FFA5] hover:bg-[#05E094] text-[#1E1B4B] font-semibold shadow-lg shadow-[#06FFA5]/25 hover:shadow-xl hover:shadow-[#06FFA5]/30 transition-all duration-300 hover:scale-105">
-                <Link href="mailto:jane@janedesigner.com">{'Start Your Project'}</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="border-2 border-[#2D1B69] text-[#2D1B69] hover:bg-[#2D1B69] hover:text-white font-semibold transition-all duration-300 bg-transparent">
-                <Link href="#portfolio">{'View Portfolio'}</Link>
-              </Button>
-            </div>
-          </div>
-
-          {/* Image */}
-          <div className="relative order-1 lg:order-2">
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl shadow-[#2D1B69]/20 border-4 border-white">
-              <Image
-                src="https://images.unsplash.com/photo-1605606582211-088f336964ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBjb25zdWx0YXRpb24lMjBkZXNpZ24lMjBtZWV0aW5nfGVufDB8MHx8fDE3Njk5NjU5ODV8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Professional consultation meeting"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-[#6366F1] rounded-2xl opacity-60 blur-2xl animate-pulse" />
-          </div>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <footer className="mt-24 pt-8 border-t border-[#E5E7EB]">
-        <div className="container mx-auto max-w-7xl text-center text-sm text-[#6B7280]">
-          <p>{'© 2024 Jane Designer. All rights reserved.'}</p>
-        </div>
-      </footer>
-    </section>
+    <div
+      ref={ref}
+      className={`transition-all duration-700 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      }`}
+    >
+      {children}
+    </div>
   )
 }

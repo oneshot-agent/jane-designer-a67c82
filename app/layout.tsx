@@ -4,29 +4,19 @@ import { Space_Grotesk, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const spaceGrotesk = Space_Grotesk({ 
+const _spaceGrotesk = Space_Grotesk({ 
   subsets: ["latin"],
-  variable: '--font-heading',
-  display: 'swap',
+  variable: '--font-heading'
 });
-
-const inter = Inter({ 
+const _inter = Inter({ 
   subsets: ["latin"],
-  variable: '--font-body',
-  display: 'swap',
+  variable: '--font-body'
 });
 
 export const metadata: Metadata = {
-  title: 'Jane Designer - Brand Identity & Web Design for Startups',
-  description: 'Professional designer helping startups build memorable identities and high-performing websites that drive growth. Specializing in brand identity and web design.',
+  title: 'Jane Designer - Creative Brand Identity & Web Design for Startups',
+  description: 'Creative designer crafting distinctive brand identities and conversion-focused websites that help startups stand out and grow.',
   generator: 'v0.app',
-  keywords: ['brand identity', 'web design', 'startup branding', 'designer', 'creative design'],
-  authors: [{ name: 'Jane Designer' }],
-  openGraph: {
-    title: 'Jane Designer - Brand Identity & Web Design for Startups',
-    description: 'Professional designer helping startups build memorable identities and high-performing websites that drive growth.',
-    type: 'website',
-  },
   icons: {
     icon: [
       {
@@ -52,8 +42,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
+    <html lang="en">
+      <body className={`font-sans antialiased`}>
         {children}
         <Analytics />
       </body>

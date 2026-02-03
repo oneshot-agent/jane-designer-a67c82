@@ -4,18 +4,12 @@ import { Space_Grotesk, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const _spaceGrotesk = Space_Grotesk({ 
-  subsets: ["latin"],
-  variable: '--font-heading'
-});
-const _inter = Inter({ 
-  subsets: ["latin"],
-  variable: '--font-body'
-});
+const _spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: '--font-heading' });
+const _inter = Inter({ subsets: ["latin"], variable: '--font-body' });
 
 export const metadata: Metadata = {
-  title: 'Jane Designer - Creative Brand Identity & Web Design for Startups',
-  description: 'Creative designer crafting distinctive brand identities and conversion-focused websites that help startups stand out and grow.',
+  title: 'Jane Designer - Creative Designer for Startups',
+  description: 'I transform startup visions into powerful brand identities and digital experiences that command attention and drive growth.',
   generator: 'v0.app',
   icons: {
     icon: [

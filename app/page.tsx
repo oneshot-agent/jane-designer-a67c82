@@ -1,448 +1,498 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
-import { Palette, Monitor, Rocket, ArrowRight } from 'lucide-react'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Palette, Monitor, Briefcase, Search, Lightbulb, Rocket, Star } from 'lucide-react'
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <main className="min-h-screen">
+    <div className="flex min-h-screen flex-col">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <Link href="/" className="font-heading text-xl font-bold text-foreground">
-              Jane Designer
+      <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          <Link href="/" className="font-heading text-xl font-bold text-[var(--brand-secondary)]">
+            Jane Designer
+          </Link>
+          <div className="hidden items-center gap-6 md:flex">
+            <Link href="#about" className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">
+              About
             </Link>
-            <div className="hidden md:flex items-center gap-8">
-              <Link href="#about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                About
-              </Link>
-              <Link href="#services" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Services
-              </Link>
-              <Link href="#portfolio" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Portfolio
-              </Link>
-              <Link href="#process" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Process
-              </Link>
-              <Button asChild className="bg-[rgb(var(--brand-accent))] hover:bg-[rgb(var(--brand-accent))]/90 text-white">
-                <Link href="mailto:jane@janedesigner.com">Get in Touch</Link>
-              </Button>
+            <Link href="#services" className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">
+              Services
+            </Link>
+            <Link href="#portfolio" className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">
+              Portfolio
+            </Link>
+            <Link href="#process" className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">
+              Process
+            </Link>
+            <Link href="#testimonials" className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">
+              Testimonials
+            </Link>
+            <Button asChild className="bg-[var(--brand-accent)] text-[var(--brand-text)] hover:bg-[var(--brand-accent)]/90">
+              <Link href="mailto:jane@janedesigner.com">Get in Touch</Link>
+            </Button>
+          </div>
+        </nav>
+      </header>
+
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden border-b bg-gradient-to-b from-background to-muted/20 py-20 sm:py-28 lg:py-32">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-3xl text-center">
+              <h1 className="font-heading text-4xl font-bold tracking-tight text-[var(--brand-secondary)] sm:text-5xl lg:text-6xl text-balance">
+                Transform Your Startup with Memorable Brand Design
+              </h1>
+              <p className="mt-6 text-lg leading-relaxed text-foreground/80 text-pretty">
+                Creative designer helping startups build powerful brand identities and websites that convert visitors into customers.
+              </p>
+              <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <Button asChild size="lg" className="bg-[var(--brand-primary)] text-primary-foreground hover:bg-[var(--brand-primary)]/90">
+                  <Link href="#portfolio">View My Work</Link>
+                </Button>
+              </div>
+              <div className="mt-16 overflow-hidden rounded-xl border bg-card shadow-2xl">
+                <Image
+                  src="https://images.unsplash.com/photo-1622465911894-1e73cbdc293a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMGRlc2lnbmVyJTIwd29ya3NwYWNlJTIwYnJhbmQlMjBpZGVudGl0eSUyMG1vY2t1cHN8ZW58MHwwfHx8MTc3MDExOTA2Nnww&ixlib=rb-4.1.0&q=80&w=1080"
+                  alt="Creative designer workspace with brand identity mockups"
+                  width={1080}
+                  height={720}
+                  className="h-auto w-full"
+                  priority
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </nav>
+        </section>
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        {/* Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--brand-primary))]/5 via-[rgb(var(--brand-secondary))]/5 to-transparent" />
-        
-        <div className="container mx-auto relative z-10">
-          <div className="max-w-5xl mx-auto text-center space-y-8">
-            <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground leading-tight text-balance">
-              Bold Brands That{' '}
-              <span className="bg-gradient-to-r from-[rgb(var(--brand-primary))] to-[rgb(var(--brand-secondary))] bg-clip-text text-transparent">
-                Disrupt Markets
-              </span>
-            </h1>
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed text-pretty">
-              I transform startup visions into powerful brand identities and digital experiences that command attention and drive growth.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-              <Button 
-                asChild 
-                size="lg" 
-                className="bg-[rgb(var(--brand-accent))] hover:bg-[rgb(var(--brand-accent))]/90 text-white px-8 h-12 text-base group"
-              >
-                <Link href="#portfolio">
-                  View My Work
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-            </div>
-            
-            {/* Hero Image */}
-            <div className="mt-12 relative rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src="https://images.unsplash.com/photo-1590102425712-1c28a0d6b85b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMGRlc2lnbmVyJTIwd29ya3NwYWNlJTIwYm9sZCUyMGNvbG9ycyUyMGJyYW5kJTIwaWRlbnRpdHklMjBtb2NrdXBzfGVufDB8MHx8fDE3NzAxMTkwMjB8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Creative designer workspace with bold brand identity mockups"
-                width={1080}
-                height={720}
-                className="w-full h-auto"
-                priority
-              />
+        {/* About Section */}
+        <section id="about" className="border-b py-20 sm:py-28">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+              <div className="flex flex-col justify-center">
+                <h2 className="font-heading text-3xl font-bold tracking-tight text-[var(--brand-secondary)] sm:text-4xl text-balance">
+                  Design That Drives Business Growth
+                </h2>
+                <p className="mt-6 text-lg leading-relaxed text-foreground/80">
+                  {"I'm Jane Designer, a creative professional specializing in brand identity and web design for startups. With a focus on strategic design thinking, I help emerging businesses establish strong visual foundations that resonate with their target audience and drive meaningful engagement. My approach combines creative excellence with business acumen to deliver designs that not only look exceptional but also perform."}
+                </p>
+                <div className="mt-10 grid grid-cols-3 gap-6">
+                  <div className="text-center">
+                    <div className="font-heading text-3xl font-bold text-[var(--brand-primary)]">50+</div>
+                    <div className="mt-1 text-sm text-foreground/70">Startups Launched</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="font-heading text-3xl font-bold text-[var(--brand-primary)]">95%</div>
+                    <div className="mt-1 text-sm text-foreground/70">Client Retention Rate</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="font-heading text-3xl font-bold text-[var(--brand-primary)]">3x</div>
+                    <div className="mt-1 text-sm text-foreground/70">Average Conversion Boost</div>
+                  </div>
+                </div>
+              </div>
+              <div className="overflow-hidden rounded-xl border bg-card shadow-lg">
+                <Image
+                  src="https://images.unsplash.com/photo-1768471125958-78556538fadc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBkZXNpZ25lciUyMHBvcnRyYWl0JTIwY3JlYXRpdmUlMjB3b3Jrc3BhY2V8ZW58MHwwfHx8MTc3MDExOTA2N3ww&ixlib=rb-4.1.0&q=80&w=1080"
+                  alt="Professional designer portrait in creative workspace"
+                  width={1080}
+                  height={1080}
+                  className="h-auto w-full"
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
-        <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="relative rounded-2xl overflow-hidden shadow-xl">
-              <Image
-                src="https://images.unsplash.com/photo-1758613654707-8bdab92f711d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBmZW1hbGUlMjBkZXNpZ25lciUyMGNyZWF0aXZlJTIwc3R1ZGlvJTIwcG9ydHJhaXQlMjBjb25maWRlbnR8ZW58MHwwfHx8MTc3MDExOTAyMHww&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Professional designer portrait in creative studio"
-                width={1080}
-                height={1080}
-                className="w-full h-auto"
-              />
-            </div>
-            <div className="space-y-6">
-              <h2 className="font-heading text-4xl sm:text-5xl font-bold text-foreground text-balance">
-                Design That Demands{' '}
-                <span className="text-[rgb(var(--brand-primary))]">Attention</span>
+        {/* Services Section */}
+        <section id="services" className="border-b bg-muted/20 py-20 sm:py-28">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 className="font-heading text-3xl font-bold tracking-tight text-[var(--brand-secondary)] sm:text-4xl text-balance">
+                Comprehensive Design Solutions for Startups
               </h2>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  I'm Jane Designer, and I don't believe in playing it safe. For the past 5+ years, I've helped ambitious startups break through the noise with fearless brand identities and web designs that convert visitors into customers.
-                </p>
-                <p>
-                  My work has launched 50+ brands and generated over $2M in client revenue.
-                </p>
+            </div>
+            <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {/* Service 1 */}
+              <Card className="overflow-hidden transition-shadow hover:shadow-lg">
+                <CardHeader>
+                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-[var(--brand-primary)]/10">
+                    <Palette className="h-6 w-6 text-[var(--brand-primary)]" />
+                  </div>
+                  <CardTitle className="font-heading text-xl">Brand Identity Design</CardTitle>
+                  <CardDescription className="leading-relaxed">
+                    Complete brand packages including logo design, color palettes, typography, and brand guidelines that establish your unique market presence.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2">
+                    {['Logo Design', 'Brand Guidelines', 'Color Systems', 'Typography Selection'].map((feature) => (
+                      <li key={feature} className="flex items-center gap-2 text-sm text-foreground/70">
+                        <div className="h-1.5 w-1.5 rounded-full bg-[var(--brand-accent)]" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+
+              {/* Service 2 */}
+              <Card className="overflow-hidden transition-shadow hover:shadow-lg">
+                <CardHeader>
+                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-[var(--brand-primary)]/10">
+                    <Monitor className="h-6 w-6 text-[var(--brand-primary)]" />
+                  </div>
+                  <CardTitle className="font-heading text-xl">Web Design & Development</CardTitle>
+                  <CardDescription className="leading-relaxed">
+                    Responsive websites that convert visitors into customers, built with modern design principles and optimized for performance.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2">
+                    {['Responsive Design', 'User Experience', 'Conversion Optimization', 'CMS Integration'].map((feature) => (
+                      <li key={feature} className="flex items-center gap-2 text-sm text-foreground/70">
+                        <div className="h-1.5 w-1.5 rounded-full bg-[var(--brand-accent)]" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+
+              {/* Service 3 */}
+              <Card className="overflow-hidden transition-shadow hover:shadow-lg">
+                <CardHeader>
+                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-[var(--brand-primary)]/10">
+                    <Briefcase className="h-6 w-6 text-[var(--brand-primary)]" />
+                  </div>
+                  <CardTitle className="font-heading text-xl">Startup Brand Strategy</CardTitle>
+                  <CardDescription className="leading-relaxed">
+                    Strategic brand positioning and visual identity development tailored specifically for emerging businesses and their growth goals.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2">
+                    {['Market Research', 'Competitor Analysis', 'Brand Positioning', 'Growth Planning'].map((feature) => (
+                      <li key={feature} className="flex items-center gap-2 text-sm text-foreground/70">
+                        <div className="h-1.5 w-1.5 rounded-full bg-[var(--brand-accent)]" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Portfolio Section */}
+        <section id="portfolio" className="border-b py-20 sm:py-28">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 className="font-heading text-3xl font-bold tracking-tight text-[var(--brand-secondary)] sm:text-4xl text-balance">
+                Recent Projects That Delivered Results
+              </h2>
+            </div>
+            <div className="mt-16 grid gap-8 sm:grid-cols-2">
+              {/* Project 1 */}
+              <Card className="overflow-hidden transition-shadow hover:shadow-lg">
+                <div className="aspect-video overflow-hidden bg-gradient-to-br from-[var(--brand-primary)]/10 to-[var(--brand-accent)]/10">
+                  <Image
+                    src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&h=800&fit=crop&q=80"
+                    alt="TechFlow Startup project"
+                    width={600}
+                    height={400}
+                    className="h-full w-full object-cover transition-transform hover:scale-105"
+                  />
+                </div>
+                <CardHeader>
+                  <div className="mb-2 text-sm font-medium text-[var(--brand-primary)]">Brand Identity & Website</div>
+                  <CardTitle className="font-heading text-2xl">TechFlow Startup</CardTitle>
+                  <CardDescription className="leading-relaxed">
+                    Complete rebrand and website redesign that increased user engagement by 240% and conversion rates by 85%.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {['Branding', 'Web Design', 'SaaS'].map((tag) => (
+                      <Badge key={tag} variant="secondary" className="bg-[var(--brand-primary)]/10 text-[var(--brand-primary)]">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Project 2 */}
+              <Card className="overflow-hidden transition-shadow hover:shadow-lg">
+                <div className="aspect-video overflow-hidden bg-gradient-to-br from-[var(--brand-primary)]/10 to-[var(--brand-accent)]/10">
+                  <Image
+                    src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&h=800&fit=crop&q=80"
+                    alt="GreenSpace Co. project"
+                    width={600}
+                    height={400}
+                    className="h-full w-full object-cover transition-transform hover:scale-105"
+                  />
+                </div>
+                <CardHeader>
+                  <div className="mb-2 text-sm font-medium text-[var(--brand-primary)]">Brand Identity</div>
+                  <CardTitle className="font-heading text-2xl">GreenSpace Co.</CardTitle>
+                  <CardDescription className="leading-relaxed">
+                    Sustainable brand identity for eco-friendly startup, helping them secure $2M in Series A funding.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {['Branding', 'Sustainability', 'Identity'].map((tag) => (
+                      <Badge key={tag} variant="secondary" className="bg-[var(--brand-primary)]/10 text-[var(--brand-primary)]">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Project 3 */}
+              <Card className="overflow-hidden transition-shadow hover:shadow-lg">
+                <div className="aspect-video overflow-hidden bg-gradient-to-br from-[var(--brand-primary)]/10 to-[var(--brand-accent)]/10">
+                  <Image
+                    src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&h=800&fit=crop&q=80"
+                    alt="DataSync Platform project"
+                    width={600}
+                    height={400}
+                    className="h-full w-full object-cover transition-transform hover:scale-105"
+                  />
+                </div>
+                <CardHeader>
+                  <div className="mb-2 text-sm font-medium text-[var(--brand-primary)]">Web Design</div>
+                  <CardTitle className="font-heading text-2xl">DataSync Platform</CardTitle>
+                  <CardDescription className="leading-relaxed">
+                    Modern web platform design that improved user onboarding completion rates by 150%.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {['Web Design', 'UX/UI', 'Platform'].map((tag) => (
+                      <Badge key={tag} variant="secondary" className="bg-[var(--brand-primary)]/10 text-[var(--brand-primary)]">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Project 4 */}
+              <Card className="overflow-hidden transition-shadow hover:shadow-lg">
+                <div className="aspect-video overflow-hidden bg-gradient-to-br from-[var(--brand-primary)]/10 to-[var(--brand-accent)]/10">
+                  <Image
+                    src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&h=800&fit=crop&q=80"
+                    alt="HealthTech Innovations project"
+                    width={600}
+                    height={400}
+                    className="h-full w-full object-cover transition-transform hover:scale-105"
+                  />
+                </div>
+                <CardHeader>
+                  <div className="mb-2 text-sm font-medium text-[var(--brand-primary)]">Complete Brand Package</div>
+                  <CardTitle className="font-heading text-2xl">HealthTech Innovations</CardTitle>
+                  <CardDescription className="leading-relaxed">
+                    End-to-end branding and digital presence for healthcare startup, leading to 300% increase in qualified leads.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {['Branding', 'Healthcare', 'Digital'].map((tag) => (
+                      <Badge key={tag} variant="secondary" className="bg-[var(--brand-primary)]/10 text-[var(--brand-primary)]">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Process Section */}
+        <section id="process" className="border-b bg-muted/20 py-20 sm:py-28">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 className="font-heading text-3xl font-bold tracking-tight text-[var(--brand-secondary)] sm:text-4xl text-balance">
+                A Proven Process That Delivers Results
+              </h2>
+            </div>
+            <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              {/* Step 1 */}
+              <div className="relative">
+                <div className="flex flex-col items-center text-center">
+                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[var(--brand-primary)] text-primary-foreground shadow-lg">
+                    <Search className="h-8 w-8" />
+                  </div>
+                  <h3 className="font-heading text-xl font-semibold text-[var(--brand-secondary)]">Discovery & Strategy</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/70">
+                    Deep dive into your business goals, target audience, and competitive landscape to inform design decisions.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 2 */}
+              <div className="relative">
+                <div className="flex flex-col items-center text-center">
+                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[var(--brand-primary)] text-primary-foreground shadow-lg">
+                    <Lightbulb className="h-8 w-8" />
+                  </div>
+                  <h3 className="font-heading text-xl font-semibold text-[var(--brand-secondary)]">Concept Development</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/70">
+                    Create initial design concepts and strategic direction based on research insights and brand objectives.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div className="relative">
+                <div className="flex flex-col items-center text-center">
+                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[var(--brand-primary)] text-primary-foreground shadow-lg">
+                    <Palette className="h-8 w-8" />
+                  </div>
+                  <h3 className="font-heading text-xl font-semibold text-[var(--brand-secondary)]">Design & Refinement</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/70">
+                    Develop comprehensive design solutions with iterative feedback cycles to ensure perfect alignment.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 4 */}
+              <div className="relative">
+                <div className="flex flex-col items-center text-center">
+                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[var(--brand-primary)] text-primary-foreground shadow-lg">
+                    <Rocket className="h-8 w-8" />
+                  </div>
+                  <h3 className="font-heading text-xl font-semibold text-[var(--brand-secondary)]">Launch & Support</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/70">
+                    Deliver final assets and provide ongoing support to ensure successful implementation and growth.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Stats Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[rgb(var(--brand-primary))] to-[rgb(var(--brand-secondary))]">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { number: '50+', label: 'Startups Launched' },
-              { number: '$2M+', label: 'Client Revenue Generated' },
-              { number: '340%', label: 'Average Conversion Increase' },
-              { number: '5', label: 'Years of Bold Design' },
-            ].map((stat, index) => (
-              <div key={index} className="text-center space-y-2">
-                <div className="font-heading text-4xl sm:text-5xl font-bold text-white">
-                  {stat.number}
-                </div>
-                <div className="text-sm sm:text-base text-white/90">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section id="services" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="font-heading text-4xl sm:text-5xl font-bold text-foreground text-balance">
-              Services That Scale Your{' '}
-              <span className="text-[rgb(var(--brand-secondary))]">Success</span>
-            </h2>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Palette,
-                title: 'Brand Identity Design',
-                description: 'Complete visual identity systems that make your startup unforgettable. Logo, colors, typography, and brand guidelines that scale with your growth.',
-              },
-              {
-                icon: Monitor,
-                title: 'Web Design & Development',
-                description: 'High-converting websites that turn visitors into customers. Responsive, fast-loading, and optimized for maximum impact and user engagement.',
-              },
-              {
-                icon: Rocket,
-                title: 'Startup Brand Strategy',
-                description: 'Strategic positioning and visual direction that helps you stand out in crowded markets. From concept to launch-ready brand systems.',
-              },
-            ].map((service, index) => (
-              <Card 
-                key={index} 
-                className="border-2 hover:border-[rgb(var(--brand-primary))] transition-all duration-300 hover:shadow-lg group"
-              >
-                <CardContent className="p-8 space-y-4">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[rgb(var(--brand-primary))] to-[rgb(var(--brand-secondary))] flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <service.icon className="h-7 w-7 text-white" />
+        {/* Testimonials Section */}
+        <section id="testimonials" className="border-b py-20 sm:py-28">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 className="font-heading text-3xl font-bold tracking-tight text-[var(--brand-secondary)] sm:text-4xl text-balance">
+                What Startup Founders Say
+              </h2>
+            </div>
+            <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {/* Testimonial 1 */}
+              <Card className="overflow-hidden transition-shadow hover:shadow-lg">
+                <CardHeader>
+                  <div className="mb-2 flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-[var(--brand-accent)] text-[var(--brand-accent)]" />
+                    ))}
                   </div>
-                  <h3 className="font-heading text-xl font-bold text-foreground">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {service.description}
-                  </p>
+                  <CardDescription className="leading-relaxed">
+                    {"\"Jane's brand design completely transformed how our customers perceive us. We saw immediate improvements in engagement and our conversion rates doubled within the first month.\""}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="font-semibold text-[var(--brand-secondary)]">Sarah Chen</div>
+                  <div className="text-sm text-foreground/70">CEO, TechFlow Startup</div>
                 </CardContent>
               </Card>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Portfolio Section */}
-      <section id="portfolio" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
-        <div className="container mx-auto">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="font-heading text-4xl sm:text-5xl font-bold text-foreground text-balance">
-              Work That Wins{' '}
-              <span className="text-[rgb(var(--brand-accent))]">Markets</span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            {[
-              {
-                title: 'TechFlow - SaaS Platform',
-                category: 'Brand Identity + Web Design',
-                description: 'Complete rebrand that increased user signups by 340% in 3 months',
-              },
-              {
-                title: 'GreenStart - Sustainability App',
-                category: 'Brand Identity',
-                description: 'Bold visual identity that secured $1.2M seed funding',
-              },
-              {
-                title: 'DataPulse - Analytics Tool',
-                category: 'Web Design',
-                description: 'Website redesign that improved conversion rates by 250%',
-              },
-              {
-                title: 'FoodieLink - Restaurant Tech',
-                category: 'Brand Identity + Web Design',
-                description: 'Full brand launch that gained 10K users in first month',
-              },
-            ].map((project, index) => (
-              <Card 
-                key={index}
-                className="group cursor-pointer hover:shadow-xl transition-all duration-300 overflow-hidden"
-              >
-                <CardContent className="p-0">
-                  <div className="p-8 space-y-3">
-                    <div className="text-sm font-medium text-[rgb(var(--brand-primary))]">
-                      {project.category}
-                    </div>
-                    <h3 className="font-heading text-2xl font-bold text-foreground group-hover:text-[rgb(var(--brand-primary))] transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {project.description}
-                    </p>
+              {/* Testimonial 2 */}
+              <Card className="overflow-hidden transition-shadow hover:shadow-lg">
+                <CardHeader>
+                  <div className="mb-2 flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-[var(--brand-accent)] text-[var(--brand-accent)]" />
+                    ))}
                   </div>
+                  <CardDescription className="leading-relaxed">
+                    {'"The brand identity Jane created helped us stand out in a crowded market. Her strategic approach to design thinking made all the difference in our Series A pitch."'}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="font-semibold text-[var(--brand-secondary)]">Marcus Rodriguez</div>
+                  <div className="text-sm text-foreground/70">Founder, GreenSpace Co.</div>
                 </CardContent>
               </Card>
-            ))}
-          </div>
 
-          {/* Portfolio Showcase Image */}
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-            <Image
-              src="https://images.unsplash.com/photo-1762365189058-7be5b07e038b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxwb3J0Zm9saW8lMjBzaG93Y2FzZSUyMGJyYW5kJTIwaWRlbnRpdHklMjBkZXNpZ25zJTIwd2ViJTIwZGVzaWduJTIwbW9ja3VwcyUyMHN0YXJ0dXAlMjBicmFuZGluZ3xlbnwwfDB8fHwxNzcwMTE5MDIwfDA&ixlib=rb-4.1.0&q=80&w=1080"
-              alt="Portfolio showcase featuring brand identity designs and web design mockups"
-              width={1080}
-              height={720}
-              className="w-full h-auto"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section id="process" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="font-heading text-4xl sm:text-5xl font-bold text-foreground text-balance">
-              My Proven Design{' '}
-              <span className="text-[rgb(var(--brand-primary))]">Process</span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                number: '01',
-                title: 'Strategy Deep Dive',
-                description: 'We uncover your unique value proposition and competitive advantages to build an unshakeable foundation.',
-              },
-              {
-                number: '02',
-                title: 'Bold Concept Creation',
-                description: "I develop fearless design concepts that capture attention and communicate your startup's disruptive potential.",
-              },
-              {
-                number: '03',
-                title: 'Iterative Refinement',
-                description: 'Through collaborative feedback loops, we perfect every detail until your brand demands the attention it deserves.',
-              },
-              {
-                number: '04',
-                title: 'Launch & Scale',
-                description: 'Complete delivery with all assets, guidelines, and ongoing support to ensure your brand grows with your success.',
-              },
-            ].map((step, index) => (
-              <div key={index} className="space-y-4">
-                <div className="font-heading text-6xl font-bold text-[rgb(var(--brand-primary))]/20">
-                  {step.number}
-                </div>
-                <h3 className="font-heading text-xl font-bold text-foreground">
-                  {step.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {step.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
-        <div className="container mx-auto">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="font-heading text-4xl sm:text-5xl font-bold text-foreground text-balance">
-              Founders Who Chose{' '}
-              <span className="text-[rgb(var(--brand-secondary))]">Bold</span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                quote: "Jane didn't just design our brand - she gave us the confidence to compete with industry giants. Our brand now commands premium pricing.",
-                author: 'Sarah Chen',
-                title: 'CEO, TechFlow',
-                avatar: 'SC',
-              },
-              {
-                quote: 'The website Jane designed converts 3x better than our old one. Her bold approach perfectly captured our disruptive vision.',
-                author: 'Marcus Rodriguez',
-                title: 'Founder, DataPulse',
-                avatar: 'MR',
-              },
-              {
-                quote: "Jane's brand strategy helped us raise our Series A. Investors immediately understood our vision through her powerful visual identity.",
-                author: 'Emily Thompson',
-                title: 'Co-founder, GreenStart',
-                avatar: 'ET',
-              },
-            ].map((testimonial, index) => (
-              <Card key={index} className="border-2">
-                <CardContent className="p-8 space-y-6">
-                  <p className="text-foreground leading-relaxed italic">
-                    "{testimonial.quote}"
-                  </p>
-                  <div className="flex items-center gap-4">
-                    <Avatar className="h-12 w-12 bg-gradient-to-br from-[rgb(var(--brand-primary))] to-[rgb(var(--brand-secondary))]">
-                      <AvatarFallback className="text-white font-semibold">
-                        {testimonial.avatar}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <div className="font-semibold text-foreground">
-                        {testimonial.author}
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        {testimonial.title}
-                      </div>
-                    </div>
+              {/* Testimonial 3 */}
+              <Card className="overflow-hidden transition-shadow hover:shadow-lg">
+                <CardHeader>
+                  <div className="mb-2 flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-[var(--brand-accent)] text-[var(--brand-accent)]" />
+                    ))}
                   </div>
+                  <CardDescription className="leading-relaxed">
+                    {'"Working with Jane was seamless. She understood our vision immediately and delivered designs that exceeded our expectations. Our user feedback has been incredible."'}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="font-semibold text-[var(--brand-secondary)]">Emily Watson</div>
+                  <div className="text-sm text-foreground/70">CTO, DataSync Platform</div>
                 </CardContent>
               </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        {/* Background with Image Overlay */}
-        <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1759735548261-26f670b5ee8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxib2xkJTIwY3JlYXRpdmUlMjBkZXNpZ24lMjBlbGVtZW50cyUyMGdlb21ldHJpYyUyMHNoYXBlcyUyMHZpYnJhbnQlMjBjb2xvcnN8ZW58MHwwfHx8MTc3MDExOTAyMXww&ixlib=rb-4.1.0&q=80&w=1080"
-            alt="Bold creative design elements with geometric shapes"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[rgb(var(--brand-primary))]/95 to-[rgb(var(--brand-secondary))]/95" />
-        </div>
-
-        <div className="container mx-auto relative z-10">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white text-balance">
-              Ready to Disrupt Your Market?
-            </h2>
-            <p className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed text-pretty">
-              Let's create a brand that commands attention and drives the growth your startup deserves. Bold moves start with bold design.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-              <Button 
-                asChild 
-                size="lg" 
-                className="bg-[rgb(var(--brand-accent))] hover:bg-[rgb(var(--brand-accent))]/90 text-white px-8 h-12 text-base"
-              >
-                <Link href="mailto:jane@janedesigner.com">Start Your Project</Link>
-              </Button>
-              <Button 
-                asChild 
-                size="lg" 
-                variant="outline" 
-                className="border-2 border-white text-white hover:bg-white hover:text-[rgb(var(--brand-primary))] px-8 h-12 text-base bg-transparent"
-              >
-                <Link href="#portfolio">View Case Studies</Link>
-              </Button>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* CTA Section */}
+        <section className="bg-gradient-to-b from-muted/20 to-background py-20 sm:py-28">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 className="font-heading text-3xl font-bold tracking-tight text-[var(--brand-secondary)] sm:text-4xl text-balance">
+                Ready to Transform Your Brand?
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-foreground/80 text-pretty">
+                {"Let's discuss how strategic design can accelerate your startup's growth and market presence."}
+              </p>
+              <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <Button asChild size="lg" className="bg-[var(--brand-accent)] text-[var(--brand-text)] hover:bg-[var(--brand-accent)]/90">
+                  <Link href="mailto:jane@janedesigner.com">Start Your Project</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="border-[var(--brand-primary)] text-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/10 bg-transparent">
+                  <Link href="#portfolio">View Portfolio</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
 
       {/* Footer */}
-      <footer className="py-12 px-4 sm:px-6 lg:px-8 border-t border-border bg-muted/30">
-        <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="text-center md:text-left">
-              <div className="font-heading text-xl font-bold text-foreground mb-2">
-                Jane Designer
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Creative designer specializing in brand identity and web design for startups.
-              </p>
-            </div>
-            <div className="flex items-center gap-8">
-              <Link 
-                href="#about" 
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
+      <footer className="border-t py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
+            <div className="font-heading text-xl font-bold text-[var(--brand-secondary)]">Jane Designer</div>
+            <div className="flex gap-6">
+              <Link href="#about" className="text-sm text-foreground/70 transition-colors hover:text-foreground">
                 About
               </Link>
-              <Link 
-                href="#services" 
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
+              <Link href="#services" className="text-sm text-foreground/70 transition-colors hover:text-foreground">
                 Services
               </Link>
-              <Link 
-                href="#portfolio" 
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
+              <Link href="#portfolio" className="text-sm text-foreground/70 transition-colors hover:text-foreground">
                 Portfolio
               </Link>
-              <Link 
-                href="mailto:jane@janedesigner.com" 
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
+              <Link href="mailto:jane@janedesigner.com" className="text-sm text-foreground/70 transition-colors hover:text-foreground">
                 Contact
               </Link>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
+          <div className="mt-8 text-center text-sm text-foreground/50">
             © {new Date().getFullYear()} Jane Designer. All rights reserved.
           </div>
         </div>
       </footer>
-    </main>
+    </div>
   )
 }

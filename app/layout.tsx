@@ -4,12 +4,19 @@ import { Space_Grotesk, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const _spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: '--font-heading' });
-const _inter = Inter({ subsets: ["latin"], variable: '--font-body' });
+const spaceGrotesk = Space_Grotesk({ 
+  subsets: ["latin"],
+  variable: '--font-heading'
+});
+
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: '--font-body'
+});
 
 export const metadata: Metadata = {
-  title: 'Jane Designer - Creative Designer for Startups',
-  description: 'I transform startup visions into powerful brand identities and digital experiences that command attention and drive growth.',
+  title: 'Jane Designer - Creative Brand & Web Design for Startups',
+  description: 'Creative designer specializing in brand identity and web design for startups. Transform your startup with memorable brand design that converts.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -36,8 +43,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`font-sans antialiased`}>
+    <html lang="en" className="scroll-smooth">
+      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
         {children}
         <Analytics />
       </body>

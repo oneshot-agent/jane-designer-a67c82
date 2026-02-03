@@ -4,61 +4,50 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Brand Colors (preserved from existing) */
-  --brand-primary: 99 102 241; /* #6366F1 indigo */
-  --brand-secondary: 236 72 153; /* #EC4899 pink */
-  --brand-accent: 245 158 11; /* #F59E0B amber */
+  /* Brand Colors */
+  --brand-primary: #6366F1;
+  --brand-secondary: #1E293B;
+  --brand-accent: #F59E0B;
+  --brand-background: #FEFEFE;
+  --brand-text: #0F172A;
   
-  /* Design System (preserved from existing, taking precedence) */
-  --background: 254 254 254; /* #FEFEFE */
-  --foreground: 30 41 59; /* #1E293B */
-  
-  --card: 255 255 255;
-  --card-foreground: 30 41 59;
-  
-  --popover: 255 255 255;
-  --popover-foreground: 30 41 59;
-  
-  --primary: 99 102 241; /* Indigo */
-  --primary-foreground: 255 255 255;
-  
-  --secondary: 236 72 153; /* Pink */
-  --secondary-foreground: 255 255 255;
-  
-  --muted: 241 245 249; /* Light gray */
-  --muted-foreground: 100 116 139;
-  
-  --accent: 245 158 11; /* Amber */
-  --accent-foreground: 255 255 255;
-  
-  --destructive: 239 68 68;
-  --destructive-foreground: 255 255 255;
-  
-  --border: 226 232 240;
-  --input: 226 232 240;
-  --ring: 99 102 241;
-  
-  --chart-1: 99 102 241;
-  --chart-2: 236 72 153;
-  --chart-3: 245 158 11;
-  --chart-4: 139 92 246;
-  --chart-5: 6 182 212;
-  
-  --radius: 0.75rem; /* Preserved from existing */
-
-  /* Sidebar colors from Shadcn default */
+  /* Design Tokens */
+  --background: var(--brand-background);
+  --foreground: var(--brand-text);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--brand-text);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--brand-text);
+  --primary: var(--brand-primary);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: var(--brand-secondary);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: var(--brand-accent);
+  --accent-foreground: var(--brand-text);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: var(--brand-primary);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.75rem;
   --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-foreground: var(--brand-text);
+  --sidebar-primary: var(--brand-primary);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-accent-foreground: var(--brand-text);
   --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar-ring: var(--brand-primary);
 }
 
 .dark {
-  /* Design System (preserved from existing, taking precedence) */
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.145 0 0);
@@ -83,8 +72,6 @@
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  
-  /* Sidebar colors from existing (already present in existing .dark block) */
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.488 0.243 264.376);
@@ -96,10 +83,9 @@
 }
 
 @theme inline {
-  --font-sans: 'Inter', 'Inter Fallback', system-ui, sans-serif; /* Preserved */
-  --font-heading: 'Space Grotesk', 'Space Grotesk Fallback', system-ui, sans-serif; /* Preserved */
-  
-  /* Replaced with direct var() usage as per Shadcn default */
+  --font-sans: var(--font-body), 'Inter', sans-serif;
+  --font-heading: var(--font-heading), 'Space Grotesk', sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -128,8 +114,6 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-
-  /* Sidebar colors from Shadcn default */
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -144,11 +128,6 @@
   * {
     @apply border-border outline-ring/50;
   }
-  
-  html {
-    scroll-behavior: smooth;
-  }
-  
   body {
     @apply bg-background text-foreground;
   }

@@ -17,13 +17,13 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'Jane Designer - Creative Brand Identity & Web Design for Startups',
-  description: 'Creative designer specializing in brand identity and web design for startups. I help emerging businesses build memorable brands and high-converting websites.',
+  description: 'Professional brand identity and web design that helps startups stand out, attract customers, and scale faster. Specializing in creative design for technology companies.',
   generator: 'v0.app',
-  keywords: ['brand identity', 'web design', 'startup design', 'creative designer', 'branding', 'UX design'],
+  keywords: ['brand identity', 'web design', 'startup design', 'creative designer', 'portfolio'],
   authors: [{ name: 'Jane Designer' }],
   openGraph: {
-    title: 'Jane Designer - Creative Brand Identity & Web Design',
-    description: 'I help startups build memorable brand identities and high-converting websites that drive growth from day one.',
+    title: 'Jane Designer - Creative Brand Identity & Web Design for Startups',
+    description: 'Professional brand identity and web design that helps startups stand out, attract customers, and scale faster.',
     type: 'website',
   },
   icons: {

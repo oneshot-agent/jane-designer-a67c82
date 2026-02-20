@@ -1,4 +1,3 @@
-import React from "react"
 import type { Metadata } from 'next'
 import { Space_Grotesk, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
@@ -6,18 +5,27 @@ import './globals.css'
 
 const spaceGrotesk = Space_Grotesk({ 
   subsets: ["latin"],
-  variable: '--font-heading'
+  variable: '--font-heading',
+  display: 'swap',
 });
 
 const inter = Inter({ 
   subsets: ["latin"],
-  variable: '--font-body'
+  variable: '--font-body',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: 'Jane Designer - Creative Brand & Web Design for Startups',
-  description: 'Creative designer specializing in brand identity and web design for startups. Transform your startup with memorable brand design that converts.',
+  title: 'Jane Designer - Creative Brand Identity & Web Design for Startups',
+  description: 'Creative designer specializing in brand identity and web design for startups. I help emerging businesses build memorable brands and high-converting websites.',
   generator: 'v0.app',
+  keywords: ['brand identity', 'web design', 'startup design', 'creative designer', 'branding', 'UX design'],
+  authors: [{ name: 'Jane Designer' }],
+  openGraph: {
+    title: 'Jane Designer - Creative Brand Identity & Web Design',
+    description: 'I help startups build memorable brand identities and high-converting websites that drive growth from day one.',
+    type: 'website',
+  },
   icons: {
     icon: [
       {

@@ -5,19 +5,17 @@ import './globals.css'
 
 const spaceGrotesk = Space_Grotesk({ 
   subsets: ["latin"],
-  variable: '--font-heading',
-  display: 'swap',
+  variable: '--font-space-grotesk'
 });
 
 const inter = Inter({ 
   subsets: ["latin"],
-  variable: '--font-body',
-  display: 'swap',
+  variable: '--font-inter'
 });
 
 export const metadata: Metadata = {
-  title: 'Jane Designer - Brand Identity & Web Design for Startups',
-  description: 'Creative designer specializing in brand identity and web design for startups. Transform your startup into a standout brand.',
+  title: 'Jane Designer - Creative Brand Identity & Web Design for Startups',
+  description: 'Creative designer crafting distinctive brand identities and web experiences that help startups stand out and scale.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -45,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${spaceGrotesk.variable} font-body antialiased`}>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
         {children}
         <Analytics />
       </body>

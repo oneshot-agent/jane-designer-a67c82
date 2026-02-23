@@ -2,67 +2,48 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Palette, Monitor, Rocket, Star } from 'lucide-react'
+import { Palette, Monitor, Target, ArrowRight, Star } from 'lucide-react'
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-[#FEFEFE]/80 backdrop-blur-md z-50 border-b border-[#E0E7FF]/50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <Link href="/" className="text-xl font-bold text-[#1E293B] font-[var(--font-heading)]">
-              Jane Designer
-            </Link>
-            <div className="hidden md:flex items-center gap-8">
-              <Link href="#about" className="text-[#1E293B] hover:text-[#6366F1] transition-colors">
-                About
-              </Link>
-              <Link href="#services" className="text-[#1E293B] hover:text-[#6366F1] transition-colors">
-                Services
-              </Link>
-              <Link href="#portfolio" className="text-[#1E293B] hover:text-[#6366F1] transition-colors">
-                Portfolio
-              </Link>
-              <Link href="#testimonials" className="text-[#1E293B] hover:text-[#6366F1] transition-colors">
-                Testimonials
-              </Link>
-              <Link href="#contact">
-                <Button className="bg-[#F59E0B] hover:bg-[#D97706] text-white">
-                  Get Started
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
-
+    <main className="min-h-screen bg-[var(--brand-background)]">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-gradient-to-br from-[#FEFEFE] via-[#E0E7FF]/20 to-[#FEFEFE]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#1E293B] mb-6 font-[var(--font-heading)] text-balance leading-tight">
-              Transform Your Startup Into a{' '}
-              <span className="text-[#6366F1]">Memorable Brand</span>
-            </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-[#1E293B]/70 mb-10 max-w-3xl text-balance leading-relaxed">
-              Professional brand identity and web design that helps startups stand out, attract customers, and scale faster.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 mb-16">
-              <Link href="#portfolio">
-                <Button size="lg" className="bg-[#6366F1] hover:bg-[#4F46E5] text-white px-8 py-6 text-lg">
-                  View My Work
-                </Button>
-              </Link>
+      <section className="relative overflow-hidden py-20 md:py-32 lg:py-40">
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-primary)]/10 via-transparent to-[var(--brand-secondary)]/10" />
+        <div className="container relative mx-auto px-4 md:px-6">
+          <div className="mx-auto max-w-5xl text-center">
+            <div className="mb-8 inline-block rounded-full bg-gradient-to-r from-[var(--brand-primary)] to-[var(--brand-secondary)] p-1">
+              <div className="rounded-full bg-[var(--brand-background)] px-6 py-2">
+                <span className="bg-gradient-to-r from-[var(--brand-primary)] to-[var(--brand-secondary)] bg-clip-text text-sm font-bold text-transparent">
+                  Jane Designer
+                </span>
+              </div>
             </div>
-            <div className="relative w-full max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl">
+            <h1 className="mb-6 text-balance font-heading text-4xl font-bold leading-tight text-[var(--brand-text)] md:text-5xl lg:text-7xl">
+              Brands That Demand Attention Start Here
+            </h1>
+            <p className="mx-auto mb-10 max-w-3xl text-pretty text-lg leading-relaxed text-[var(--brand-text)]/80 md:text-xl">
+              Bold visual identities and cutting-edge web design that make startups impossible to ignore in crowded markets.
+            </p>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Button 
+                asChild 
+                size="lg" 
+                className="group h-auto rounded-full bg-[var(--brand-accent)] px-8 py-4 text-base font-semibold text-white transition-all hover:bg-[var(--brand-accent)]/90 hover:shadow-lg hover:shadow-[var(--brand-accent)]/25"
+              >
+                <Link href="#portfolio">
+                  View My Work
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
+            </div>
+            <div className="mt-16 overflow-hidden rounded-2xl border border-[var(--brand-primary)]/20 shadow-2xl">
               <Image
-                src="https://images.unsplash.com/photo-1659141170537-6e0aa70329a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMGRlc2lnbmVyJTIwd29ya3NwYWNlJTIwYnJhbmQlMjBpZGVudGl0eSUyMG1vY2t1cHN8ZW58MHwwfHx8MTc3MTU1Njc4OXww&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Creative designer workspace with brand identity mockups"
+                src="https://images.unsplash.com/photo-1717079556888-c23cb91b450f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMGRlc2lnbmVyJTIwd29ya3NwYWNlJTIwYm9sZCUyMGNvbG9yZnVsJTIwYnJhbmRpbmclMjBtYXRlcmlhbHN8ZW58MHwwfHx8MTc3MTgyNjUyMXww&ixlib=rb-4.1.0&q=80&w=1080"
+                alt="Creative designer workspace with colorful branding materials"
                 width={1080}
                 height={720}
-                className="w-full h-auto"
+                className="h-auto w-full object-cover"
                 priority
               />
             </div>
@@ -70,165 +51,54 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 md:py-32 bg-[#FEFEFE]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="https://images.unsplash.com/photo-1768471125958-78556538fadc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBkZXNpZ25lciUyMHBvcnRyYWl0JTIwY3JlYXRpdmUlMjB3b3Jrc3BhY2V8ZW58MHwwfHx8MTc3MTU1NzEwMXww&ixlib=rb-4.1.0&q=80&w=1080"
-                  alt="Professional designer portrait in creative workspace"
-                  width={1080}
-                  height={1080}
-                  className="w-full h-auto"
-                />
-              </div>
-              <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-[#6366F1] rounded-2xl -z-10 hidden lg:block" />
-            </div>
-            <div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1E293B] mb-6 font-[var(--font-heading)] text-balance">
-                Building Brands That Drive Growth
-              </h2>
-              <p className="text-lg text-[#1E293B]/70 mb-8 leading-relaxed">
-                I'm Jane Designer, a creative professional specializing in brand identity and web design for startups. With a focus on strategic design thinking, I help emerging companies create compelling visual identities and user-friendly websites that resonate with their target audience and support business objectives.
-              </p>
-              <div className="grid grid-cols-3 gap-6 pt-6 border-t border-[#E0E7FF]">
-                <div>
-                  <div className="text-3xl sm:text-4xl font-bold text-[#6366F1] mb-2 font-[var(--font-heading)]">
-                    50+
-                  </div>
-                  <div className="text-sm text-[#1E293B]/70">Startups Launched</div>
-                </div>
-                <div>
-                  <div className="text-3xl sm:text-4xl font-bold text-[#6366F1] mb-2 font-[var(--font-heading)]">
-                    3x
-                  </div>
-                  <div className="text-sm text-[#1E293B]/70">Average Revenue Increase</div>
-                </div>
-                <div>
-                  <div className="text-3xl sm:text-4xl font-bold text-[#6366F1] mb-2 font-[var(--font-heading)]">
-                    98%
-                  </div>
-                  <div className="text-sm text-[#1E293B]/70">Client Satisfaction</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Services Section */}
-      <section id="services" className="py-20 md:py-32 bg-gradient-to-b from-[#FEFEFE] to-[#E0E7FF]/10">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1E293B] mb-4 font-[var(--font-heading)] text-balance">
-              Design Solutions That Deliver Results
+      <section id="services" className="py-20 md:py-32">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-balance font-heading text-3xl font-bold text-[var(--brand-text)] md:text-4xl lg:text-5xl">
+              Design That Drives Results
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Brand Identity Design */}
-            <Card className="border-[#E0E7FF] bg-white hover:shadow-xl transition-shadow duration-300">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <Card className="group border-2 border-[var(--brand-primary)]/10 bg-gradient-to-br from-[var(--brand-primary)]/5 to-transparent transition-all hover:border-[var(--brand-primary)]/30 hover:shadow-xl">
               <CardHeader>
-                <div className="w-14 h-14 rounded-xl bg-[#6366F1]/10 flex items-center justify-center mb-4">
-                  <Palette className="w-7 h-7 text-[#6366F1]" />
+                <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[var(--brand-primary)] to-[var(--brand-primary)]/70 text-white transition-transform group-hover:scale-110">
+                  <Palette className="h-8 w-8" />
                 </div>
-                <CardTitle className="text-2xl font-bold text-[#1E293B] font-[var(--font-heading)]">
-                  Brand Identity Design
-                </CardTitle>
-                <CardDescription className="text-[#1E293B]/70 text-base leading-relaxed">
-                  Complete visual identity systems including logo design, color palettes, typography, and brand guidelines that establish market presence.
-                </CardDescription>
+                <CardTitle className="font-heading text-2xl text-[var(--brand-text)]">Brand Identity</CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2">
-                  <li className="flex items-center text-[#1E293B]/70">
-                    <span className="w-1.5 h-1.5 bg-[#6366F1] rounded-full mr-3" />
-                    Logo Design
-                  </li>
-                  <li className="flex items-center text-[#1E293B]/70">
-                    <span className="w-1.5 h-1.5 bg-[#6366F1] rounded-full mr-3" />
-                    Brand Guidelines
-                  </li>
-                  <li className="flex items-center text-[#1E293B]/70">
-                    <span className="w-1.5 h-1.5 bg-[#6366F1] rounded-full mr-3" />
-                    Visual Identity
-                  </li>
-                  <li className="flex items-center text-[#1E293B]/70">
-                    <span className="w-1.5 h-1.5 bg-[#6366F1] rounded-full mr-3" />
-                    Marketing Materials
-                  </li>
-                </ul>
+                <CardDescription className="text-base leading-relaxed text-[var(--brand-text)]/70">
+                  Logo design, color systems, and brand guidelines that position your startup as an industry leader from day one.
+                </CardDescription>
               </CardContent>
             </Card>
 
-            {/* Web Design & Development */}
-            <Card className="border-[#E0E7FF] bg-white hover:shadow-xl transition-shadow duration-300">
+            <Card className="group border-2 border-[var(--brand-secondary)]/10 bg-gradient-to-br from-[var(--brand-secondary)]/5 to-transparent transition-all hover:border-[var(--brand-secondary)]/30 hover:shadow-xl">
               <CardHeader>
-                <div className="w-14 h-14 rounded-xl bg-[#6366F1]/10 flex items-center justify-center mb-4">
-                  <Monitor className="w-7 h-7 text-[#6366F1]" />
+                <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[var(--brand-secondary)] to-[var(--brand-secondary)]/70 text-white transition-transform group-hover:scale-110">
+                  <Monitor className="h-8 w-8" />
                 </div>
-                <CardTitle className="text-2xl font-bold text-[#1E293B] font-[var(--font-heading)]">
-                  Web Design & Development
-                </CardTitle>
-                <CardDescription className="text-[#1E293B]/70 text-base leading-relaxed">
-                  Responsive, user-focused websites that convert visitors into customers while reflecting your brand's unique personality and values.
-                </CardDescription>
+                <CardTitle className="font-heading text-2xl text-[var(--brand-text)]">Web Design</CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2">
-                  <li className="flex items-center text-[#1E293B]/70">
-                    <span className="w-1.5 h-1.5 bg-[#6366F1] rounded-full mr-3" />
-                    Responsive Design
-                  </li>
-                  <li className="flex items-center text-[#1E293B]/70">
-                    <span className="w-1.5 h-1.5 bg-[#6366F1] rounded-full mr-3" />
-                    User Experience
-                  </li>
-                  <li className="flex items-center text-[#1E293B]/70">
-                    <span className="w-1.5 h-1.5 bg-[#6366F1] rounded-full mr-3" />
-                    Conversion Optimization
-                  </li>
-                  <li className="flex items-center text-[#1E293B]/70">
-                    <span className="w-1.5 h-1.5 bg-[#6366F1] rounded-full mr-3" />
-                    CMS Integration
-                  </li>
-                </ul>
+                <CardDescription className="text-base leading-relaxed text-[var(--brand-text)]/70">
+                  High-converting websites that turn visitors into customers with bold visuals and seamless user experience.
+                </CardDescription>
               </CardContent>
             </Card>
 
-            {/* Startup Package */}
-            <Card className="border-[#F59E0B] bg-white hover:shadow-xl transition-shadow duration-300 md:col-span-2 lg:col-span-1">
+            <Card className="group border-2 border-[var(--brand-accent)]/10 bg-gradient-to-br from-[var(--brand-accent)]/5 to-transparent transition-all hover:border-[var(--brand-accent)]/30 hover:shadow-xl md:col-span-2 lg:col-span-1">
               <CardHeader>
-                <div className="w-14 h-14 rounded-xl bg-[#F59E0B]/10 flex items-center justify-center mb-4">
-                  <Rocket className="w-7 h-7 text-[#F59E0B]" />
+                <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[var(--brand-accent)] to-[var(--brand-accent)]/70 text-white transition-transform group-hover:scale-110">
+                  <Target className="h-8 w-8" />
                 </div>
-                <CardTitle className="text-2xl font-bold text-[#1E293B] font-[var(--font-heading)]">
-                  Startup Package
-                </CardTitle>
-                <CardDescription className="text-[#1E293B]/70 text-base leading-relaxed">
-                  Comprehensive design solution combining brand identity and web presence, specifically tailored for new businesses ready to launch.
-                </CardDescription>
+                <CardTitle className="font-heading text-2xl text-[var(--brand-text)]">Startup Positioning</CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2">
-                  <li className="flex items-center text-[#1E293B]/70">
-                    <span className="w-1.5 h-1.5 bg-[#F59E0B] rounded-full mr-3" />
-                    Complete Branding
-                  </li>
-                  <li className="flex items-center text-[#1E293B]/70">
-                    <span className="w-1.5 h-1.5 bg-[#F59E0B] rounded-full mr-3" />
-                    Website Design
-                  </li>
-                  <li className="flex items-center text-[#1E293B]/70">
-                    <span className="w-1.5 h-1.5 bg-[#F59E0B] rounded-full mr-3" />
-                    Business Cards
-                  </li>
-                  <li className="flex items-center text-[#1E293B]/70">
-                    <span className="w-1.5 h-1.5 bg-[#F59E0B] rounded-full mr-3" />
-                    Launch Support
-                  </li>
-                </ul>
+                <CardDescription className="text-base leading-relaxed text-[var(--brand-text)]/70">
+                  Strategic visual storytelling that helps new companies stand out and compete with established players.
+                </CardDescription>
               </CardContent>
             </Card>
           </div>
@@ -236,326 +106,230 @@ export default function Home() {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-20 md:py-32 bg-[#FEFEFE]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1E293B] mb-4 font-[var(--font-heading)] text-balance">
-              Recent Projects That Made an Impact
+      <section id="portfolio" className="bg-gradient-to-br from-[var(--brand-primary)]/5 via-transparent to-[var(--brand-secondary)]/5 py-20 md:py-32">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-balance font-heading text-3xl font-bold text-[var(--brand-text)] md:text-4xl lg:text-5xl">
+              Startups I&apos;ve Transformed
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Project 1 */}
-            <Card className="border-[#E0E7FF] bg-white hover:shadow-xl transition-all duration-300 group">
-              <div className="relative h-64 overflow-hidden rounded-t-lg">
-                <Image
-                  src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&h=800&fit=crop&q=80"
-                  alt="TechStart SaaS Platform project"
-                  width={600}
-                  height={400}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <CardHeader>
-                <div className="flex flex-wrap gap-2 mb-3">
-                  <Badge className="bg-[#E0E7FF] text-[#6366F1] hover:bg-[#E0E7FF]">SaaS</Badge>
-                  <Badge className="bg-[#E0E7FF] text-[#6366F1] hover:bg-[#E0E7FF]">B2B</Badge>
-                  <Badge className="bg-[#E0E7FF] text-[#6366F1] hover:bg-[#E0E7FF]">Technology</Badge>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              { title: 'TechFlow', category: 'SaaS Brand Identity', description: 'Complete rebrand increased user signups by 340% in 6 months', gradient: 'from-[var(--brand-primary)]' },
+              { title: 'GreenStart', category: 'E-commerce Website', description: 'Bold redesign boosted conversion rates from 1.2% to 4.8%', gradient: 'from-[var(--brand-secondary)]' },
+              { title: 'DataPulse', category: 'Brand & Web Package', description: 'New identity helped secure $2M Series A funding round', gradient: 'from-[var(--brand-accent)]' },
+              { title: 'FitTech', category: 'Mobile App Design', description: 'App downloads increased 500% after visual overhaul', gradient: 'from-[var(--brand-primary)]' },
+              { title: 'CloudSync', category: 'Website Redesign', description: 'Page views up 280%, bounce rate down 45%', gradient: 'from-[var(--brand-secondary)]' },
+              { title: 'StartupLab', category: 'Complete Brand System', description: 'Brand recognition improved 65% in target market', gradient: 'from-[var(--brand-accent)]' },
+            ].map((project, index) => (
+              <Card 
+                key={index} 
+                className="group overflow-hidden border-2 border-transparent bg-white transition-all hover:border-[var(--brand-accent)]/30 hover:shadow-2xl"
+              >
+                <div className={`h-48 bg-gradient-to-br ${project.gradient} to-${project.gradient}/50 transition-transform group-hover:scale-105`}>
+                  <div className="flex h-full items-center justify-center">
+                    <span className="font-heading text-4xl font-bold text-white">{project.title}</span>
+                  </div>
                 </div>
-                <CardTitle className="text-2xl font-bold text-[#1E293B] font-[var(--font-heading)]">
-                  TechStart SaaS Platform
-                </CardTitle>
-                <CardDescription className="text-sm text-[#1E293B]/60 mb-2">
-                  Brand Identity & Web Design
-                </CardDescription>
-                <p className="text-[#1E293B]/70 leading-relaxed">
-                  Complete rebrand and website redesign that increased user signups by 150% in 6 months.
-                </p>
-              </CardHeader>
-            </Card>
-
-            {/* Project 2 */}
-            <Card className="border-[#E0E7FF] bg-white hover:shadow-xl transition-all duration-300 group">
-              <div className="relative h-64 overflow-hidden rounded-t-lg">
-                <Image
-                  src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&h=800&fit=crop&q=80"
-                  alt="EcoGreen Marketplace project"
-                  width={600}
-                  height={400}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <CardHeader>
-                <div className="flex flex-wrap gap-2 mb-3">
-                  <Badge className="bg-[#E0E7FF] text-[#6366F1] hover:bg-[#E0E7FF]">E-commerce</Badge>
-                  <Badge className="bg-[#E0E7FF] text-[#6366F1] hover:bg-[#E0E7FF]">Sustainability</Badge>
-                  <Badge className="bg-[#E0E7FF] text-[#6366F1] hover:bg-[#E0E7FF]">Mobile-first</Badge>
-                </div>
-                <CardTitle className="text-2xl font-bold text-[#1E293B] font-[var(--font-heading)]">
-                  EcoGreen Marketplace
-                </CardTitle>
-                <CardDescription className="text-sm text-[#1E293B]/60 mb-2">
-                  E-commerce Design
-                </CardDescription>
-                <p className="text-[#1E293B]/70 leading-relaxed">
-                  Sustainable marketplace platform with intuitive UX that boosted conversion rates by 85%.
-                </p>
-              </CardHeader>
-            </Card>
-
-            {/* Project 3 */}
-            <Card className="border-[#E0E7FF] bg-white hover:shadow-xl transition-all duration-300 group">
-              <div className="relative h-64 overflow-hidden rounded-t-lg">
-                <Image
-                  src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&h=800&fit=crop&q=80"
-                  alt="FinTech Innovations project"
-                  width={600}
-                  height={400}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <CardHeader>
-                <div className="flex flex-wrap gap-2 mb-3">
-                  <Badge className="bg-[#E0E7FF] text-[#6366F1] hover:bg-[#E0E7FF]">FinTech</Badge>
-                  <Badge className="bg-[#E0E7FF] text-[#6366F1] hover:bg-[#E0E7FF]">Professional</Badge>
-                  <Badge className="bg-[#E0E7FF] text-[#6366F1] hover:bg-[#E0E7FF]">Investment-ready</Badge>
-                </div>
-                <CardTitle className="text-2xl font-bold text-[#1E293B] font-[var(--font-heading)]">
-                  FinTech Innovations
-                </CardTitle>
-                <CardDescription className="text-sm text-[#1E293B]/60 mb-2">
-                  Brand Identity
-                </CardDescription>
-                <p className="text-[#1E293B]/70 leading-relaxed">
-                  Professional brand identity for financial startup that secured $2M in Series A funding.
-                </p>
-              </CardHeader>
-            </Card>
-
-            {/* Project 4 */}
-            <Card className="border-[#E0E7FF] bg-white hover:shadow-xl transition-all duration-300 group">
-              <div className="relative h-64 overflow-hidden rounded-t-lg">
-                <Image
-                  src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&h=800&fit=crop&q=80"
-                  alt="HealthTech App project"
-                  width={600}
-                  height={400}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <CardHeader>
-                <div className="flex flex-wrap gap-2 mb-3">
-                  <Badge className="bg-[#E0E7FF] text-[#6366F1] hover:bg-[#E0E7FF]">Healthcare</Badge>
-                  <Badge className="bg-[#E0E7FF] text-[#6366F1] hover:bg-[#E0E7FF]">Mobile App</Badge>
-                  <Badge className="bg-[#E0E7FF] text-[#6366F1] hover:bg-[#E0E7FF]">User Experience</Badge>
-                </div>
-                <CardTitle className="text-2xl font-bold text-[#1E293B] font-[var(--font-heading)]">
-                  HealthTech App
-                </CardTitle>
-                <CardDescription className="text-sm text-[#1E293B]/60 mb-2">
-                  UI/UX Design
-                </CardDescription>
-                <p className="text-[#1E293B]/70 leading-relaxed">
-                  User-centered app design that improved patient engagement by 200% and won design awards.
-                </p>
-              </CardHeader>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="py-20 md:py-32 bg-gradient-to-b from-[#E0E7FF]/10 to-[#FEFEFE]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1E293B] mb-4 font-[var(--font-heading)] text-balance">
-              A Proven Process for Exceptional Results
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Step 1 */}
-            <div className="relative">
-              <div className="flex flex-col items-start">
-                <div className="text-6xl font-bold text-[#6366F1]/20 mb-4 font-[var(--font-heading)]">01</div>
-                <h3 className="text-xl font-bold text-[#1E293B] mb-3 font-[var(--font-heading)]">
-                  Discovery & Strategy
-                </h3>
-                <p className="text-[#1E293B]/70 leading-relaxed">
-                  Deep dive into your business goals, target audience, and competitive landscape to inform design decisions.
-                </p>
-              </div>
-            </div>
-
-            {/* Step 2 */}
-            <div className="relative">
-              <div className="flex flex-col items-start">
-                <div className="text-6xl font-bold text-[#6366F1]/20 mb-4 font-[var(--font-heading)]">02</div>
-                <h3 className="text-xl font-bold text-[#1E293B] mb-3 font-[var(--font-heading)]">
-                  Concept Development
-                </h3>
-                <p className="text-[#1E293B]/70 leading-relaxed">
-                  Create multiple design concepts and iterate based on feedback to find the perfect visual direction.
-                </p>
-              </div>
-            </div>
-
-            {/* Step 3 */}
-            <div className="relative">
-              <div className="flex flex-col items-start">
-                <div className="text-6xl font-bold text-[#6366F1]/20 mb-4 font-[var(--font-heading)]">03</div>
-                <h3 className="text-xl font-bold text-[#1E293B] mb-3 font-[var(--font-heading)]">
-                  Design & Refinement
-                </h3>
-                <p className="text-[#1E293B]/70 leading-relaxed">
-                  Develop comprehensive design systems and refine every detail to ensure pixel-perfect execution.
-                </p>
-              </div>
-            </div>
-
-            {/* Step 4 */}
-            <div className="relative">
-              <div className="flex flex-col items-start">
-                <div className="text-6xl font-bold text-[#6366F1]/20 mb-4 font-[var(--font-heading)]">04</div>
-                <h3 className="text-xl font-bold text-[#1E293B] mb-3 font-[var(--font-heading)]">
-                  Launch & Support
-                </h3>
-                <p className="text-[#1E293B]/70 leading-relaxed">
-                  Deliver final assets with documentation and provide ongoing support to ensure successful implementation.
-                </p>
-              </div>
-            </div>
+                <CardHeader>
+                  <CardTitle className="font-heading text-xl text-[var(--brand-text)]">{project.title}</CardTitle>
+                  <CardDescription className="text-sm font-semibold text-[var(--brand-accent)]">
+                    {project.category}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="leading-relaxed text-[var(--brand-text)]/70">{project.description}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 md:py-32 bg-[#FEFEFE]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1E293B] mb-4 font-[var(--font-heading)] text-balance">
+      <section className="py-20 md:py-32">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-balance font-heading text-3xl font-bold text-[var(--brand-text)] md:text-4xl lg:text-5xl">
               What Startup Founders Say
             </h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Testimonial 1 */}
-            <Card className="border-[#E0E7FF] bg-white">
-              <CardHeader>
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-[#F59E0B] text-[#F59E0B]" />
-                  ))}
-                </div>
-                <p className="text-[#1E293B]/80 leading-relaxed mb-6 italic">
-                  "Jane's design work was instrumental in helping us secure funding. Our brand now communicates the professionalism and innovation that investors were looking for."
-                </p>
-              </CardHeader>
-              <CardContent>
-                <div className="font-semibold text-[#1E293B]">Sarah Chen</div>
-                <div className="text-sm text-[#1E293B]/60">CEO, TechStart Solutions</div>
-              </CardContent>
-            </Card>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              { 
+                quote: "Jane's bold approach transformed our brand from invisible to industry-leading. Our investor pitch deck got 3x more meetings.", 
+                author: 'Sarah Chen', 
+                title: 'CEO, TechFlow' 
+              },
+              { 
+                quote: 'The website Jane designed converts like crazy. We went from struggling to get leads to having a waitlist.', 
+                author: 'Mike Rodriguez', 
+                title: 'Founder, GreenStart' 
+              },
+              { 
+                quote: "Jane doesn't just design - she thinks strategically. Her work helped us stand out in a saturated market.", 
+                author: 'Lisa Park', 
+                title: 'CMO, DataPulse' 
+              },
+            ].map((testimonial, index) => (
+              <Card key={index} className="border-2 border-[var(--brand-primary)]/10 bg-white">
+                <CardHeader>
+                  <div className="mb-4 flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 fill-[var(--brand-accent)] text-[var(--brand-accent)]" />
+                    ))}
+                  </div>
+                  <CardDescription className="text-base leading-relaxed text-[var(--brand-text)]">
+                    &quot;{testimonial.quote}&quot;
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="border-l-4 border-[var(--brand-accent)] pl-4">
+                    <p className="font-semibold text-[var(--brand-text)]">{testimonial.author}</p>
+                    <p className="text-sm text-[var(--brand-text)]/60">{testimonial.title}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            {/* Testimonial 2 */}
-            <Card className="border-[#E0E7FF] bg-white">
-              <CardHeader>
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-[#F59E0B] text-[#F59E0B]" />
-                  ))}
-                </div>
-                <p className="text-[#1E293B]/80 leading-relaxed mb-6 italic">
-                  "The website Jane designed increased our conversion rate by 85%. Her understanding of user psychology and startup needs is exceptional."
-                </p>
-              </CardHeader>
-              <CardContent>
-                <div className="font-semibold text-[#1E293B]">Michael Rodriguez</div>
-                <div className="text-sm text-[#1E293B]/60">Founder, EcoGreen Marketplace</div>
-              </CardContent>
-            </Card>
+      {/* About Section */}
+      <section id="about" className="bg-gradient-to-br from-[var(--brand-secondary)]/5 via-transparent to-[var(--brand-primary)]/5 py-20 md:py-32">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+            <div className="order-2 lg:order-1">
+              <h2 className="mb-6 text-balance font-heading text-3xl font-bold text-[var(--brand-text)] md:text-4xl lg:text-5xl">
+                The Designer Behind Bold Brands
+              </h2>
+              <p className="mb-8 text-pretty leading-relaxed text-[var(--brand-text)]/80 md:text-lg">
+                I specialize in creating fearless visual identities that make startups impossible to ignore. With 8+ years designing for fast-growth companies, I understand the unique challenges of building a brand from zero to industry disruptor. My approach combines strategic thinking with bold creativity - because in today&apos;s crowded market, safe design is the riskiest choice you can make.
+              </p>
+              <div className="grid grid-cols-3 gap-6">
+                {[
+                  { number: '150+', label: 'Startups Transformed' },
+                  { number: '89%', label: 'Client Revenue Growth' },
+                  { number: '24hr', label: 'Average Response Time' },
+                ].map((stat, index) => (
+                  <div key={index} className="text-center">
+                    <div className="mb-2 font-heading text-3xl font-bold text-[var(--brand-primary)] md:text-4xl">
+                      {stat.number}
+                    </div>
+                    <div className="text-sm leading-tight text-[var(--brand-text)]/70">
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="order-1 lg:order-2">
+              <div className="overflow-hidden rounded-2xl border-4 border-[var(--brand-primary)]/20 shadow-2xl">
+                <Image
+                  src="https://images.unsplash.com/photo-1768471125958-78556538fadc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMGRlc2lnbmVyJTIwcG9ydHJhaXQlMjBwcm9mZXNzaW9uYWwlMjB3b3Jrc3BhY2UlMjBkZXNpZ24lMjB0b29sc3xlbnwwfDB8fHwxNzcxODI2NTIyfDA&ixlib=rb-4.1.0&q=80&w=1080"
+                  alt="Creative designer portrait in professional workspace with design tools"
+                  width={1080}
+                  height={1350}
+                  className="h-auto w-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Testimonial 3 */}
-            <Card className="border-[#E0E7FF] bg-white">
-              <CardHeader>
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-[#F59E0B] text-[#F59E0B]" />
-                  ))}
+      {/* Process Section */}
+      <section className="py-20 md:py-32">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-balance font-heading text-3xl font-bold text-[var(--brand-text)] md:text-4xl lg:text-5xl">
+              How We Build Your Bold Brand
+            </h2>
+          </div>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {[
+              { 
+                number: '01', 
+                title: 'Strategy Deep-Dive', 
+                description: 'Uncover your unique position and competitive advantages through intensive brand discovery sessions.' 
+              },
+              { 
+                number: '02', 
+                title: 'Bold Concept Creation', 
+                description: "Develop fearless visual concepts that capture attention and communicate your startup's disruptive potential." 
+              },
+              { 
+                number: '03', 
+                title: 'Design & Refine', 
+                description: 'Craft pixel-perfect designs with multiple revision rounds to ensure every detail drives results.' 
+              },
+              { 
+                number: '04', 
+                title: 'Launch & Dominate', 
+                description: 'Deliver complete brand systems and websites ready to convert visitors into customers from day one.' 
+              },
+            ].map((step, index) => (
+              <div key={index} className="relative">
+                <div className="mb-4 inline-flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-[var(--brand-primary)] to-[var(--brand-secondary)] font-heading text-3xl font-bold text-white shadow-lg">
+                  {step.number}
                 </div>
-                <p className="text-[#1E293B]/80 leading-relaxed mb-6 italic">
-                  "Working with Jane was seamless. She delivered everything on time and exceeded our expectations. Our brand identity perfectly captures our vision."
-                </p>
-              </CardHeader>
-              <CardContent>
-                <div className="font-semibold text-[#1E293B]">David Kim</div>
-                <div className="text-sm text-[#1E293B]/60">Co-founder, FinTech Innovations</div>
-              </CardContent>
-            </Card>
+                <h3 className="mb-3 font-heading text-xl font-bold text-[var(--brand-text)]">{step.title}</h3>
+                <p className="leading-relaxed text-[var(--brand-text)]/70">{step.description}</p>
+                {index < 3 && (
+                  <div className="absolute right-0 top-10 hidden h-0.5 w-full bg-gradient-to-r from-[var(--brand-primary)] to-[var(--brand-secondary)] opacity-20 lg:block" />
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section id="contact" className="py-20 md:py-32 relative overflow-hidden bg-gradient-to-br from-[#6366F1] via-[#6366F1] to-[#4F46E5]">
-        <div className="absolute inset-0 opacity-10">
-          <Image
-            src="https://images.unsplash.com/photo-1758873272540-439a105db676?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxzdGFydHVwJTIwdGVhbSUyMGNvbGxhYm9yYXRpb24lMjBkZXNpZ24lMjBtZWV0aW5nfGVufDB8MHx8fDE3NzE1NTcxMDJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
-            alt="Startup team collaboration design meeting"
-            fill
-            className="object-cover"
-          />
-        </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 font-[var(--font-heading)] text-balance">
-              Ready to Build Your Brand?
+      <section className="relative overflow-hidden py-20 md:py-32">
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-primary)] via-[var(--brand-secondary)] to-[var(--brand-accent)]" />
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9Ii4xIi8+PC9nPjwvc3ZnPg==')] opacity-10" />
+        <div className="container relative mx-auto px-4 md:px-6">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="mb-6 text-balance font-heading text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+              Ready to Build a Brand That Dominates?
             </h2>
-            <p className="text-lg sm:text-xl text-white/90 mb-10 max-w-2xl text-balance leading-relaxed">
-              Let's discuss how strategic design can accelerate your startup's growth and market presence.
+            <p className="mx-auto mb-10 max-w-2xl text-pretty text-lg leading-relaxed text-white/90 md:text-xl">
+              Join 150+ startups who chose bold design over boring. Let&apos;s create something impossible to ignore.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="#contact">
-                <Button size="lg" className="bg-[#F59E0B] hover:bg-[#D97706] text-white px-8 py-6 text-lg">
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Button 
+                asChild 
+                size="lg" 
+                className="group h-auto rounded-full bg-white px-8 py-4 text-base font-semibold text-[var(--brand-primary)] transition-all hover:bg-white/90 hover:shadow-2xl"
+              >
+                <Link href="mailto:jane@janedesigner.com">
                   Start Your Project
-                </Button>
-              </Link>
-              <Link href="#pricing">
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="bg-white/10 hover:bg-white/20 text-white border-white/30 backdrop-blur-sm px-8 py-6 text-lg"
-                >
-                  View Pricing
-                </Button>
-              </Link>
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
+              <Button 
+                asChild 
+                size="lg" 
+                variant="outline"
+                className="h-auto rounded-full border-2 border-white bg-transparent px-8 py-4 text-base font-semibold text-white transition-all hover:bg-white hover:text-[var(--brand-primary)]"
+              >
+                <Link href="#portfolio">View Portfolio</Link>
+              </Button>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-[#1E293B] text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="text-center md:text-left">
-              <div className="text-xl font-bold mb-2 font-[var(--font-heading)]">Jane Designer</div>
-              <p className="text-white/70 text-sm">Creative design for ambitious startups</p>
+      <footer className="border-t border-[var(--brand-text)]/10 bg-[var(--brand-background)] py-12">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-left">
+            <div className="font-heading text-2xl font-bold bg-gradient-to-r from-[var(--brand-primary)] to-[var(--brand-secondary)] bg-clip-text text-transparent">
+              Jane Designer
             </div>
-            <div className="flex gap-8 text-sm">
-              <Link href="#about" className="text-white/70 hover:text-white transition-colors">
-                About
-              </Link>
-              <Link href="#services" className="text-white/70 hover:text-white transition-colors">
-                Services
-              </Link>
-              <Link href="#portfolio" className="text-white/70 hover:text-white transition-colors">
-                Portfolio
-              </Link>
-              <Link href="#contact" className="text-white/70 hover:text-white transition-colors">
-                Contact
-              </Link>
-            </div>
-          </div>
-          <div className="mt-8 pt-8 border-t border-white/10 text-center text-sm text-white/60">
-            © 2024 Jane Designer. All rights reserved.
+            <p className="text-sm text-[var(--brand-text)]/60">
+              © {new Date().getFullYear()} Jane Designer. All rights reserved.
+            </p>
           </div>
         </div>
       </footer>

@@ -4,39 +4,38 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Jane Designer Brand Colors */
+  /* Brand Colors */
   --brand-primary: #6366F1;
-  --brand-secondary: #E0E7FF;
-  --brand-accent: #F59E0B;
+  --brand-secondary: #EC4899;
+  --brand-accent: #06B6D4;
   --brand-background: #FEFEFE;
   --brand-text: #1E293B;
   
-  /* shadcn/ui theme variables */
-  --background: 254 254 254;
-  --foreground: 30 41 59;
-  --card: 254 254 254;
-  --card-foreground: 30 41 59;
-  --popover: 254 254 254;
-  --popover-foreground: 30 41 59;
-  --primary: 99 102 241;
-  --primary-foreground: 254 254 254;
-  --secondary: 224 231 255;
-  --secondary-foreground: 30 41 59;
-  --muted: 241 245 249;
-  --muted-foreground: 100 116 139;
-  --accent: 245 158 11;
-  --accent-foreground: 254 254 254;
-  --destructive: 239 68 68;
-  --destructive-foreground: 254 254 254;
-  --border: 226 232 240;
-  --input: 226 232 240;
-  --ring: 99 102 241;
-  --chart-1: 99 102 241;
-  --chart-2: 245 158 11;
-  --chart-3: 224 231 255;
-  --chart-4: 30 41 59;
-  --chart-5: 100 116 139;
-  --radius: 0.75rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -83,8 +82,9 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-body), 'Inter', system-ui, sans-serif;
-  --font-heading: var(--font-heading), 'Space Grotesk', system-ui, sans-serif;
+  --font-sans: 'Inter', 'Inter Fallback';
+  --font-heading: 'Space Grotesk', 'Space Grotesk Fallback';
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

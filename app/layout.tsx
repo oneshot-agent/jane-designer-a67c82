@@ -16,16 +16,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Jane Designer - Creative Brand Identity & Web Design for Startups',
-  description: 'Professional brand identity and web design that helps startups stand out, attract customers, and scale faster. Specializing in creative design for technology companies.',
+  title: 'Jane Designer - Bold Brand Identity & Web Design for Startups',
+  description: 'Creative designer specializing in brand identity and web design for startups. Transform your startup with fearless visual identities that drive results.',
   generator: 'v0.app',
-  keywords: ['brand identity', 'web design', 'startup design', 'creative designer', 'portfolio'],
-  authors: [{ name: 'Jane Designer' }],
-  openGraph: {
-    title: 'Jane Designer - Creative Brand Identity & Web Design for Startups',
-    description: 'Professional brand identity and web design that helps startups stand out, attract customers, and scale faster.',
-    type: 'website',
-  },
   icons: {
     icon: [
       {
@@ -52,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
+      <body className={`${inter.className} antialiased`}>
         {children}
         <Analytics />
       </body>

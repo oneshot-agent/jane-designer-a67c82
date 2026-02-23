@@ -5,17 +5,19 @@ import './globals.css'
 
 const spaceGrotesk = Space_Grotesk({ 
   subsets: ["latin"],
-  variable: '--font-space-grotesk'
+  variable: '--font-heading',
+  display: 'swap',
 });
 
 const inter = Inter({ 
   subsets: ["latin"],
-  variable: '--font-inter'
+  variable: '--font-body',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: 'Jane Designer - Creative Brand Identity & Web Design for Startups',
-  description: 'Creative designer crafting distinctive brand identities and web experiences that help startups stand out and scale.',
+  title: 'Jane Designer - Brand Identity & Web Design for Startups',
+  description: 'Professional design solutions that help startups build memorable brands and engaging websites that drive growth.',
   generator: 'v0.app',
   icons: {
     icon: [

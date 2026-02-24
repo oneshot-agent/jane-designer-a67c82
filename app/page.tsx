@@ -1,27 +1,27 @@
-import Navbar from "@/components/navbar";
-import HeroSection from "@/components/sections/hero";
-import AboutSection from "@/components/sections/about";
-import ServicesSection from "@/components/sections/services";
-import PortfolioSection from "@/components/sections/portfolio";
-import ProcessSection from "@/components/sections/process";
-import TestimonialsSection from "@/components/sections/testimonials";
-import CtaSection from "@/components/sections/cta";
-import Footer from "@/components/footer";
+import { Navbar } from "@/components/navbar"
+import { HeroSection } from "@/components/hero-section"
+import { FeaturesSection } from "@/components/features-section"
+import { PortfolioSection } from "@/components/portfolio-section"
+import { TestimonialsSection } from "@/components/testimonials-section"
+import { ServicesSection } from "@/components/services-section"
+import { AboutSection } from "@/components/about-section"
+import { CtaSection } from "@/components/cta-section"
+import { Footer } from "@/components/footer"
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <main id="main-content">
+      <main>
         <HeroSection />
-        <AboutSection />
-        <ServicesSection />
+        <FeaturesSection />
         <PortfolioSection />
-        <ProcessSection />
         <TestimonialsSection />
+        <ServicesSection />
+        <AboutSection />
         <CtaSection />
       </main>
       <Footer />
     </>
-  );
+  )
 }

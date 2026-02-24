@@ -4,45 +4,45 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Brand colors */
+  /* Brand Colors */
   --brand-primary: #6366F1;
-  --brand-accent: #EC4899;
-  --brand-secondary: #F1F5F9;
+  --brand-secondary: #EC4899;
+  --brand-accent: #06B6D4;
 
-  /* Design tokens */
-  --background: oklch(0.999 0 0);
-  --foreground: oklch(0.168 0.022 253.1);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.168 0.022 253.1);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.168 0.022 253.1);
-  --primary: oklch(0.585 0.233 276.9);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.965 0.007 253.1);
-  --secondary-foreground: oklch(0.168 0.022 253.1);
-  --muted: oklch(0.96 0.007 253.1);
-  --muted-foreground: oklch(0.52 0.02 253.1);
-  --accent: oklch(0.672 0.244 350.3);
-  --accent-foreground: oklch(1 0 0);
+  /* Semantic tokens */
+  --background: #FAFBFF;
+  --foreground: #1E293B;
+  --card: #ffffff;
+  --card-foreground: #1E293B;
+  --popover: #ffffff;
+  --popover-foreground: #1E293B;
+  --primary: #6366F1;
+  --primary-foreground: #ffffff;
+  --secondary: #EC4899;
+  --secondary-foreground: #ffffff;
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
+  --accent: #06B6D4;
+  --accent-foreground: #ffffff;
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.918 0.008 253.1);
-  --input: oklch(0.918 0.008 253.1);
-  --ring: oklch(0.585 0.233 276.9);
-  --chart-1: oklch(0.585 0.233 276.9);
-  --chart-2: oklch(0.672 0.244 350.3);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+  --ring: #6366F1;
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
   --radius: 0.75rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.585 0.233 276.9);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar: #FAFBFF;
+  --sidebar-foreground: #1E293B;
+  --sidebar-primary: #6366F1;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #F1F5F9;
+  --sidebar-accent-foreground: #1E293B;
+  --sidebar-border: #E2E8F0;
+  --sidebar-ring: #6366F1;
 }
 
 .dark {
@@ -81,8 +81,8 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-inter), 'Inter', sans-serif;
-  --font-serif: var(--font-space-grotesk), 'Space Grotesk', sans-serif;
+  --font-sans: 'Inter', 'Inter Fallback';
+  --font-serif: 'Space Grotesk', 'Space Grotesk Fallback';
   --font-mono: 'Geist Mono', 'Geist Mono Fallback';
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -132,42 +132,28 @@
   body {
     @apply bg-background text-foreground font-sans;
   }
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
-  }
 }
 
 @layer utilities {
-  .gradient-primary {
-    background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
-  }
-  .gradient-accent {
-    background: linear-gradient(135deg, #EC4899 0%, #F97316 100%);
-  }
-  .gradient-text {
+  .text-gradient-primary {
     background: linear-gradient(135deg, #6366F1 0%, #EC4899 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  .gradient-text-subtle {
-    background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+  .text-gradient-accent {
+    background: linear-gradient(135deg, #06B6D4 0%, #6366F1 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  .card-hover {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  .bg-gradient-brand {
+    background: linear-gradient(135deg, #6366F1 0%, #EC4899 100%);
   }
-  .card-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+  .bg-gradient-hero {
+    background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%);
   }
-  .animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+  .bg-gradient-subtle {
+    background: linear-gradient(135deg, #EEF2FF 0%, #FDF2F8 100%);
   }
 }

@@ -1,158 +1,130 @@
-import Image from 'next/image'
-import { ArrowUpRight } from 'lucide-react'
+import Image from "next/image"
+import { ArrowUpRight } from "lucide-react"
 
-interface Project {
-  title: string
-  description: string
-  category: string
-  tags: string[]
-  metric: string
-  metricLabel: string
-  colSpan?: boolean
-}
-
-const projects: Project[] = [
+const projects = [
   {
-    title: 'TechFlow Startup Brand Identity',
-    description:
-      'Complete rebrand resulting in 40% increase in investor interest and successful Series A funding.',
-    category: 'Brand Identity',
-    tags: ['Logo Design', 'Brand Guidelines', 'Visual Identity'],
-    metric: '+40%',
-    metricLabel: 'Investor interest',
-    colSpan: true,
+    title: "TechFlow",
+    category: "SaaS Brand Identity",
+    description: "Complete rebrand increased user signups by 340% in 3 months",
+    stat: "+340%",
+    statLabel: "User signups",
+    image: "https://images.unsplash.com/photo-1614332287897-cdc485fa562d?w=800&h=600&fit=crop&q=80",
+    accent: "#6366F1",
+    large: true,
   },
   {
-    title: 'GreenSpace E-commerce Website',
-    description:
-      'Modern web design that improved conversion rates by 65% and reduced bounce rate by 30%.',
-    category: 'Web Design',
-    tags: ['E-commerce', 'UX/UI', 'Responsive Design'],
-    metric: '+65%',
-    metricLabel: 'Conversion rate',
+    title: "GreenEats",
+    category: "Food Delivery Website",
+    description: "New website design boosted conversion rates by 180%",
+    stat: "+180%",
+    statLabel: "Conversion rate",
+    image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&h=600&fit=crop&q=80",
+    accent: "#06B6D4",
+    large: false,
   },
   {
-    title: 'DataViz SaaS Platform Design',
-    description:
-      'User-centered design system that enhanced user engagement and reduced support tickets by 45%.',
-    category: 'Digital Design',
-    tags: ['SaaS', 'Dashboard Design', 'User Experience'],
-    metric: '-45%',
-    metricLabel: 'Support tickets',
+    title: "UrbanFit",
+    category: "Fitness Brand + Web",
+    description: "Bold rebrand helped secure $2M Series A funding",
+    stat: "$2M",
+    statLabel: "Series A raised",
+    image: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&h=600&fit=crop&q=80",
+    accent: "#EC4899",
+    large: false,
   },
   {
-    title: 'HealthTech App Branding',
-    description:
-      'Medical app branding that built trust and achieved 50K+ downloads in first quarter.',
-    category: 'Brand Identity',
-    tags: ['Mobile App', 'Healthcare', 'Brand Strategy'],
-    metric: '50K+',
-    metricLabel: 'Q1 Downloads',
-    colSpan: true,
+    title: "DataVault",
+    category: "B2B SaaS Platform",
+    description: "Enterprise-ready design increased demo requests by 250%",
+    stat: "+250%",
+    statLabel: "Demo requests",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80",
+    accent: "#8B5CF6",
+    large: true,
   },
 ]
 
-const categoryColors: Record<string, string> = {
-  'Brand Identity': 'var(--brand-primary)',
-  'Web Design': '#8B5CF6',
-  'Digital Design': 'var(--brand-accent)',
-}
-
-export default function PortfolioSection() {
+export function PortfolioSection() {
   return (
-    <section id="portfolio" className="py-24 lg:py-32 bg-white" aria-labelledby="portfolio-heading">
+    <section
+      id="portfolio"
+      className="py-24 lg:py-32 bg-background"
+      aria-label="Portfolio"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
-          <div>
-            <div
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-6"
-              style={{ backgroundColor: 'var(--indigo-50)', color: 'var(--brand-primary)' }}
-            >
-              Portfolio
-            </div>
-            <h2
-              id="portfolio-heading"
-              className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-balance"
-            >
-              Recent Projects &{' '}
-              <span className="text-gradient">Success Stories</span>
-            </h2>
-          </div>
-          <p className="text-muted-foreground text-base max-w-xs leading-relaxed sm:text-right flex-shrink-0">
-            Every project is a story of transformation and measurable results.
+        <div className="text-center mb-16">
+          <p className="text-sm font-semibold uppercase tracking-widest text-accent mb-3">
+            Portfolio
           </p>
+          <h2 className="font-serif text-4xl sm:text-5xl font-bold text-foreground text-balance mb-4">
+            Brands That <span className="text-gradient-primary">Break Through</span>
+          </h2>
+          <p className="text-xl text-muted-foreground">Real startups. Real results. Real impact.</p>
         </div>
 
         {/* Masonry-style grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => {
-            const accentColor = categoryColors[project.category] ?? 'var(--brand-primary)'
-            return (
-              <article
-                key={project.title}
-                className={`group relative bg-white rounded-2xl overflow-hidden border border-border card-hover cursor-pointer ${
-                  project.colSpan ? 'md:col-span-2 lg:col-span-2' : ''
-                }`}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          {projects.map((project, i) => (
+            <article
+              key={project.title}
+              className={`group relative overflow-hidden rounded-3xl bg-card border border-border hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 ${
+                project.large ? "md:row-span-1" : ""
+              } ${i === 0 ? "md:col-span-1" : ""}`}
+            >
+              {/* Image */}
+              <div
+                className={`relative overflow-hidden ${project.large ? "h-64 sm:h-72" : "h-48 sm:h-56"}`}
               >
-                {/* Image area with overlay */}
-                <div className="relative h-52 overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&h=800&fit=crop&q=80"
-                    alt={`Screenshot of ${project.title}`}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                  {/* Gradient overlay */}
-                  <div
-                    className="absolute inset-0 opacity-60 transition-opacity duration-300 group-hover:opacity-70"
-                    style={{
-                      background: `linear-gradient(135deg, ${accentColor}80, #00000060)`,
-                    }}
-                    aria-hidden="true"
-                  />
-                  {/* Category badge */}
-                  <div className="absolute top-4 left-4">
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-white/90 backdrop-blur-sm text-foreground">
-                      {project.category}
-                    </span>
-                  </div>
-                  {/* Metric */}
-                  <div className="absolute bottom-4 left-4">
-                    <p className="text-white/80 text-xs font-medium mb-0.5">{project.metricLabel}</p>
-                    <p className="text-white text-2xl font-bold font-heading">{project.metric}</p>
-                  </div>
-                  {/* Arrow icon */}
-                  <div className="absolute top-4 right-4 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                    <ArrowUpRight className="w-4 h-4 text-white" aria-hidden="true" />
-                  </div>
+                <Image
+                  src={project.image}
+                  alt={`${project.title} project showcase`}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                {/* Overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                {/* Category pill */}
+                <div
+                  className="absolute top-4 left-4 px-3 py-1.5 rounded-full text-xs font-semibold text-white"
+                  style={{ backgroundColor: project.accent }}
+                >
+                  {project.category}
                 </div>
 
-                {/* Card body */}
-                <div className="p-6">
-                  <h3 className="font-heading text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                    {project.description}
-                  </p>
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2" role="list" aria-label="Project tags">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        role="listitem"
-                        className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border border-border text-muted-foreground"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                {/* Arrow on hover */}
+                <div className="absolute top-4 right-4 w-9 h-9 bg-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0 shadow-lg">
+                  <ArrowUpRight size={16} className="text-foreground" aria-hidden="true" />
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <h3 className="font-serif text-xl font-bold text-foreground mb-1 group-hover:text-primary transition-colors duration-200">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {project.description}
+                    </p>
+                  </div>
+                  {/* Stat badge */}
+                  <div className="flex-shrink-0 text-right">
+                    <p
+                      className="font-serif text-2xl font-bold"
+                      style={{ color: project.accent }}
+                    >
+                      {project.stat}
+                    </p>
+                    <p className="text-xs text-muted-foreground">{project.statLabel}</p>
                   </div>
                 </div>
-              </article>
-            )
-          })}
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>

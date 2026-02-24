@@ -1,86 +1,81 @@
-import Link from 'next/link'
-import { ArrowRight, Mail } from 'lucide-react'
+import Image from "next/image"
+import Link from "next/link"
+import { ArrowRight, Mail } from "lucide-react"
 
-export default function CtaSection() {
+export function CtaSection() {
   return (
     <section
-      id="cta"
-      className="py-24 lg:py-32"
-      style={{ backgroundColor: 'var(--surface-subtle)' }}
-      aria-labelledby="cta-heading"
+      id="contact"
+      className="py-24 lg:py-32 bg-background"
+      aria-label="Start your project"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          className="relative rounded-3xl overflow-hidden p-10 sm:p-14 lg:p-20 text-center"
-          style={{ backgroundColor: 'var(--brand-secondary)' }}
-        >
-          {/* Background decoration */}
-          <div
-            className="absolute -top-20 -right-20 w-64 h-64 rounded-full blur-3xl opacity-20"
-            style={{ backgroundColor: 'var(--brand-primary)' }}
-            aria-hidden="true"
-          />
-          <div
-            className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full blur-3xl opacity-20"
-            style={{ backgroundColor: 'var(--brand-accent)' }}
-            aria-hidden="true"
-          />
+        <div className="relative rounded-3xl overflow-hidden">
+          {/* Background image */}
+          <div className="absolute inset-0">
+            <Image
+              src="https://images.unsplash.com/photo-1695067058684-da5a90013c57?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMGNvbGxhYm9yYXRpb24lMjBkZXNpZ24lMjBzdWNjZXNzJTIwY2VsZWJyYXRpb258ZW58MHwwfHx8MTc3MTk2Njg3NXww&ixlib=rb-4.1.0&q=80&w=1080"
+              alt=""
+              fill
+              className="object-cover"
+              sizes="100vw"
+            />
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-purple-600/85 to-secondary/90" />
+          </div>
 
-          {/* Dot grid pattern */}
-          <div
-            className="absolute inset-0 opacity-10"
-            style={{
-              backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
-              backgroundSize: '32px 32px',
-            }}
-            aria-hidden="true"
-          />
+          {/* Decorative elements */}
+          <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none" aria-hidden="true">
+            <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-white/5 blur-3xl" />
+            <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-white/5 blur-3xl" />
+            {/* Grid dots */}
+            <div
+              className="absolute inset-0 opacity-10"
+              style={{
+                backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)",
+                backgroundSize: "30px 30px",
+              }}
+            />
+          </div>
 
-          <div className="relative z-10">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 text-xs font-semibold uppercase tracking-wider text-white/60 mb-8">
-              <span
-                className="flex h-2 w-2 rounded-full animate-pulse"
-                style={{ backgroundColor: 'var(--brand-accent)' }}
-                aria-hidden="true"
-              />
-              Limited spots available
-            </div>
-
-            <h2
-              id="cta-heading"
-              className="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white text-balance mb-6 max-w-3xl mx-auto"
-            >
-              Ready to Elevate{' '}
-              <span style={{ color: 'var(--brand-accent)' }}>Your Brand?</span>
+          {/* Content */}
+          <div className="relative z-10 text-center py-20 px-6 sm:px-12 lg:px-20">
+            <p className="text-sm font-semibold uppercase tracking-widest text-white/70 mb-4">
+              Let&apos;s Build Together
+            </p>
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-white text-balance mb-6 leading-tight">
+              Ready to Build a Brand{" "}
+              <span className="text-accent">That Wins?</span>
             </h2>
-            <p className="text-base sm:text-xl text-white/60 max-w-2xl mx-auto mb-12 leading-relaxed text-pretty">
-              Let&apos;s discuss how strategic design can accelerate your startup&apos;s
-              growth and market presence. Every great brand starts with a single conversation.
+            <p className="text-xl text-white/80 max-w-2xl mx-auto mb-12 text-pretty leading-relaxed">
+              Stop blending in. Start standing out. Let&apos;s create something bold together.
             </p>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a
                 href="mailto:jane@janedesigner.com"
-                className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-xl text-base font-semibold text-foreground transition-all duration-200 hover:opacity-90 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-secondary"
-                style={{ backgroundColor: 'var(--brand-accent)' }}
+                className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full font-bold text-foreground bg-white hover:bg-accent hover:text-white hover:shadow-2xl hover:shadow-accent/40 transition-all duration-200 group"
               >
-                <Mail className="w-5 h-5" aria-hidden="true" />
+                <Mail size={18} aria-hidden="true" />
                 Start Your Project
-                <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
-              </Link>
+                <ArrowRight
+                  size={18}
+                  className="transition-transform duration-200 group-hover:translate-x-1"
+                  aria-hidden="true"
+                />
+              </a>
               <Link
                 href="#portfolio"
-                className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl text-base font-semibold text-white border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-white border-2 border-white/40 hover:border-white hover:bg-white/10 transition-all duration-200"
               >
                 View Portfolio
               </Link>
             </div>
 
             {/* Trust line */}
-            <p className="mt-10 text-sm text-white/40">
-              No commitment required &mdash; free 30-minute strategy call to get started.
+            <p className="mt-10 text-sm text-white/60">
+              No commitment required · Free 30-min discovery call · Response within 24hrs
             </p>
           </div>
         </div>

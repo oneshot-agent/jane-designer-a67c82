@@ -5,30 +5,50 @@ import './globals.css'
 
 const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-sans',
   display: 'swap',
 })
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  variable: '--font-space-grotesk',
+  variable: '--font-serif',
   display: 'swap',
 })
 
 export const metadata: Metadata = {
   title: 'Jane Designer — Brand Identity & Web Design for Startups',
-  description: 'Creative designer specializing in brand identity and web design for startups. 50+ startups launched with 98% client satisfaction. Transform your startup vision into a powerful brand.',
-  keywords: 'brand identity design, web design, startup branding, logo design, UI/UX design',
+  description:
+    'Creative designer specializing in brand identity and web design for startups. I transform startup visions into unforgettable brand identities and high-converting websites.',
+  keywords: ['brand identity', 'web design', 'startup design', 'logo design', 'UI/UX'],
   authors: [{ name: 'Jane Designer' }],
   openGraph: {
     title: 'Jane Designer — Brand Identity & Web Design for Startups',
-    description: 'Creative designer specializing in brand identity and web design for startups that drive growth.',
+    description:
+      'Creative designer specializing in brand identity and web design for startups. Bold brands that demand attention.',
     type: 'website',
+    locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Jane Designer — Brand Identity & Web Design',
-    description: 'Creative designer helping startups build memorable brands and websites.',
+    title: 'Jane Designer — Brand Identity & Web Design for Startups',
+    description: 'Creative designer specializing in brand identity and web design for startups.',
+  },
+  icons: {
+    icon: [
+      {
+        url: '/icon-light-32x32.png',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: '/icon-dark-32x32.png',
+        media: '(prefers-color-scheme: dark)',
+      },
+      {
+        url: '/icon.svg',
+        type: 'image/svg+xml',
+      },
+    ],
+    apple: '/apple-icon.png',
   },
 }
 
@@ -39,7 +59,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body className="font-sans antialiased bg-background text-foreground">
+      <body className="font-sans antialiased">
         {children}
         <Analytics />
       </body>

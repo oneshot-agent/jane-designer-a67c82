@@ -1,109 +1,108 @@
-import Image from 'next/image'
-import { CheckCircle2 } from 'lucide-react'
+import Image from "next/image"
 
-const highlights = [
-  'Strategic brand identity design',
-  'Conversion-focused web design',
-  'Data-driven design decisions',
-  'Startup-specialized expertise',
+const stats = [
+  { number: "50+", label: "Startups Launched", color: "#6366F1" },
+  { number: "8", label: "Years Experience", color: "#EC4899" },
+  { number: "$50M+", label: "Funding Raised by Clients", color: "#06B6D4" },
+  { number: "180%", label: "Avg. Conversion Increase", color: "#8B5CF6" },
 ]
 
-export default function AboutSection() {
+export function AboutSection() {
   return (
-    <section id="about" className="py-24 lg:py-32 bg-white" aria-labelledby="about-heading">
+    <section
+      id="about"
+      className="py-24 lg:py-32 bg-background"
+      aria-label="About Jane"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-          {/* Image Column */}
-          <div className="relative order-2 lg:order-1">
-            {/* Decorative background shape */}
-            <div
-              className="absolute -top-6 -left-6 w-full h-full rounded-2xl"
-              style={{ backgroundColor: 'var(--indigo-50)' }}
-              aria-hidden="true"
-            />
-            <div className="relative rounded-2xl overflow-hidden shadow-xl border border-border aspect-[4/5]">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Left — image collage */}
+          <div className="relative">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-primary/15 aspect-[4/3]">
               <Image
-                src="https://images.unsplash.com/photo-1768471125958-78556538fadc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdCUyMGRlc2lnbmVyJTIwY3JlYXRpdmUlMjB3b3Jrc3BhY2V8ZW58MHwwfHx8MTc3MTkxMTY1Mnww&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Jane Designer working in a creative workspace"
+                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&h=800&fit=crop&q=80"
+                alt="Jane working on brand design project"
                 fill
                 className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
+              {/* Color overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10" />
             </div>
-            {/* Floating stat card */}
-            <div
-              className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-5 shadow-xl border border-border"
-              aria-hidden="true"
-            >
-              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wide mb-1">
-                Experience
-              </p>
-              <p
-                className="font-heading text-3xl font-bold"
-                style={{ color: 'var(--brand-primary)' }}
-              >
-                7+ Years
-              </p>
-              <p className="text-sm text-muted-foreground mt-0.5">In brand design</p>
+
+            {/* Floating experience card */}
+            <div className="absolute -bottom-6 -right-6 bg-card rounded-2xl p-5 shadow-2xl border border-border">
+              <p className="text-xs text-muted-foreground mb-1">Happy Clients</p>
+              <p className="font-serif text-3xl font-bold text-foreground">50<span className="text-primary">+</span></p>
+              <div className="flex -space-x-2 mt-2">
+                {["#6366F1", "#EC4899", "#06B6D4", "#8B5CF6"].map((color, i) => (
+                  <div
+                    key={i}
+                    className="w-7 h-7 rounded-full border-2 border-white"
+                    style={{ backgroundColor: color }}
+                    aria-hidden="true"
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Floating years badge */}
+            <div className="absolute -top-4 -left-4 bg-gradient-brand rounded-2xl p-4 shadow-xl text-white text-center">
+              <p className="font-serif text-3xl font-bold leading-none">8</p>
+              <p className="text-xs font-medium opacity-90 mt-0.5">Years</p>
             </div>
           </div>
 
-          {/* Text Column */}
-          <div className="order-1 lg:order-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-6" style={{ backgroundColor: 'var(--indigo-50)', color: 'var(--brand-primary)' }}>
-              About Me
-            </div>
-            <h2
-              id="about-heading"
-              className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-balance text-foreground mb-6"
-            >
-              Transforming Ideas Into{' '}
-              <span className="text-gradient">Iconic Brands</span>
+          {/* Right — content */}
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-3">
+              About
+            </p>
+            <h2 className="font-serif text-4xl sm:text-5xl font-bold text-foreground text-balance mb-6">
+              Meet Jane: Your Brand&apos;s{" "}
+              <span className="text-gradient-primary">Secret Weapon</span>
             </h2>
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-6">
-              I&apos;m Jane Designer, a creative professional specializing in brand identity
-              and web design for startups. With a focus on strategic design thinking, I help
-              emerging companies establish strong visual foundations that resonate with their
-              target audience and support business growth.
-            </p>
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-10">
-              My approach combines creative excellence with data-driven insights to deliver
-              designs that not only look exceptional but perform effectively in competitive
-              markets.
-            </p>
 
-            {/* Highlights */}
-            <ul className="space-y-3 mb-10" role="list">
-              {highlights.map((item) => (
-                <li key={item} className="flex items-center gap-3 text-sm sm:text-base text-foreground font-medium">
-                  <CheckCircle2
-                    className="w-5 h-5 flex-shrink-0"
-                    style={{ color: 'var(--brand-primary)' }}
-                    aria-hidden="true"
-                  />
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <div className="space-y-4 text-muted-foreground leading-relaxed mb-10">
+              <p>
+                I&apos;ve spent <strong className="text-foreground">8 years</strong> turning startup
+                dreams into visual realities. From scrappy pre-seed companies to Series A successes,
+                I&apos;ve helped 50+ startups build brands that investors notice and customers
+                remember.
+              </p>
+              <p>
+                My superpower? I think like a founder, design like an artist, and execute like a
+                machine. No fluff, no ego—just{" "}
+                <strong className="text-foreground">bold work that moves the needle.</strong>
+              </p>
+            </div>
 
-            {/* Divider stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-border">
-              {[
-                { value: '50+', label: 'Projects' },
-                { value: '7+', label: 'Years exp.' },
-                { value: '98%', label: 'Satisfaction' },
-              ].map((stat) => (
-                <div key={stat.label}>
+            {/* Stats grid */}
+            <div className="grid grid-cols-2 gap-4">
+              {stats.map(({ number, label, color }) => (
+                <div
+                  key={label}
+                  className="bg-muted rounded-2xl p-5 hover:shadow-md transition-shadow duration-200"
+                >
                   <p
-                    className="font-heading text-2xl sm:text-3xl font-bold mb-1"
-                    style={{ color: 'var(--brand-primary)' }}
+                    className="font-serif text-3xl font-bold mb-1"
+                    style={{ color }}
                   >
-                    {stat.value}
+                    {number}
                   </p>
-                  <p className="text-xs sm:text-sm text-muted-foreground font-medium">
-                    {stat.label}
-                  </p>
+                  <p className="text-xs text-muted-foreground font-medium">{label}</p>
                 </div>
               ))}
+            </div>
+
+            {/* CTA */}
+            <div className="mt-10">
+              <a
+                href="mailto:jane@janedesigner.com"
+                className="inline-flex items-center gap-2 px-7 py-4 rounded-full font-semibold text-white bg-gradient-brand hover:opacity-90 hover:shadow-xl hover:shadow-primary/30 transition-all duration-200"
+              >
+                Work With Me
+              </a>
             </div>
           </div>
         </div>

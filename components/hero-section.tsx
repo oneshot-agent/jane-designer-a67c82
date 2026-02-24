@@ -1,148 +1,113 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { ArrowRight, Star } from 'lucide-react'
+import Image from "next/image"
+import Link from "next/link"
+import { ArrowRight, Sparkles } from "lucide-react"
 
-export default function HeroSection() {
+export function HeroSection() {
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
       aria-label="Hero"
     >
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-40" aria-hidden="true" />
-      <div
-        className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full blur-3xl opacity-20"
-        style={{ backgroundColor: 'var(--brand-primary)' }}
-        aria-hidden="true"
-      />
-      <div
-        className="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full blur-3xl opacity-10"
-        style={{ backgroundColor: 'var(--brand-accent)' }}
-        aria-hidden="true"
-      />
+      {/* Background blobs */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-secondary/10 blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-accent/8 blur-3xl" />
+      </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-        <div className="text-center max-w-4xl mx-auto">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 text-sm font-medium mb-8 animate-fade-in">
-            <span
-              className="flex h-2 w-2 rounded-full"
-              style={{ backgroundColor: 'var(--brand-primary)' }}
-              aria-hidden="true"
-            />
-            <span style={{ color: 'var(--brand-primary)' }}>Available for new projects</span>
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left — copy */}
+          <div className="text-center lg:text-left order-2 lg:order-1">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6 border border-primary/20">
+              <Sparkles size={14} aria-hidden="true" />
+              <span>Brand Identity & Web Design</span>
+            </div>
 
-          {/* Headline */}
-          <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-balance leading-tight mb-6 text-foreground">
-            Brand Identity That{' '}
-            <span className="text-gradient">Drives Startup</span>{' '}
-            Success
-          </h1>
+            <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-balance mb-6">
+              Bold Brands That{" "}
+              <span className="text-gradient-primary">Demand Attention</span>
+            </h1>
 
-          {/* Subheadline */}
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed text-pretty">
-            Creative designer crafting memorable brand experiences and
-            conversion-focused websites for ambitious startups ready to scale.
-          </p>
+            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0 text-pretty">
+              I transform startup visions into unforgettable brand identities and high-converting
+              websites that make competitors jealous.
+            </p>
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <Link
-              href="#portfolio"
-              className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-white text-base transition-all duration-200 hover:opacity-90 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
-              style={{ backgroundColor: 'var(--brand-accent)' }}
-            >
-              View My Work
-              <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
-            </Link>
-            <Link
-              href="#about"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-sm border border-border bg-white hover:bg-muted transition-all duration-200 text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-            >
-              Learn More
-            </Link>
-          </div>
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <Link
+                href="#portfolio"
+                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold text-white bg-gradient-brand hover:opacity-90 hover:shadow-xl hover:shadow-primary/30 transition-all duration-200 group"
+              >
+                See My Work
+                <ArrowRight
+                  size={18}
+                  className="transition-transform duration-200 group-hover:translate-x-1"
+                  aria-hidden="true"
+                />
+              </Link>
+              <a
+                href="mailto:jane@janedesigner.com"
+                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold text-foreground border-2 border-border hover:border-primary hover:text-primary transition-all duration-200"
+              >
+                Get in Touch
+              </a>
+            </div>
 
-          {/* Social proof */}
-          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
-            <div className="flex items-center gap-1.5">
-              <div className="flex" aria-label="5 star rating">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <Star
+            {/* Social proof strip */}
+            <div className="mt-12 flex flex-wrap items-center gap-6 justify-center lg:justify-start">
+              <div className="flex -space-x-3">
+                {["S", "M", "E", "A"].map((initial, i) => (
+                  <div
                     key={i}
-                    className="w-4 h-4 fill-current"
-                    style={{ color: 'var(--brand-accent)' }}
+                    className="w-9 h-9 rounded-full border-2 border-white flex items-center justify-center text-xs font-bold text-white"
+                    style={{
+                      background: ["#6366F1", "#EC4899", "#06B6D4", "#8B5CF6"][i],
+                    }}
                     aria-hidden="true"
-                  />
+                  >
+                    {initial}
+                  </div>
                 ))}
               </div>
-              <span>98% client satisfaction</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <span
-                className="font-bold text-base"
-                style={{ color: 'var(--brand-primary)' }}
-              >
-                50+
-              </span>
-              <span>startups helped</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <span
-                className="font-bold text-base"
-                style={{ color: 'var(--brand-primary)' }}
-              >
-                $2M+
-              </span>
-              <span>in funding raised</span>
+              <p className="text-sm text-muted-foreground">
+                <span className="font-semibold text-foreground">50+ startups</span> launched &amp;
+                growing
+              </p>
             </div>
           </div>
-        </div>
 
-        {/* Hero Image */}
-        <div className="mt-16 lg:mt-20 relative max-w-5xl mx-auto">
-          <div
-            className="absolute -inset-1 rounded-2xl opacity-30 blur-xl"
-            style={{ background: 'linear-gradient(135deg, var(--brand-primary), var(--brand-accent))' }}
-            aria-hidden="true"
-          />
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/50">
-            <Image
-              src="https://images.unsplash.com/photo-1761818645943-a3689c34ca03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBkZXNpZ25lciUyMHdvcmtzcGFjZSUyMGNyZWF0aXZlJTIwc3R1ZGlvJTIwbW9kZXJufGVufDB8MHx8fDE3NzE5MTE2NTJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
-              alt="Professional designer workspace with creative studio setup"
-              width={1080}
-              height={600}
-              className="w-full object-cover"
-              priority
-            />
-            {/* Overlay cards */}
-            <div
-              className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 bg-white rounded-xl p-3 sm:p-4 shadow-xl border border-border flex items-center gap-3"
-              aria-hidden="true"
-            >
-              <div
-                className="w-10 h-10 rounded-lg flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
-                style={{ backgroundColor: 'var(--brand-primary)' }}
-              >
-                TF
+          {/* Right — image */}
+          <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-md lg:max-w-lg">
+              {/* Decorative ring */}
+              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-primary/20 to-secondary/20 blur-xl" />
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-primary/20">
+                <Image
+                  src="https://images.unsplash.com/photo-1717079556888-c23cb91b450f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMGRlc2lnbmVyJTIwd29ya3NwYWNlJTIwYm9sZCUyMGNvbG9yZnVsJTIwYnJhbmRpbmclMjBtYXRlcmlhbHN8ZW58MHwwfHx8MTc3MTk2Njg3NHww&ixlib=rb-4.1.0&q=80&w=1080"
+                  alt="Creative designer workspace with colorful branding materials"
+                  width={1080}
+                  height={810}
+                  className="w-full h-auto object-cover"
+                  priority
+                />
               </div>
-              <div>
-                <p className="text-xs font-semibold text-foreground">TechFlow Rebrand</p>
-                <p className="text-xs text-muted-foreground">Series A — $2M raised</p>
+              {/* Floating stat card */}
+              <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl p-4 shadow-xl border border-border flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-gradient-brand flex items-center justify-center text-white text-lg font-bold flex-shrink-0">
+                  ↑
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground">Avg. conversion lift</p>
+                  <p className="text-lg font-bold text-foreground font-serif">+180%</p>
+                </div>
               </div>
-            </div>
-            <div
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 bg-white rounded-xl p-3 sm:p-4 shadow-xl border border-border"
-              aria-hidden="true"
-            >
-              <p className="text-xs font-semibold text-foreground mb-1">Conversion Lift</p>
-              <p
-                className="text-xl font-bold font-heading"
-                style={{ color: 'var(--brand-accent)' }}
-              >
-                +65%
-              </p>
+              {/* Floating badge */}
+              <div className="absolute -top-4 -right-4 bg-accent rounded-2xl px-4 py-2 shadow-lg text-white font-semibold text-sm">
+                🏆 Top Rated
+              </div>
             </div>
           </div>
         </div>

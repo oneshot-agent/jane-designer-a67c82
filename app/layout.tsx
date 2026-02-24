@@ -1,41 +1,55 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Space_Grotesk, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const spaceGrotesk = Space_Grotesk({ 
-  subsets: ["latin"],
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
   variable: '--font-heading',
   display: 'swap',
-});
+})
 
-const inter = Inter({ 
-  subsets: ["latin"],
+const inter = Inter({
+  subsets: ['latin'],
   variable: '--font-body',
   display: 'swap',
-});
+})
 
 export const metadata: Metadata = {
-  title: 'Jane Designer - Brand Identity & Web Design for Startups',
-  description: 'Professional design solutions that help startups build memorable brands and engaging websites that drive growth.',
-  generator: 'v0.app',
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+  title: 'Jane Designer — Brand Identity & Web Design for Startups',
+  description:
+    'Creative designer specializing in brand identity and web design for ambitious startups. Helping founders build memorable brands that drive growth and investor interest.',
+  keywords: [
+    'brand identity',
+    'web design',
+    'startup branding',
+    'logo design',
+    'UI/UX design',
+    'Jane Designer',
+  ],
+  authors: [{ name: 'Jane Designer' }],
+  creator: 'Jane Designer',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    title: 'Jane Designer — Brand Identity & Web Design for Startups',
+    description:
+      'Creative designer specializing in brand identity and web design for ambitious startups.',
+    siteName: 'Jane Designer',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Jane Designer — Brand Identity & Web Design for Startups',
+    description:
+      'Creative designer specializing in brand identity and web design for ambitious startups.',
+  },
+  robots: { index: true, follow: true },
+}
+
+export const viewport: Viewport = {
+  themeColor: '#6366F1',
+  width: 'device-width',
+  initialScale: 1,
 }
 
 export default function RootLayout({
@@ -44,8 +58,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} scroll-smooth`}>
+      <body className="font-body antialiased bg-background text-foreground">
         {children}
         <Analytics />
       </body>

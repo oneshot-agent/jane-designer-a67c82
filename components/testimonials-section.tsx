@@ -1,161 +1,95 @@
-'use client'
+import { Star, Quote } from 'lucide-react'
 
-import { useState } from 'react'
-import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
-
-interface Testimonial {
-  quote: string
-  author: string
-  title: string
-  rating: number
-  initials: string
-  color: string
-}
-
-const testimonials: Testimonial[] = [
+const testimonials = [
   {
     quote:
-      "Jane transformed our vision into a brand that investors immediately connected with. Her design work was instrumental in our successful funding round.",
+      "Jane's design expertise was instrumental in our successful Series A funding. Her brand identity perfectly captured our vision and resonated with investors.",
     author: 'Sarah Chen',
     title: 'CEO, TechFlow Startup',
     rating: 5,
     initials: 'SC',
-    color: 'bg-primary',
+    color: '#6366F1',
   },
   {
     quote:
-      "The website Jane designed converted 3x better than our previous site. Her understanding of startup needs is exceptional.",
-    author: 'Marcus Rodriguez',
-    title: 'Founder, GreenSpace App',
+      'The website Jane designed converted 3x better than our previous site. Her understanding of user psychology is exceptional.',
+    author: 'Michael Rodriguez',
+    title: 'Founder, DataViz Platform',
     rating: 5,
     initials: 'MR',
-    color: 'bg-accent',
+    color: '#EC4899',
   },
   {
     quote:
-      "Professional, creative, and deadline-driven. Jane delivered exactly what we needed to establish credibility in the fintech space.",
+      'Professional, creative, and results-driven. Jane delivered a complete brand system that exceeded our expectations and timeline.',
     author: 'Emily Watson',
-    title: 'Co-founder, FinNext Solutions',
+    title: 'Co-founder, GreenSpace Co.',
     rating: 5,
     initials: 'EW',
-    color: 'bg-primary',
+    color: '#8B5CF6',
   },
 ]
 
 export default function TestimonialsSection() {
-  const [current, setCurrent] = useState(0)
-
-  const prev = () => setCurrent((c) => (c === 0 ? testimonials.length - 1 : c - 1))
-  const next = () => setCurrent((c) => (c === testimonials.length - 1 ? 0 : c + 1))
-
-  const t = testimonials[current]
-
   return (
-    <section
-      id="testimonials"
-      className="section-pad bg-gradient-subtle"
-      aria-labelledby="testimonials-heading"
-    >
+    <section id="testimonials" className="py-24 lg:py-32 bg-[#FEFEFE]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wide uppercase mb-4">
-            Testimonials
+        <div className="flex flex-col items-center text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#EC4899]/10 border border-[#EC4899]/20 mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#EC4899]" aria-hidden="true" />
+            <span className="text-xs font-semibold tracking-widest uppercase text-[#EC4899]">Testimonials</span>
           </div>
-          <h2
-            id="testimonials-heading"
-            className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-foreground tracking-tight text-balance"
-          >
-            What Startup{' '}
-            <span className="text-gradient-primary">Founders Say</span>
+          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-[#1E293B] text-balance max-w-2xl leading-tight">
+            What Founders Say About{' '}
+            <span className="gradient-text-accent">Working Together</span>
           </h2>
         </div>
 
-        {/* Carousel */}
-        <div className="max-w-4xl mx-auto">
-          {/* Quote card */}
-          <div
-            key={current}
-            className="relative bg-card rounded-3xl p-8 md:p-12 shadow-xl shadow-primary/5 border border-border text-center animate-fade-up"
-            role="region"
-            aria-label={`Testimonial ${current + 1} of ${testimonials.length}`}
-            aria-live="polite"
-          >
-            {/* Large quote mark */}
-            <span
-              className="absolute top-6 left-8 text-8xl font-serif text-primary/10 leading-none select-none"
-              aria-hidden="true"
+        {/* Cards grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map((t) => (
+            <article
+              key={t.author}
+              className="group relative flex flex-col gap-6 p-8 rounded-2xl bg-white border border-[#1E293B]/8 hover:shadow-xl hover:shadow-[#6366F1]/8 hover:border-[#6366F1]/25 transition-all duration-300 hover:-translate-y-1"
             >
-              &ldquo;
-            </span>
-
-            {/* Stars */}
-            <div className="flex justify-center gap-1 mb-6" aria-label={`${t.rating} out of 5 stars`}>
-              {[...Array(t.rating)].map((_, i) => (
-                <Star
-                  key={i}
-                  className="w-5 h-5 fill-accent text-accent"
-                  aria-hidden="true"
-                />
-              ))}
-            </div>
-
-            {/* Quote */}
-            <blockquote className="text-foreground text-lg md:text-xl leading-relaxed font-medium mb-8 text-balance relative z-10">
-              &ldquo;{t.quote}&rdquo;
-            </blockquote>
-
-            {/* Author */}
-            <div className="flex items-center justify-center gap-3">
+              {/* Quote icon */}
               <div
-                className={`w-12 h-12 rounded-full ${t.color} flex items-center justify-center text-white font-bold text-sm`}
+                className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                style={{ backgroundColor: t.color + '15' }}
                 aria-hidden="true"
               >
-                {t.initials}
+                <Quote size={18} style={{ color: t.color }} />
               </div>
-              <div className="text-left">
-                <p className="font-serif font-bold text-foreground text-sm">{t.author}</p>
-                <p className="text-muted-foreground text-xs">{t.title}</p>
+
+              {/* Stars */}
+              <div className="flex items-center gap-1" aria-label={`${t.rating} out of 5 stars`}>
+                {Array.from({ length: t.rating }).map((_, i) => (
+                  <Star key={i} size={14} className="fill-amber-400 text-amber-400" />
+                ))}
               </div>
-            </div>
-          </div>
 
-          {/* Controls */}
-          <div className="flex items-center justify-center gap-6 mt-8">
-            <button
-              onClick={prev}
-              className="w-10 h-10 rounded-full border border-border bg-card hover:bg-secondary hover:border-primary/30 flex items-center justify-center transition-all"
-              aria-label="Previous testimonial"
-            >
-              <ChevronLeft className="w-5 h-5 text-foreground" />
-            </button>
+              {/* Quote text */}
+              <blockquote className="text-[#1E293B]/70 leading-relaxed text-sm flex-grow">
+                &ldquo;{t.quote}&rdquo;
+              </blockquote>
 
-            {/* Dots */}
-            <div className="flex gap-2" role="tablist" aria-label="Testimonial indicators">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrent(i)}
-                  className={`rounded-full transition-all duration-300 ${
-                    i === current
-                      ? 'w-6 h-2 bg-primary'
-                      : 'w-2 h-2 bg-border hover:bg-muted-foreground'
-                  }`}
-                  aria-label={`Go to testimonial ${i + 1}`}
-                  aria-selected={i === current}
-                  role="tab"
-                />
-              ))}
-            </div>
-
-            <button
-              onClick={next}
-              className="w-10 h-10 rounded-full border border-border bg-card hover:bg-secondary hover:border-primary/30 flex items-center justify-center transition-all"
-              aria-label="Next testimonial"
-            >
-              <ChevronRight className="w-5 h-5 text-foreground" />
-            </button>
-          </div>
+              {/* Author */}
+              <footer className="flex items-center gap-3 pt-4 border-t border-[#1E293B]/8">
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white flex-shrink-0"
+                  style={{ backgroundColor: t.color }}
+                  aria-hidden="true"
+                >
+                  {t.initials}
+                </div>
+                <div>
+                  <p className="font-semibold text-sm text-[#1E293B]">{t.author}</p>
+                  <p className="text-xs text-[#1E293B]/50">{t.title}</p>
+                </div>
+              </footer>
+            </article>
+          ))}
         </div>
       </div>
     </section>

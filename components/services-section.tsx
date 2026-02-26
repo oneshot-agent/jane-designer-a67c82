@@ -1,111 +1,98 @@
-import { Palette, Monitor, Layout } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+import { Palette, Globe, Rocket, Check } from 'lucide-react'
 
-interface Service {
-  icon: LucideIcon
-  title: string
-  description: string
-  gradient: string
-}
-
-const services: Service[] = [
+const services = [
   {
     icon: Palette,
     title: 'Brand Identity Design',
     description:
-      "Complete visual identity systems including logos, color palettes, typography, and brand guidelines that establish your startup's unique market position.",
-    gradient: 'linear-gradient(135deg, #6366F1, #EC4899)',
+      'Complete visual identity systems including logos, color palettes, typography, and brand guidelines that establish market presence.',
+    features: ['Logo Design', 'Brand Guidelines', 'Visual Assets', 'Style Systems'],
+    accent: '#6366F1',
+    lightBg: 'bg-[#6366F1]/8',
   },
   {
-    icon: Monitor,
+    icon: Globe,
     title: 'Web Design & Development',
     description:
-      "Responsive, user-focused websites that convert visitors into customers while perfectly reflecting your brand's personality and values.",
-    gradient: 'linear-gradient(135deg, #EC4899, #F59E0B)',
+      'Responsive websites optimized for conversions, built with modern technologies and focused on user experience.',
+    features: ['Responsive Design', 'UX/UI Optimization', 'Performance Focus', 'CMS Integration'],
+    accent: '#EC4899',
+    lightBg: 'bg-[#EC4899]/8',
   },
   {
-    icon: Layout,
-    title: 'Marketing Materials',
+    icon: Rocket,
+    title: 'Startup Branding Packages',
     description:
-      'Cohesive print and digital marketing assets that maintain brand consistency across all touchpoints and drive engagement.',
-    gradient: 'linear-gradient(135deg, #F59E0B, #6366F1)',
+      'Comprehensive branding solutions designed specifically for early-stage companies looking to make a strong first impression.',
+    features: ['Market Research', 'Competitor Analysis', 'Brand Strategy', 'Launch Materials'],
+    accent: '#8B5CF6',
+    lightBg: 'bg-[#8B5CF6]/8',
   },
 ]
 
-export function ServicesSection() {
+export default function ServicesSection() {
   return (
-    <section
-      id="services"
-      className="py-24 md:py-32 bg-gradient-hero"
-      aria-labelledby="services-heading"
-    >
-      <div className="max-w-6xl mx-auto px-6 flex flex-col gap-16">
+    <section id="services" className="py-24 lg:py-32 bg-[#FEFEFE]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col items-center text-center gap-4 max-w-2xl mx-auto">
-          <span
-            className="text-sm font-semibold uppercase tracking-widest"
-            style={{ color: 'var(--brand-primary)' }}
-          >
-            What I Do
-          </span>
-          <h2
-            id="services-heading"
-            className="font-serif text-4xl md:text-5xl font-bold leading-tight text-balance"
-            style={{ color: 'var(--brand-text)' }}
-          >
-            Design Solutions That{' '}
-            <span className="text-gradient-primary">Drive Growth</span>
+        <div className="flex flex-col items-center text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#6366F1]/10 border border-[#6366F1]/20 mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#6366F1]" aria-hidden="true" />
+            <span className="text-xs font-semibold tracking-widest uppercase text-[#6366F1]">Services</span>
+          </div>
+          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-[#1E293B] text-balance max-w-2xl leading-tight">
+            Services That{' '}
+            <span className="gradient-text-accent">Accelerate Growth</span>
           </h2>
-          <p
-            className="text-lg leading-relaxed"
-            style={{ color: 'var(--brand-text-muted)' }}
-          >
-            From concept to launch, I deliver end-to-end design solutions tailored to
-            the unique challenges of startup growth.
+          <p className="mt-4 text-[#1E293B]/60 max-w-xl leading-relaxed">
+            End-to-end design services crafted to make your startup stand out and scale.
           </p>
         </div>
 
-        {/* Services grid */}
+        {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service) => {
             const Icon = service.icon
             return (
               <article
                 key={service.title}
-                className="relative flex flex-col gap-6 p-8 rounded-2xl border card-hover"
-                style={{
-                  background: 'var(--brand-surface)',
-                  borderColor: 'var(--brand-border)',
-                }}
+                className="group relative flex flex-col gap-6 p-8 rounded-2xl bg-white border border-[#1E293B]/8 hover:border-[#6366F1]/30 hover:shadow-xl hover:shadow-[#6366F1]/8 transition-all duration-300 hover:-translate-y-1"
               >
                 {/* Icon */}
                 <div
-                  className="w-14 h-14 flex items-center justify-center rounded-2xl"
-                  style={{ background: service.gradient }}
-                  aria-hidden="true"
+                  className={`w-12 h-12 rounded-xl ${service.lightBg} flex items-center justify-center flex-shrink-0`}
                 >
-                  <Icon className="w-7 h-7 text-white" />
+                  <Icon size={22} style={{ color: service.accent }} />
                 </div>
 
+                {/* Text */}
                 <div className="flex flex-col gap-3">
-                  <h3
-                    className="font-serif text-xl font-bold"
-                    style={{ color: 'var(--brand-text)' }}
-                  >
-                    {service.title}
-                  </h3>
-                  <p
-                    className="text-base leading-relaxed"
-                    style={{ color: 'var(--brand-text-muted)' }}
-                  >
-                    {service.description}
-                  </p>
+                  <h3 className="font-display font-bold text-xl text-[#1E293B]">{service.title}</h3>
+                  <p className="text-sm text-[#1E293B]/60 leading-relaxed">{service.description}</p>
                 </div>
+
+                {/* Features */}
+                <ul className="flex flex-col gap-2 mt-auto">
+                  {service.features.map((feature) => (
+                    <li key={feature} className="flex items-center gap-2.5 text-sm text-[#1E293B]/70">
+                      <span
+                        className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0"
+                        style={{ backgroundColor: service.accent + '18' }}
+                        aria-hidden="true"
+                      >
+                        <Check size={10} style={{ color: service.accent }} />
+                      </span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
 
                 {/* Decorative corner accent */}
                 <div
-                  className="absolute top-0 right-0 w-20 h-20 rounded-bl-none rounded-tr-2xl rounded-br-none rounded-tl-none opacity-5 pointer-events-none"
-                  style={{ background: service.gradient }}
+                  className="absolute top-0 right-0 w-20 h-20 rounded-bl-none rounded-tr-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+                  style={{
+                    background: `linear-gradient(225deg, ${service.accent}18 0%, transparent 60%)`,
+                  }}
                   aria-hidden="true"
                 />
               </article>

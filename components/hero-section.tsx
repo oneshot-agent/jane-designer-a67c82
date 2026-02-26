@@ -1,93 +1,91 @@
 import Image from 'next/image'
-import { ArrowDown } from 'lucide-react'
+import Link from 'next/link'
+import { ArrowRight, Sparkles } from 'lucide-react'
 
 export default function HeroSection() {
   return (
     <section
-      className="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden pt-16"
-      aria-label="Hero"
+      id="hero"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-16"
     >
-      {/* Geometric background shapes */}
+      {/* Background grid pattern */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" aria-hidden="true" />
+
+      {/* Soft gradient blobs */}
       <div
-        className="absolute inset-0 -z-10 pointer-events-none overflow-hidden"
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] rounded-full pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse, rgba(99,102,241,0.12) 0%, rgba(236,72,153,0.06) 50%, transparent 70%)',
+        }}
         aria-hidden="true"
-      >
-        {/* Top-left blob */}
-        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-primary/8 blur-3xl" />
-        {/* Bottom-right blob */}
-        <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-accent/8 blur-3xl" />
-        {/* Center accent */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-gradient-subtle opacity-60 blur-2xl" />
+      />
 
-        {/* Geometric grid decoration */}
-        <div className="absolute top-20 right-10 w-24 h-24 border border-primary/15 rounded-2xl rotate-12" />
-        <div className="absolute bottom-32 left-10 w-16 h-16 border border-accent/20 rounded-xl rotate-45" />
-        <div className="absolute top-1/2 right-16 w-8 h-8 bg-primary/10 rounded-full" />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        {/* Eyebrow label */}
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wide uppercase mb-6">
-          <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-          Available for new projects
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center z-10">
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#6366F1]/10 border border-[#6366F1]/20 text-[#6366F1] text-sm font-medium mb-8 animate-fade-in">
+          <Sparkles size={14} />
+          <span>Brand Identity & Web Design</span>
         </div>
 
         {/* Headline */}
-        <h1 className="font-serif font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-foreground leading-tight tracking-tight text-balance mb-6">
-          Brands That{' '}
-          <span className="text-gradient-primary">Connect,</span>
-          <br className="hidden sm:block" />
-          Websites That{' '}
-          <span className="text-gradient-primary">Convert</span>
+        <h1 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#1E293B] text-balance leading-[1.1] tracking-tight max-w-4xl animate-fade-up">
+          Brand Identity That{' '}
+          <span className="gradient-text-primary">Drives Startup</span>{' '}
+          <span className="gradient-text-accent">Success</span>
         </h1>
 
         {/* Subheadline */}
-        <p className="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed text-balance mb-10">
-          Creative designer helping startups build memorable brand identities and
-          high-performing websites that drive growth.
+        <p className="mt-6 text-lg sm:text-xl text-[#1E293B]/60 max-w-2xl leading-relaxed text-pretty animate-fade-up" style={{ animationDelay: '0.1s' }}>
+          Strategic design solutions that help emerging businesses build
+          memorable brands and convert visitors into customers.
         </p>
 
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-          <a
+        {/* CTA */}
+        <div className="mt-10 flex flex-col sm:flex-row items-center gap-4 animate-fade-up" style={{ animationDelay: '0.2s' }}>
+          <Link
             href="#portfolio"
-            className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-brand text-white font-semibold text-sm shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-[1.02] transition-all duration-200"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold bg-[#6366F1] text-white hover:bg-[#4f46e5] transition-all shadow-lg shadow-[#6366F1]/30 hover:shadow-[#6366F1]/40 hover:-translate-y-0.5"
           >
             View My Work
-            <ArrowDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
-          </a>
-          <a
-            href="mailto:jane@janedesigner.com"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl border border-border text-foreground font-semibold text-sm hover:bg-secondary hover:border-primary/30 transition-all duration-200"
+            <ArrowRight size={18} />
+          </Link>
+          <Link
+            href="mailto:hello@janedesigner.com"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold text-[#1E293B] border border-[#1E293B]/15 hover:border-[#6366F1]/40 hover:text-[#6366F1] transition-all bg-white/60"
           >
-            Get in Touch
-          </a>
+            Start a Project
+          </Link>
         </div>
 
-        {/* Hero Image */}
-        <div className="relative w-full max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl shadow-foreground/10 border border-border/50">
-          {/* Floating badge */}
-          <div className="absolute top-6 left-6 z-10 bg-white/95 backdrop-blur rounded-xl px-4 py-2.5 shadow-lg flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-green-400" />
-            <span className="text-xs font-semibold text-foreground">50+ Startups Helped</span>
-          </div>
-          <div className="absolute bottom-6 right-6 z-10 bg-white/95 backdrop-blur rounded-xl px-4 py-2.5 shadow-lg">
-            <p className="text-xs font-semibold text-foreground">98% Satisfaction Rate</p>
-            <div className="flex gap-0.5 mt-1">
-              {[...Array(5)].map((_, i) => (
-                <span key={i} className="text-accent text-xs">★</span>
-              ))}
+        {/* Social proof bar */}
+        <div className="mt-14 flex flex-wrap items-center justify-center gap-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          {[
+            { value: '150+', label: 'Brands Launched' },
+            { value: '98%', label: 'Client Satisfaction' },
+            { value: '8+', label: 'Years Experience' },
+          ].map((stat) => (
+            <div key={stat.label} className="flex flex-col items-center">
+              <span className="font-display font-bold text-2xl text-[#6366F1]">{stat.value}</span>
+              <span className="text-xs text-[#1E293B]/50 mt-0.5">{stat.label}</span>
             </div>
-          </div>
+          ))}
+        </div>
 
-          <Image
-            src="https://images.unsplash.com/photo-1761818645943-a3689c34ca03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBkZXNpZ25lciUyMHdvcmtzcGFjZSUyMGNyZWF0aXZlJTIwc3R1ZGlvJTIwbW9kZXJufGVufDB8MHx8fDE3NzIxMzM3OTZ8MA&ixlib=rb-4.1.0&q=80&w=1080"
-            alt="Professional designer workspace with creative tools and digital designs"
-            width={1080}
-            height={608}
-            priority
-            className="w-full h-auto object-cover"
-          />
+        {/* Hero image */}
+        <div className="mt-16 w-full max-w-5xl relative animate-fade-up" style={{ animationDelay: '0.35s' }}>
+          {/* Decorative frame */}
+          <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#6366F1]/30 via-[#EC4899]/20 to-[#6366F1]/30 blur-sm" aria-hidden="true" />
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/60">
+            <Image
+              src="https://images.unsplash.com/photo-1764737740462-2a310c7b2c39?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBkZXNpZ25lciUyMHdvcmtzcGFjZSUyMGNyZWF0aXZlJTIwc3R1ZGlvJTIwYnJhbmQlMjBkZXNpZ258ZW58MHwwfHx8MTc3MjE0MjUwNnww&ixlib=rb-4.1.0&q=80&w=1080"
+              alt="Professional designer workspace — Jane Designer's creative studio"
+              width={1080}
+              height={600}
+              className="w-full object-cover aspect-[16/8]"
+              priority
+            />
+          </div>
         </div>
       </div>
     </section>

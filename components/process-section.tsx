@@ -1,101 +1,101 @@
-interface Step {
-  number: string
-  title: string
-  description: string
-}
+import { Search, Lightbulb, Palette, Rocket } from 'lucide-react'
 
-const steps: Step[] = [
+const steps = [
   {
-    number: '01',
+    icon: Search,
+    step: '01',
     title: 'Discovery & Strategy',
     description:
-      'Deep dive into your business goals, target audience, and competitive landscape to create a strategic foundation.',
+      'Deep dive into your business goals, target audience, and competitive landscape to inform design decisions.',
+    color: '#6366F1',
   },
   {
-    number: '02',
+    icon: Lightbulb,
+    step: '02',
     title: 'Concept Development',
     description:
-      'Create multiple design concepts and iterate based on your feedback to find the perfect creative direction.',
+      'Create initial concepts and design directions based on strategic insights and brand positioning.',
+    color: '#8B5CF6',
   },
   {
-    number: '03',
+    icon: Palette,
+    step: '03',
     title: 'Design & Refinement',
     description:
-      'Develop the chosen concept into polished designs with attention to every detail and user experience.',
+      'Develop comprehensive design solutions with iterative feedback and refinement cycles.',
+    color: '#EC4899',
   },
   {
-    number: '04',
+    icon: Rocket,
+    step: '04',
     title: 'Launch & Support',
     description:
-      'Deliver final assets and provide ongoing support to ensure successful implementation and results.',
+      'Deliver final assets with implementation support and brand guidelines for consistent application.',
+    color: '#F43F5E',
   },
 ]
 
 export default function ProcessSection() {
   return (
-    <section
-      id="process"
-      className="section-pad bg-background"
-      aria-labelledby="process-heading"
-    >
+    <section id="process" className="py-24 lg:py-32 bg-[#F1F5F9]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 text-accent text-xs font-semibold tracking-wide uppercase mb-4">
-            How It Works
+        <div className="flex flex-col items-center text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#6366F1]/10 border border-[#6366F1]/20 mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#6366F1]" aria-hidden="true" />
+            <span className="text-xs font-semibold tracking-widest uppercase text-[#6366F1]">My Process</span>
           </div>
-          <h2
-            id="process-heading"
-            className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-foreground tracking-tight text-balance mb-4"
-          >
-            My Design Process
+          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-[#1E293B] text-balance max-w-2xl leading-tight">
+            A Proven Process That{' '}
+            <span className="gradient-text-primary">Delivers Results</span>
           </h2>
-          <p className="max-w-xl mx-auto text-muted-foreground leading-relaxed text-balance">
-            A proven 4-step approach that delivers results on time and on budget
-          </p>
         </div>
 
         {/* Steps */}
-        <div className="relative">
-          {/* Connector line — desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+          {/* Connector line (desktop) */}
           <div
-            className="absolute top-8 left-0 right-0 h-0.5 bg-gradient-to-r from-primary/20 via-accent/30 to-primary/20 hidden lg:block"
+            className="absolute top-10 left-[12.5%] right-[12.5%] h-px hidden lg:block"
+            style={{
+              background: 'linear-gradient(90deg, #6366F1 0%, #8B5CF6 33%, #EC4899 66%, #F43F5E 100%)',
+              opacity: 0.25,
+            }}
             aria-hidden="true"
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map((step, index) => (
+          {steps.map((step) => {
+            const Icon = step.icon
+            return (
               <div
-                key={step.number}
-                className="group relative flex flex-col items-start lg:items-center lg:text-center"
+                key={step.step}
+                className="relative flex flex-col items-center text-center gap-4"
               >
-                {/* Number badge */}
-                <div className="relative z-10 w-16 h-16 rounded-2xl bg-card border-2 border-border group-hover:border-primary/50 flex items-center justify-center mb-6 transition-all duration-300 shadow-sm group-hover:shadow-primary/10 group-hover:shadow-lg">
-                  <span className="font-serif font-bold text-xl text-gradient-primary">
-                    {step.number}
+                {/* Step circle */}
+                <div className="relative z-10">
+                  <div
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center shadow-lg"
+                    style={{
+                      background: `linear-gradient(135deg, ${step.color}22 0%, ${step.color}10 100%)`,
+                      border: `2px solid ${step.color}30`,
+                    }}
+                  >
+                    <Icon size={28} style={{ color: step.color }} />
+                  </div>
+                  {/* Step number badge */}
+                  <span
+                    className="absolute -top-2 -right-2 w-6 h-6 rounded-full text-xs font-bold text-white flex items-center justify-center shadow-md"
+                    style={{ backgroundColor: step.color }}
+                    aria-hidden="true"
+                  >
+                    {step.step}
                   </span>
-                  {/* Pulse ring on hover */}
-                  <div className="absolute inset-0 rounded-2xl bg-primary/5 scale-0 group-hover:scale-110 opacity-0 group-hover:opacity-100 transition-all duration-300" />
                 </div>
 
-                {/* Content */}
-                <h3 className="font-serif font-bold text-lg text-foreground mb-2">
-                  {step.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {step.description}
-                </p>
-
-                {/* Mobile connector */}
-                {index < steps.length - 1 && (
-                  <div
-                    className="sm:hidden w-0.5 h-8 bg-gradient-to-b from-primary/30 to-transparent mt-4 ml-8"
-                    aria-hidden="true"
-                  />
-                )}
+                <h3 className="font-display font-bold text-lg text-[#1E293B]">{step.title}</h3>
+                <p className="text-sm text-[#1E293B]/60 leading-relaxed">{step.description}</p>
               </div>
-            ))}
-          </div>
+            )
+          })}
         </div>
       </div>
     </section>

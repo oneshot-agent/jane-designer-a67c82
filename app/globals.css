@@ -4,42 +4,40 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #FFFFFF;
-  --foreground: #1E293B;
-  --card: #FFFFFF;
-  --card-foreground: #1E293B;
-  --popover: #FFFFFF;
-  --popover-foreground: #1E293B;
-  --primary: #6366F1;
-  --primary-foreground: #FFFFFF;
-  --secondary: #F8FAFC;
-  --secondary-foreground: #1E293B;
-  --muted: #F1F5F9;
-  --muted-foreground: #64748B;
-  --accent: #EC4899;
-  --accent-foreground: #FFFFFF;
+  --background: oklch(0.999 0 0);
+  --foreground: oklch(0.178 0.037 264.052);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.178 0.037 264.052);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.178 0.037 264.052);
+  --primary: oklch(0.585 0.233 278.393);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: oklch(0.178 0.037 264.052);
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.52 0.03 264.052);
+  --accent: oklch(0.657 0.254 355.59);
+  --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: #FFFFFF;
-  --border: #E2E8F0;
-  --input: #E2E8F0;
-  --ring: #6366F1;
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.918 0.012 260);
+  --input: oklch(0.918 0.012 260);
+  --ring: oklch(0.585 0.233 278.393);
   --radius: 0.75rem;
 
-  /* Brand-specific tokens */
+  /* Brand custom tokens */
   --brand-primary: #6366F1;
-  --brand-primary-light: #EEF2FF;
-  --brand-primary-dark: #4F46E5;
+  --brand-secondary: #F1F5F9;
   --brand-accent: #EC4899;
-  --brand-accent-light: #FDF2F8;
+  --brand-bg: #FEFEFE;
   --brand-text: #1E293B;
-  --brand-text-muted: #64748B;
-  --brand-surface: #F8FAFC;
-  --brand-surface-alt: #F1F5F9;
+  --brand-primary-light: oklch(0.93 0.05 278.393);
+  --brand-accent-light: oklch(0.93 0.06 355.59);
 }
 
 @theme inline {
-  --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
-  --font-serif: var(--font-space-grotesk), 'Space Grotesk', sans-serif;
+  --font-sans: 'Inter', 'Inter Fallback';
+  --font-display: 'Space Grotesk', 'Space Grotesk Fallback';
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -62,8 +60,7 @@
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 8px);
-  --radius-2xl: calc(var(--radius) + 16px);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
 @layer base {
@@ -75,53 +72,52 @@
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    background-color: var(--brand-bg);
+    color: var(--brand-text);
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-serif);
+    font-family: var(--font-display);
   }
 }
 
 @layer utilities {
-  .text-gradient-primary {
-    background: linear-gradient(135deg, #6366F1 0%, #EC4899 100%);
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .gradient-primary {
+    background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+  }
+  .gradient-accent {
+    background: linear-gradient(135deg, #EC4899 0%, #F43F5E 100%);
+  }
+  .gradient-text-primary {
+    background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-
-  .bg-gradient-brand {
-    background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%);
+  .gradient-text-accent {
+    background: linear-gradient(135deg, #EC4899 0%, #F43F5E 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
-
-  .bg-gradient-subtle {
-    background: linear-gradient(135deg, #EEF2FF 0%, #FDF2F8 100%);
+  .bg-grid-pattern {
+    background-image: radial-gradient(circle, #6366F120 1px, transparent 1px);
+    background-size: 32px 32px;
   }
-
-  .card-hover {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
   }
-
-  .card-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
-  }
-
   .animate-fade-up {
     animation: fadeUp 0.6s ease-out forwards;
   }
-
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(24px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
-
-  .section-pad {
-    @apply py-20 md:py-28;
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 }

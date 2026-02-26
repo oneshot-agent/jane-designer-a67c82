@@ -1,115 +1,140 @@
-import Image from "next/image"
-import Link from "next/link"
-import { ArrowRight, Sparkles } from "lucide-react"
+import Image from 'next/image'
+import Link from 'next/link'
+import { ArrowRight, Sparkles } from 'lucide-react'
 
 export function HeroSection() {
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
+      id="home"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-hero pt-20 pb-16"
       aria-label="Hero"
     >
-      {/* Background blobs */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/10 blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-secondary/10 blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-accent/8 blur-3xl" />
+      {/* Geometric background shapes */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <div
+          className="absolute -top-32 -right-32 w-96 h-96 rounded-full opacity-10"
+          style={{ background: 'var(--brand-primary)' }}
+        />
+        <div
+          className="absolute top-1/2 -left-24 w-72 h-72 rounded-full opacity-8"
+          style={{ background: 'var(--brand-secondary)' }}
+        />
+        <div
+          className="absolute bottom-20 right-1/4 w-48 h-48 rounded-full opacity-10"
+          style={{ background: 'var(--brand-accent)' }}
+        />
+        {/* Grid pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage:
+              'linear-gradient(var(--brand-primary) 1px, transparent 1px), linear-gradient(90deg, var(--brand-primary) 1px, transparent 1px)',
+            backgroundSize: '48px 48px',
+          }}
+        />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left — copy */}
-          <div className="text-center lg:text-left order-2 lg:order-1">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6 border border-primary/20">
-              <Sparkles size={14} aria-hidden="true" />
-              <span>Brand Identity & Web Design</span>
-            </div>
+      <div className="relative z-10 max-w-6xl mx-auto px-6 flex flex-col items-center text-center gap-8">
+        {/* Badge */}
+        <div
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-medium"
+          style={{
+            borderColor: 'rgba(99,102,241,0.25)',
+            background: 'rgba(99,102,241,0.06)',
+            color: 'var(--brand-primary)',
+          }}
+        >
+          <Sparkles className="w-4 h-4" aria-hidden="true" />
+          <span>Creative Design for Startups</span>
+        </div>
 
-            <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-balance mb-6">
-              Bold Brands That{" "}
-              <span className="text-gradient-primary">Demand Attention</span>
-            </h1>
+        {/* Headline */}
+        <h1
+          className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-balance"
+          style={{ color: 'var(--brand-text)' }}
+        >
+          Transform Your{' '}
+          <span className="text-gradient-primary">Startup's Brand</span>
+          <br />
+          Into Success
+        </h1>
 
-            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0 text-pretty">
-              I transform startup visions into unforgettable brand identities and high-converting
-              websites that make competitors jealous.
-            </p>
+        {/* Sub-headline */}
+        <p
+          className="max-w-2xl text-lg md:text-xl leading-relaxed"
+          style={{ color: 'var(--brand-text-muted)' }}
+        >
+          Creative designer crafting compelling brand identities and websites that help
+          startups stand out and grow in competitive markets.
+        </p>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Link
-                href="#portfolio"
-                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold text-white bg-gradient-brand hover:opacity-90 hover:shadow-xl hover:shadow-primary/30 transition-all duration-200 group"
+        {/* CTAs */}
+        <div className="flex flex-col sm:flex-row gap-4 items-center">
+          <Link
+            href="#portfolio"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-base transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+            style={{
+              background: 'var(--brand-accent)',
+              color: '#FFFFFF',
+            }}
+            aria-label="View my work"
+          >
+            View My Work
+            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+          </Link>
+          <Link
+            href="#about"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-base border transition-all duration-200 hover:-translate-y-0.5"
+            style={{
+              borderColor: 'var(--brand-border)',
+              color: 'var(--brand-text)',
+              background: 'var(--brand-surface)',
+            }}
+          >
+            Learn More
+          </Link>
+        </div>
+
+        {/* Social proof row */}
+        <div
+          className="flex items-center gap-6 pt-2 flex-wrap justify-center"
+          style={{ color: 'var(--brand-text-muted)' }}
+        >
+          {[
+            { value: '50+', label: 'Startups Launched' },
+            { value: '95%', label: 'Client Satisfaction' },
+            { value: '3x', label: 'Brand Recognition' },
+          ].map((stat) => (
+            <div key={stat.label} className="flex flex-col items-center gap-0.5">
+              <span
+                className="font-serif text-2xl font-bold"
+                style={{ color: 'var(--brand-primary)' }}
               >
-                See My Work
-                <ArrowRight
-                  size={18}
-                  className="transition-transform duration-200 group-hover:translate-x-1"
-                  aria-hidden="true"
-                />
-              </Link>
-              <a
-                href="mailto:jane@janedesigner.com"
-                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold text-foreground border-2 border-border hover:border-primary hover:text-primary transition-all duration-200"
-              >
-                Get in Touch
-              </a>
+                {stat.value}
+              </span>
+              <span className="text-xs font-medium uppercase tracking-wide">{stat.label}</span>
             </div>
+          ))}
+        </div>
 
-            {/* Social proof strip */}
-            <div className="mt-12 flex flex-wrap items-center gap-6 justify-center lg:justify-start">
-              <div className="flex -space-x-3">
-                {["S", "M", "E", "A"].map((initial, i) => (
-                  <div
-                    key={i}
-                    className="w-9 h-9 rounded-full border-2 border-white flex items-center justify-center text-xs font-bold text-white"
-                    style={{
-                      background: ["#6366F1", "#EC4899", "#06B6D4", "#8B5CF6"][i],
-                    }}
-                    aria-hidden="true"
-                  >
-                    {initial}
-                  </div>
-                ))}
-              </div>
-              <p className="text-sm text-muted-foreground">
-                <span className="font-semibold text-foreground">50+ startups</span> launched &amp;
-                growing
-              </p>
-            </div>
-          </div>
-
-          {/* Right — image */}
-          <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-md lg:max-w-lg">
-              {/* Decorative ring */}
-              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-primary/20 to-secondary/20 blur-xl" />
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-primary/20">
-                <Image
-                  src="https://images.unsplash.com/photo-1717079556888-c23cb91b450f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMGRlc2lnbmVyJTIwd29ya3NwYWNlJTIwYm9sZCUyMGNvbG9yZnVsJTIwYnJhbmRpbmclMjBtYXRlcmlhbHN8ZW58MHwwfHx8MTc3MTk2Njg3NHww&ixlib=rb-4.1.0&q=80&w=1080"
-                  alt="Creative designer workspace with colorful branding materials"
-                  width={1080}
-                  height={810}
-                  className="w-full h-auto object-cover"
-                  priority
-                />
-              </div>
-              {/* Floating stat card */}
-              <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl p-4 shadow-xl border border-border flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-brand flex items-center justify-center text-white text-lg font-bold flex-shrink-0">
-                  ↑
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground">Avg. conversion lift</p>
-                  <p className="text-lg font-bold text-foreground font-serif">+180%</p>
-                </div>
-              </div>
-              {/* Floating badge */}
-              <div className="absolute -top-4 -right-4 bg-accent rounded-2xl px-4 py-2 shadow-lg text-white font-semibold text-sm">
-                🏆 Top Rated
-              </div>
-            </div>
-          </div>
+        {/* Hero image */}
+        <div className="relative w-full max-w-4xl mt-4 rounded-2xl overflow-hidden glow-primary">
+          <div
+            className="absolute inset-0 z-10 rounded-2xl"
+            style={{
+              background:
+                'linear-gradient(to bottom, transparent 60%, rgba(250,251,255,0.95) 100%)',
+            }}
+            aria-hidden="true"
+          />
+          <Image
+            src="https://images.unsplash.com/photo-1455994972514-4624f7f224a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBmZW1hbGUlMjBkZXNpZ25lciUyMHdvcmtzcGFjZSUyMGNyZWF0aXZlJTIwc3R1ZGlvJTIwbW9kZXJufGVufDB8MHx8fDE3NzIxMjg4MDl8MA&ixlib=rb-4.1.0&q=80&w=1080"
+            alt="Jane Designer's creative workspace — modern design studio environment"
+            width={1080}
+            height={600}
+            className="w-full object-cover"
+            priority
+          />
         </div>
       </div>
     </section>

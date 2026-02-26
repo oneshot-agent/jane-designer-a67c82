@@ -1,27 +1,25 @@
-import { Navbar } from "@/components/navbar"
-import { HeroSection } from "@/components/hero-section"
-import { FeaturesSection } from "@/components/features-section"
-import { PortfolioSection } from "@/components/portfolio-section"
-import { TestimonialsSection } from "@/components/testimonials-section"
-import { ServicesSection } from "@/components/services-section"
-import { AboutSection } from "@/components/about-section"
-import { CtaSection } from "@/components/cta-section"
-import { Footer } from "@/components/footer"
+import { Navbar } from '@/components/navbar'
+import { HeroSection } from '@/components/hero-section'
+import { AboutSection } from '@/components/about-section'
+import { ServicesSection } from '@/components/services-section'
+import { PortfolioSection } from '@/components/portfolio-section'
+import { ProcessSection } from '@/components/process-section'
+import { TestimonialsSection } from '@/components/testimonials-section'
+import { CtaSection } from '@/components/cta-section'
+import { Footer } from '@/components/footer'
 
 export default function Home() {
   return (
-    <>
+    <main>
       <Navbar />
-      <main>
-        <HeroSection />
-        <FeaturesSection />
-        <PortfolioSection />
-        <TestimonialsSection />
-        <ServicesSection />
-        <AboutSection />
-        <CtaSection />
-      </main>
+      <HeroSection />
+      <AboutSection />
+      <ServicesSection />
+      <PortfolioSection />
+      <ProcessSection />
+      <TestimonialsSection />
+      <CtaSection />
       <Footer />
-    </>
+    </main>
   )
 }

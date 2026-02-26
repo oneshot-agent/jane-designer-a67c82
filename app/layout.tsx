@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Space_Grotesk } from 'next/font/google'
+import { Space_Grotesk, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
@@ -18,35 +18,34 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: 'Jane Designer — Brand Identity & Web Design for Startups',
   description:
-    'Creative designer specializing in brand identity and web design for startups. I transform startup visions into unforgettable brand identities and high-converting websites.',
-  keywords: ['brand identity', 'web design', 'startup design', 'logo design', 'UI/UX'],
+    'Creative designer specializing in brand identity and web design for startups. Helping emerging businesses stand out and grow in competitive markets.',
+  keywords: [
+    'brand identity',
+    'web design',
+    'startup designer',
+    'logo design',
+    'UX design',
+    'Jane Designer',
+  ],
   authors: [{ name: 'Jane Designer' }],
   openGraph: {
     title: 'Jane Designer — Brand Identity & Web Design for Startups',
     description:
-      'Creative designer specializing in brand identity and web design for startups. Bold brands that demand attention.',
+      'Creative designer specializing in brand identity and web design for startups.',
     type: 'website',
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Jane Designer — Brand Identity & Web Design for Startups',
-    description: 'Creative designer specializing in brand identity and web design for startups.',
+    description:
+      'Creative designer specializing in brand identity and web design for startups.',
   },
   icons: {
     icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
+      { url: '/icon-light-32x32.png', media: '(prefers-color-scheme: light)' },
+      { url: '/icon-dark-32x32.png', media: '(prefers-color-scheme: dark)' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
     ],
     apple: '/apple-icon.png',
   },

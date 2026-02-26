@@ -4,40 +4,78 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.999 0 0);
-  --foreground: oklch(0.178 0.037 264.052);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.178 0.037 264.052);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.178 0.037 264.052);
-  --primary: oklch(0.585 0.233 278.393);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.178 0.037 264.052);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.52 0.03 264.052);
-  --accent: oklch(0.657 0.254 355.59);
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.918 0.012 260);
-  --input: oklch(0.918 0.012 260);
-  --ring: oklch(0.585 0.233 278.393);
-  --radius: 0.75rem;
-
-  /* Brand custom tokens */
+  /* Brand colors */
   --brand-primary: #6366F1;
-  --brand-secondary: #F1F5F9;
-  --brand-accent: #EC4899;
+  --brand-secondary: #8B5CF6;
+  --brand-accent: #F59E0B;
   --brand-bg: #FEFEFE;
   --brand-text: #1E293B;
-  --brand-primary-light: oklch(0.93 0.05 278.393);
-  --brand-accent-light: oklch(0.93 0.06 355.59);
+
+  /* Design tokens */
+  --background: oklch(0.999 0 0);             /* #FEFEFE */
+  --foreground: oklch(0.185 0.032 254.6);     /* #1E293B */
+  --card: oklch(0.99 0 0);
+  --card-foreground: oklch(0.185 0.032 254.6);
+  --popover: oklch(0.999 0 0);
+  --popover-foreground: oklch(0.185 0.032 254.6);
+  --primary: oklch(0.564 0.214 267.5);        /* #6366F1 indigo */
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.51 0.211 291.6);       /* #8B5CF6 violet */
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.964 0.008 264);
+  --muted-foreground: oklch(0.52 0.03 254.6);
+  --accent: oklch(0.738 0.178 73.5);          /* #F59E0B amber */
+  --accent-foreground: oklch(0.185 0.032 254.6);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.92 0.01 264);
+  --input: oklch(0.92 0.01 264);
+  --ring: oklch(0.564 0.214 267.5);
+  --radius: 0.75rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.185 0.032 254.6);
+  --sidebar-primary: oklch(0.564 0.214 267.5);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.964 0.008 264);
+  --sidebar-accent-foreground: oklch(0.185 0.032 254.6);
+  --sidebar-border: oklch(0.92 0.01 264);
+  --sidebar-ring: oklch(0.564 0.214 267.5);
+}
+
+.dark {
+  --background: oklch(0.12 0.025 264);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.15 0.025 264);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.15 0.025 264);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.64 0.2 267.5);
+  --primary-foreground: oklch(0.12 0.025 264);
+  --secondary: oklch(0.58 0.2 291.6);
+  --secondary-foreground: oklch(0.12 0.025 264);
+  --muted: oklch(0.22 0.02 264);
+  --muted-foreground: oklch(0.7 0.02 264);
+  --accent: oklch(0.738 0.178 73.5);
+  --accent-foreground: oklch(0.12 0.025 264);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.25 0.02 264);
+  --input: oklch(0.25 0.02 264);
+  --ring: oklch(0.64 0.2 267.5);
+  --sidebar: oklch(0.15 0.025 264);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.64 0.2 267.5);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.22 0.02 264);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.25 0.02 264);
+  --sidebar-ring: oklch(0.64 0.2 267.5);
 }
 
 @theme inline {
-  --font-sans: 'Inter', 'Inter Fallback';
-  --font-display: 'Space Grotesk', 'Space Grotesk Fallback';
+  --font-sans: var(--font-body), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-heading), 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -57,67 +95,34 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-  html {
-    scroll-behavior: smooth;
-  }
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    background-color: var(--brand-bg);
-    color: var(--brand-text);
+    @apply bg-background text-foreground;
+    font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
-  }
-}
-
-@layer utilities {
-  .font-display {
-    font-family: var(--font-display);
-  }
-  .gradient-primary {
-    background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
-  }
-  .gradient-accent {
-    background: linear-gradient(135deg, #EC4899 0%, #F43F5E 100%);
-  }
-  .gradient-text-primary {
-    background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .gradient-text-accent {
-    background: linear-gradient(135deg, #EC4899 0%, #F43F5E 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .bg-grid-pattern {
-    background-image: radial-gradient(circle, #6366F120 1px, transparent 1px);
-    background-size: 32px 32px;
-  }
-  .animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
-  }
-  .animate-fade-up {
-    animation: fadeUp 0.6s ease-out forwards;
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
+  .font-heading {
+    font-family: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
   }
 }

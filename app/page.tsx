@@ -1,25 +1,26 @@
-import Navbar from '@/components/navbar'
-import HeroSection from '@/components/hero-section'
-import AboutSection from '@/components/about-section'
-import ServicesSection from '@/components/services-section'
-import PortfolioSection from '@/components/portfolio-section'
-import TestimonialsSection from '@/components/testimonials-section'
-import ProcessSection from '@/components/process-section'
-import CtaSection from '@/components/cta-section'
-import Footer from '@/components/footer'
+import { Nav } from '@/components/nav'
+import { Hero } from '@/components/hero'
+import { About } from '@/components/about'
+import { Services } from '@/components/services'
+import { Portfolio } from '@/components/portfolio'
+import { Process } from '@/components/process'
+import { Testimonials } from '@/components/testimonials'
+import { CTA, Footer } from '@/components/cta-footer'
 
-export default function Home() {
+export default function Page() {
   return (
-    <main className="min-h-screen bg-[#FEFEFE]">
-      <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <ServicesSection />
-      <PortfolioSection />
-      <TestimonialsSection />
-      <ProcessSection />
-      <CtaSection />
+    <>
+      <Nav />
+      <main>
+        <Hero />
+        <About />
+        <Services />
+        <Portfolio />
+        <Process />
+        <Testimonials />
+        <CTA />
+      </main>
       <Footer />
-    </main>
+    </>
   )
 }

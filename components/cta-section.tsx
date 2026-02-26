@@ -1,90 +1,83 @@
-import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight, Mail } from 'lucide-react'
 
-export function CtaSection() {
+export default function CtaSection() {
   return (
     <section
-      id="contact"
-      className="py-24 md:py-32 bg-gradient-hero"
+      className="section-pad bg-background"
       aria-labelledby="cta-heading"
     >
-      <div className="max-w-4xl mx-auto px-6">
-        <div
-          className="relative flex flex-col items-center text-center gap-8 p-12 md:p-16 rounded-3xl overflow-hidden"
-          style={{ background: 'var(--brand-surface)', border: '1px solid var(--brand-border)' }}
-        >
-          {/* Background decoration */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-            <div
-              className="absolute -top-16 -left-16 w-64 h-64 rounded-full opacity-8"
-              style={{ background: 'var(--brand-primary)' }}
-            />
-            <div
-              className="absolute -bottom-16 -right-16 w-64 h-64 rounded-full opacity-8"
-              style={{ background: 'var(--brand-secondary)' }}
-            />
-            <div
-              className="absolute inset-0 opacity-[0.02]"
-              style={{
-                backgroundImage:
-                  'linear-gradient(var(--brand-primary) 1px, transparent 1px), linear-gradient(90deg, var(--brand-primary) 1px, transparent 1px)',
-                backgroundSize: '32px 32px',
-              }}
-            />
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative rounded-3xl overflow-hidden bg-foreground shadow-2xl shadow-foreground/20">
+          {/* Background image */}
+          <Image
+            src="https://images.unsplash.com/photo-1586936893354-362ad6ae47ba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBjb2xsYWJvcmF0aW9uJTIwbWVldGluZyUyMHN0YXJ0dXAlMjBkZXNpZ24lMjBjb25zdWx0YXRpb258ZW58MHwwfHx8MTc3MjE0MTk5M3ww&ixlib=rb-4.1.0&q=80&w=1080"
+            alt="Professional collaboration meeting for startup design consultation"
+            fill
+            sizes="100vw"
+            className="object-cover opacity-25"
+          />
 
-          {/* Badge */}
+          {/* Gradient overlay */}
           <div
-            className="relative inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-medium"
-            style={{
-              borderColor: 'rgba(245,158,11,0.3)',
-              background: 'rgba(245,158,11,0.08)',
-              color: 'var(--brand-accent)',
-            }}
-          >
-            <Mail className="w-4 h-4" aria-hidden="true" />
-            <span>Available for New Projects</span>
-          </div>
+            className="absolute inset-0 bg-gradient-to-br from-primary/80 via-foreground/80 to-accent/60"
+            aria-hidden="true"
+          />
 
-          {/* Headline */}
-          <h2
-            id="cta-heading"
-            className="relative font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance"
-            style={{ color: 'var(--brand-text)' }}
-          >
-            Ready to Elevate{' '}
-            <span className="text-gradient-primary">Your Brand?</span>
-          </h2>
+          {/* Geometric decorations */}
+          <div className="absolute top-8 right-8 w-32 h-32 border border-white/10 rounded-3xl rotate-12" aria-hidden="true" />
+          <div className="absolute bottom-8 left-8 w-20 h-20 border border-white/10 rounded-2xl -rotate-6" aria-hidden="true" />
+          <div className="absolute top-1/2 right-1/4 w-4 h-4 rounded-full bg-accent/40" aria-hidden="true" />
 
-          {/* Sub-headline */}
-          <p
-            className="relative max-w-xl text-lg leading-relaxed"
-            style={{ color: 'var(--brand-text-muted)' }}
-          >
-            Let's discuss how strategic design can accelerate your startup's growth and
-            market success.
-          </p>
+          {/* Content */}
+          <div className="relative z-10 py-20 px-8 md:px-16 lg:px-24 text-center">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white text-xs font-semibold tracking-wide uppercase mb-6 backdrop-blur">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+              Let&apos;s Work Together
+            </div>
 
-          {/* CTAs */}
-          <div className="relative flex flex-col sm:flex-row gap-4 items-center">
-            <Link
-              href="mailto:jane@janedesigner.com"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-base transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
-              style={{ background: 'var(--brand-accent)', color: '#FFFFFF' }}
+            <h2
+              id="cta-heading"
+              className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white tracking-tight text-balance mb-6 max-w-3xl mx-auto"
             >
-              Start Your Project
-              <ArrowRight className="w-4 h-4" aria-hidden="true" />
-            </Link>
-            <Link
-              href="#portfolio"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-base border transition-all duration-200 hover:-translate-y-0.5"
-              style={{
-                borderColor: 'var(--brand-border)',
-                color: 'var(--brand-text)',
-              }}
-            >
-              View Full Portfolio
-            </Link>
+              Ready to Build{' '}
+              <span className="text-accent">Your Brand?</span>
+            </h2>
+
+            <p className="max-w-xl mx-auto text-white/75 text-base md:text-lg leading-relaxed mb-10 text-balance">
+              Let&apos;s create a design strategy that sets your startup up for success.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="mailto:jane@janedesigner.com"
+                className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-accent text-white font-semibold text-sm shadow-lg shadow-accent/30 hover:bg-accent/90 hover:shadow-accent/40 hover:scale-[1.02] transition-all duration-200"
+              >
+                <Mail className="w-4 h-4" aria-hidden="true" />
+                Start Your Project
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
+              </a>
+              <a
+                href="#portfolio"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl border border-white/25 text-white font-semibold text-sm hover:bg-white/10 hover:border-white/40 transition-all duration-200 backdrop-blur"
+              >
+                View Portfolio
+              </a>
+            </div>
+
+            {/* Trust indicators */}
+            <div className="flex flex-wrap items-center justify-center gap-8 mt-12 pt-8 border-t border-white/10">
+              {[
+                { value: '50+', label: 'Projects Completed' },
+                { value: '98%', label: 'Satisfaction Rate' },
+                { value: '5★', label: 'Average Rating' },
+              ].map((item) => (
+                <div key={item.label} className="text-center">
+                  <p className="font-serif font-bold text-2xl text-white">{item.value}</p>
+                  <p className="text-white/60 text-xs mt-0.5">{item.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

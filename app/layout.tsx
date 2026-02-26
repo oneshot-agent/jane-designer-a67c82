@@ -1,13 +1,6 @@
 import type { Metadata } from 'next'
-import { Inter, Space_Grotesk } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
+import { Space_Grotesk, Inter } from 'next/font/google'
 import './globals.css'
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-})
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -15,43 +8,43 @@ const spaceGrotesk = Space_Grotesk({
   display: 'swap',
 })
 
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
-  title: 'Jane Designer – Brand Identity & Web Design for Startups',
+  title: 'Jane Designer — Brand Identity & Web Design for Startups',
   description:
-    'Creative designer helping startups build memorable brands and convert-focused websites that drive growth and customer trust.',
-  keywords: ['brand identity', 'web design', 'startup design', 'logo design', 'UI/UX design'],
+    'Creative designer helping startups build memorable brand identities and high-performing websites that drive growth. 50+ startups helped, 98% client satisfaction.',
+  keywords: [
+    'brand identity design',
+    'web design',
+    'startup branding',
+    'logo design',
+    'UX design',
+    'creative designer',
+  ],
   authors: [{ name: 'Jane Designer' }],
   openGraph: {
-    title: 'Jane Designer – Brand Identity & Web Design for Startups',
+    title: 'Jane Designer — Brand Identity & Web Design for Startups',
     description:
-      'Creative designer helping startups build memorable brands and convert-focused websites.',
+      'Creative designer helping startups build memorable brand identities and high-performing websites that drive growth.',
     type: 'website',
-    url: 'https://janedesigner.com',
+    locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Jane Designer – Brand Identity & Web Design for Startups',
+    title: 'Jane Designer — Brand Identity & Web Design for Startups',
     description:
-      'Creative designer helping startups build memorable brands and convert-focused websites.',
+      'Creative designer helping startups build memorable brand identities and high-performing websites.',
   },
-  generator: 'v0.app',
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
   },
+  themeColor: '#6366F1',
 }
 
 export default function RootLayout({
@@ -60,13 +53,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body
-        className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}
-      >
-        {children}
-        <Analytics />
-      </body>
+    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
+      <body className="font-sans antialiased">{children}</body>
     </html>
   )
 }

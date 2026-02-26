@@ -1,137 +1,100 @@
-import { Search, Lightbulb, Pencil, Rocket } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
-
 interface Step {
-  icon: LucideIcon
+  number: string
   title: string
   description: string
-  step: string
 }
 
 const steps: Step[] = [
   {
-    icon: Search,
-    title: 'Discovery & Research',
+    number: '01',
+    title: 'Discovery & Strategy',
     description:
-      'Deep dive into your business goals, target audience, and competitive landscape to inform strategic design decisions.',
-    step: '01',
+      'Deep dive into your business goals, target audience, and competitive landscape to create a strategic foundation.',
   },
   {
-    icon: Lightbulb,
+    number: '02',
     title: 'Concept Development',
     description:
-      'Create initial concepts and design directions based on research insights and your unique brand story.',
-    step: '02',
+      'Create multiple design concepts and iterate based on your feedback to find the perfect creative direction.',
   },
   {
-    icon: Pencil,
+    number: '03',
     title: 'Design & Refinement',
     description:
-      'Develop polished designs with multiple revision rounds to ensure perfect alignment with your vision.',
-    step: '03',
+      'Develop the chosen concept into polished designs with attention to every detail and user experience.',
   },
   {
-    icon: Rocket,
+    number: '04',
     title: 'Launch & Support',
     description:
-      'Deliver final assets and provide ongoing support to ensure successful implementation and brand consistency.',
-    step: '04',
+      'Deliver final assets and provide ongoing support to ensure successful implementation and results.',
   },
 ]
 
-export function ProcessSection() {
+export default function ProcessSection() {
   return (
     <section
       id="process"
-      className="py-24 md:py-32 bg-gradient-hero"
+      className="section-pad bg-background"
       aria-labelledby="process-heading"
     >
-      <div className="max-w-6xl mx-auto px-6 flex flex-col gap-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col items-center text-center gap-4 max-w-2xl mx-auto">
-          <span
-            className="text-sm font-semibold uppercase tracking-widest"
-            style={{ color: 'var(--brand-primary)' }}
-          >
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 text-accent text-xs font-semibold tracking-wide uppercase mb-4">
             How It Works
-          </span>
+          </div>
           <h2
             id="process-heading"
-            className="font-serif text-4xl md:text-5xl font-bold leading-tight text-balance"
-            style={{ color: 'var(--brand-text)' }}
+            className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-foreground tracking-tight text-balance mb-4"
           >
-            My Proven{' '}
-            <span className="text-gradient-primary">Design Process</span>
+            My Design Process
           </h2>
-          <p
-            className="text-lg leading-relaxed"
-            style={{ color: 'var(--brand-text-muted)' }}
-          >
-            A structured, collaborative approach that delivers exceptional results every time.
+          <p className="max-w-xl mx-auto text-muted-foreground leading-relaxed text-balance">
+            A proven 4-step approach that delivers results on time and on budget
           </p>
         </div>
 
         {/* Steps */}
         <div className="relative">
-          {/* Connecting line (desktop) */}
+          {/* Connector line — desktop */}
           <div
-            className="hidden lg:block absolute top-12 left-0 right-0 h-px opacity-20"
-            style={{ background: 'var(--brand-primary)' }}
+            className="absolute top-8 left-0 right-0 h-0.5 bg-gradient-to-r from-primary/20 via-accent/30 to-primary/20 hidden lg:block"
             aria-hidden="true"
           />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map((step, index) => {
-              const Icon = step.icon
-              const isEven = index % 2 === 1
-              return (
-                <article
-                  key={step.title}
-                  className="relative flex flex-col items-start gap-5 p-6 rounded-2xl border card-hover"
-                  style={{
-                    background: 'var(--brand-surface)',
-                    borderColor: 'var(--brand-border)',
-                  }}
-                >
-                  {/* Step number */}
-                  <div className="flex items-center justify-between w-full">
-                    <div
-                      className="w-12 h-12 flex items-center justify-center rounded-2xl"
-                      style={{
-                        background: isEven
-                          ? 'linear-gradient(135deg, var(--brand-secondary), var(--brand-accent))'
-                          : 'linear-gradient(135deg, var(--brand-primary), var(--brand-secondary))',
-                      }}
-                      aria-hidden="true"
-                    >
-                      <Icon className="w-6 h-6 text-white" />
-                    </div>
-                    <span
-                      className="font-serif text-4xl font-bold opacity-10 select-none"
-                      style={{ color: 'var(--brand-primary)' }}
-                      aria-hidden="true"
-                    >
-                      {step.step}
-                    </span>
-                  </div>
+            {steps.map((step, index) => (
+              <div
+                key={step.number}
+                className="group relative flex flex-col items-start lg:items-center lg:text-center"
+              >
+                {/* Number badge */}
+                <div className="relative z-10 w-16 h-16 rounded-2xl bg-card border-2 border-border group-hover:border-primary/50 flex items-center justify-center mb-6 transition-all duration-300 shadow-sm group-hover:shadow-primary/10 group-hover:shadow-lg">
+                  <span className="font-serif font-bold text-xl text-gradient-primary">
+                    {step.number}
+                  </span>
+                  {/* Pulse ring on hover */}
+                  <div className="absolute inset-0 rounded-2xl bg-primary/5 scale-0 group-hover:scale-110 opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                </div>
 
-                  <div className="flex flex-col gap-2">
-                    <h3
-                      className="font-serif text-lg font-bold"
-                      style={{ color: 'var(--brand-text)' }}
-                    >
-                      {step.title}
-                    </h3>
-                    <p
-                      className="text-sm leading-relaxed"
-                      style={{ color: 'var(--brand-text-muted)' }}
-                    >
-                      {step.description}
-                    </p>
-                  </div>
-                </article>
-              )
-            })}
+                {/* Content */}
+                <h3 className="font-serif font-bold text-lg text-foreground mb-2">
+                  {step.title}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {step.description}
+                </p>
+
+                {/* Mobile connector */}
+                {index < steps.length - 1 && (
+                  <div
+                    className="sm:hidden w-0.5 h-8 bg-gradient-to-b from-primary/30 to-transparent mt-4 ml-8"
+                    aria-hidden="true"
+                  />
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </div>

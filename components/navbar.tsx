@@ -1,65 +1,114 @@
+'use client'
+
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { Menu, X } from 'lucide-react'
 
 const navLinks = [
-  { href: '#about', label: 'About' },
-  { href: '#services', label: 'Services' },
-  { href: '#portfolio', label: 'Portfolio' },
-  { href: '#process', label: 'Process' },
-  { href: '#testimonials', label: 'Testimonials' },
+  { label: 'Services', href: '#features' },
+  { label: 'Work', href: '#portfolio' },
+  { label: 'Process', href: '#process' },
+  { label: 'Testimonials', href: '#testimonials' },
 ]
 
-export function Navbar() {
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 16)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 bg-[#FEFEFE]/80 backdrop-blur-md border-b border-[#6366F1]/10"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-border'
+          : 'bg-transparent'
+      }`}
       role="banner"
     >
       <nav
-        className="container mx-auto px-6 md:px-8 lg:px-12 h-16 flex items-center justify-between"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-18"
         aria-label="Main navigation"
       >
         {/* Logo */}
         <Link
-          href="#hero"
-          className="font-serif font-bold text-xl text-[#1E293B] hover:text-[#6366F1] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6366F1] rounded"
-          aria-label="Jane Designer - Go to homepage"
+          href="/"
+          className="flex items-center gap-2 font-serif font-bold text-lg text-foreground hover:text-primary transition-colors"
+          aria-label="Jane Designer — Home"
         >
-          Jane<span className="text-[#6366F1]">.</span>
+          <span className="w-8 h-8 rounded-lg bg-gradient-brand flex items-center justify-center text-white text-sm font-bold">
+            JD
+          </span>
+          <span>Jane Designer</span>
         </Link>
 
-        {/* Desktop nav */}
-        <ul className="hidden md:flex items-center gap-6" role="list">
+        {/* Desktop Nav */}
+        <ul className="hidden md:flex items-center gap-8" role="list">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <Link
+              <a
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-[#6366F1] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6366F1] rounded"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link.label}
-              </Link>
+              </a>
             </li>
           ))}
         </ul>
 
         {/* CTA */}
-        <a
-          href="mailto:jane@janedesigner.com"
-          className="hidden md:inline-flex items-center px-5 py-2 rounded-lg bg-[#F59E0B] text-white font-semibold text-sm hover:bg-[#D97706] transition-all duration-200 shadow-md shadow-[#F59E0B]/20 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B] focus-visible:ring-offset-2"
-        >
-          Let&apos;s Talk
-        </a>
+        <div className="hidden md:flex items-center gap-3">
+          <a
+            href="mailto:jane@janedesigner.com"
+            className="text-sm font-semibold px-4 py-2 rounded-lg bg-accent text-accent-foreground hover:bg-accent/90 transition-colors"
+          >
+            Start a Project
+          </a>
+        </div>
 
-        {/* Mobile menu placeholder — accessible disclosure */}
+        {/* Mobile toggle */}
         <button
-          className="md:hidden inline-flex flex-col gap-1.5 p-2 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6366F1]"
-          aria-label="Toggle mobile menu"
-          aria-expanded="false"
+          className="md:hidden p-2 rounded-md text-foreground hover:bg-muted transition-colors"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
+          aria-label={isOpen ? 'Close menu' : 'Open menu'}
         >
-          <span className="w-5 h-0.5 bg-[#1E293B] rounded-full" />
-          <span className="w-5 h-0.5 bg-[#1E293B] rounded-full" />
-          <span className="w-3 h-0.5 bg-[#1E293B] rounded-full" />
+          {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </nav>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div
+          id="mobile-menu"
+          className="md:hidden bg-white border-t border-border px-4 pb-6 pt-2 shadow-lg"
+        >
+          <ul className="flex flex-col gap-1" role="list">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block py-3 px-2 text-sm font-medium text-foreground hover:text-primary transition-colors rounded-md hover:bg-muted"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a
+            href="mailto:jane@janedesigner.com"
+            className="mt-4 block text-center text-sm font-semibold px-4 py-3 rounded-lg bg-accent text-accent-foreground hover:bg-accent/90 transition-colors"
+          >
+            Start a Project
+          </a>
+        </div>
+      )}
     </header>
   )
 }

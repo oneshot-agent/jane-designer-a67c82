@@ -1,103 +1,69 @@
-import Link from 'next/link'
-import { Mail, Linkedin, Twitter, Instagram } from 'lucide-react'
+import { Dribbble, Twitter, Linkedin, Mail } from 'lucide-react'
 
 const footerLinks = [
-  { href: '#about', label: 'About' },
-  { href: '#services', label: 'Services' },
-  { href: '#portfolio', label: 'Portfolio' },
-  { href: '#process', label: 'Process' },
-  { href: '#testimonials', label: 'Testimonials' },
+  { label: 'Services', href: '#features' },
+  { label: 'Work', href: '#portfolio' },
+  { label: 'Process', href: '#process' },
+  { label: 'Testimonials', href: '#testimonials' },
 ]
 
 const socialLinks = [
-  { href: 'https://twitter.com', label: 'Twitter', Icon: Twitter },
-  { href: 'https://linkedin.com', label: 'LinkedIn', Icon: Linkedin },
-  { href: 'https://instagram.com', label: 'Instagram', Icon: Instagram },
+  { icon: Dribbble, label: 'Dribbble', href: '#' },
+  { icon: Twitter, label: 'Twitter', href: '#' },
+  { icon: Linkedin, label: 'LinkedIn', href: '#' },
+  { icon: Mail, label: 'Email', href: 'mailto:jane@janedesigner.com' },
 ]
 
-export function Footer() {
+export default function Footer() {
   return (
-    <footer
-      className="bg-[#1E293B] text-white py-16"
-      role="contentinfo"
-    >
-      <div className="container mx-auto px-6 md:px-8 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+    <footer className="bg-secondary border-t border-border" role="contentinfo">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Brand */}
-          <div>
-            <Link
-              href="#hero"
-              className="font-serif font-bold text-2xl text-white hover:text-[#A5B4FC] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6366F1] rounded"
-            >
-              Jane<span className="text-[#6366F1]">.</span>
-            </Link>
-            <p className="mt-4 text-sm text-slate-400 leading-relaxed max-w-xs">
-              Creative designer helping startups build memorable brands and
-              convert-focused websites.
-            </p>
-            {/* Social links */}
-            <div className="flex gap-3 mt-6">
-              {socialLinks.map(({ href, label, Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={`Follow on ${label}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-slate-400 hover:bg-[#6366F1] hover:text-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6366F1]"
-                >
-                  <Icon className="w-4 h-4" aria-hidden="true" />
-                </a>
-              ))}
-            </div>
+          <div className="flex items-center gap-2">
+            <span className="w-8 h-8 rounded-lg bg-gradient-brand flex items-center justify-center text-white text-sm font-bold">
+              JD
+            </span>
+            <span className="font-serif font-bold text-foreground">Jane Designer</span>
           </div>
 
-          {/* Navigation */}
-          <div>
-            <h3 className="font-serif font-semibold text-sm uppercase tracking-wider text-slate-400 mb-6">
-              Navigation
-            </h3>
-            <ul className="space-y-3" role="list">
+          {/* Nav links */}
+          <nav aria-label="Footer navigation">
+            <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2" role="list">
               {footerLinks.map((link) => (
                 <li key={link.href}>
-                  <Link
+                  <a
                     href={link.href}
-                    className="text-sm text-slate-400 hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6366F1] rounded"
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Contact */}
-          <div>
-            <h3 className="font-serif font-semibold text-sm uppercase tracking-wider text-slate-400 mb-6">
-              Get in Touch
-            </h3>
-            <a
-              href="mailto:jane@janedesigner.com"
-              className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors duration-200 mb-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6366F1] rounded"
-            >
-              <Mail className="w-4 h-4" aria-hidden="true" />
-              jane@janedesigner.com
-            </a>
-            <a
-              href="mailto:jane@janedesigner.com"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#F59E0B] text-white font-semibold text-sm hover:bg-[#D97706] transition-all duration-200 shadow-lg shadow-[#F59E0B]/20 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1E293B]"
-            >
-              Start a Project
-            </a>
+          {/* Social links */}
+          <div className="flex items-center gap-3">
+            {socialLinks.map(({ icon: Icon, label, href }) => (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                className="w-9 h-9 rounded-lg bg-muted hover:bg-primary hover:text-white flex items-center justify-center text-muted-foreground transition-all duration-200"
+              >
+                <Icon className="w-4 h-4" aria-hidden="true" />
+              </a>
+            ))}
           </div>
         </div>
 
-        {/* Divider + copyright */}
-        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>
-            &copy; {new Date().getFullYear()} Jane Designer. All rights reserved.
+        <div className="mt-8 pt-6 border-t border-border text-center">
+          <p className="text-xs text-muted-foreground">
+            &copy; {new Date().getFullYear()} Jane Designer. All rights reserved.{' '}
+            <span className="mx-2 text-border">|</span>
+            Crafted with care for startup founders.
           </p>
-          <p>Crafted with care for startups everywhere.</p>
         </div>
       </div>
     </footer>

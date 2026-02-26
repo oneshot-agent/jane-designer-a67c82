@@ -1,144 +1,109 @@
 import Image from 'next/image'
 import { ArrowUpRight } from 'lucide-react'
 
-const projects = [
+interface Project {
+  title: string
+  category: string
+  description: string
+  image: string
+  alt: string
+  span?: string
+}
+
+const projects: Project[] = [
   {
     title: 'TechFlow Startup',
     category: 'Brand Identity & Web Design',
     description:
-      'Complete rebrand and website redesign resulting in 200% increase in qualified leads within 6 months.',
-    accent: 'var(--brand-primary)',
-    span: 'lg:col-span-2',
+      'Complete brand overhaul resulting in 150% increase in user engagement and successful Series A funding.',
+    image:
+      'https://images.unsplash.com/photo-1763630730206-2c3a5d6c82d1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxwb3J0Zm9saW8lMjBzaG93Y2FzZSUyMGRlc2lnbiUyMHByb2plY3RzJTIwY3JlYXRpdmUlMjB3b3JrfGVufDB8MHx8fDE3NzIxNDE5OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    alt: 'TechFlow Startup brand identity and web design project showcase',
+    span: 'md:col-span-2 md:row-span-2',
   },
   {
-    title: 'GreenSpace Co.',
-    category: 'Brand Identity',
-    description:
-      'Sustainable brand identity that helped secure $2M in Series A funding and establish market credibility.',
-    accent: 'var(--brand-secondary)',
-    span: '',
-  },
-  {
-    title: 'DataSync Solutions',
+    title: 'GreenSpace App',
     category: 'Web Design',
     description:
-      'B2B SaaS website that improved conversion rates by 150% and reduced bounce rate by 40%.',
-    accent: 'var(--brand-accent)',
+      'Responsive web platform design that improved conversion rates by 85% within first quarter.',
+    image:
+      'https://images.unsplash.com/photo-1558655146-d09347e92766?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+    alt: 'GreenSpace App eco-friendly web design project',
     span: '',
   },
   {
-    title: 'Wellness Hub',
-    category: 'Complete Brand Package',
+    title: 'FinNext Solutions',
+    category: 'Brand Identity',
     description:
-      'End-to-end branding and digital presence that launched successfully with 1000+ users in first month.',
-    accent: 'var(--brand-primary)',
-    span: 'lg:col-span-2',
+      'Professional fintech branding that established market credibility and attracted enterprise clients.',
+    image:
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+    alt: 'FinNext Solutions fintech branding project',
+    span: '',
   },
 ]
 
-export function PortfolioSection() {
+export default function PortfolioSection() {
   return (
     <section
       id="portfolio"
-      className="py-24 md:py-32"
-      style={{ background: 'var(--brand-surface)' }}
+      className="section-pad bg-background"
       aria-labelledby="portfolio-heading"
     >
-      <div className="max-w-6xl mx-auto px-6 flex flex-col gap-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="flex flex-col gap-3 max-w-xl">
-            <span
-              className="text-sm font-semibold uppercase tracking-widest"
-              style={{ color: 'var(--brand-primary)' }}
-            >
-              Portfolio
-            </span>
-            <h2
-              id="portfolio-heading"
-              className="font-serif text-4xl md:text-5xl font-bold leading-tight text-balance"
-              style={{ color: 'var(--brand-text)' }}
-            >
-              Recent{' '}
-              <span className="text-gradient-primary">Success Stories</span>
-            </h2>
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 text-accent text-xs font-semibold tracking-wide uppercase mb-4">
+            Portfolio
           </div>
-          <p
-            className="text-base leading-relaxed max-w-sm"
-            style={{ color: 'var(--brand-text-muted)' }}
+          <h2
+            id="portfolio-heading"
+            className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-foreground tracking-tight text-balance mb-4"
           >
-            A selection of projects that delivered measurable results for startup clients.
+            Recent Projects
+          </h2>
+          <p className="max-w-xl mx-auto text-muted-foreground leading-relaxed text-balance">
+            Explore brand identities and websites I&apos;ve crafted for innovative startups
           </p>
         </div>
 
-        {/* Portfolio image showcase */}
-        <div className="relative w-full rounded-2xl overflow-hidden aspect-video">
-          <Image
-            src="https://images.unsplash.com/photo-1614036634955-ae5e90f9b9eb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxkZXNpZ24lMjBwb3J0Zm9saW8lMjBtb2NrdXBzJTIwYnJhbmQlMjBpZGVudGl0eSUyMHdlYiUyMGRlc2lnbiUyMHByb2plY3RzfGVufDB8MHx8fDE3NzIxMjg4MTB8MA&ixlib=rb-4.1.0&q=80&w=1080"
-            alt="Portfolio mockups showcasing brand identity and web design projects"
-            width={1080}
-            height={600}
-            className="w-full h-full object-cover"
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                'linear-gradient(to right, rgba(99,102,241,0.15) 0%, transparent 50%, rgba(236,72,153,0.1) 100%)',
-            }}
-            aria-hidden="true"
-          />
-        </div>
-
-        {/* Projects grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Masonry-style grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[280px]">
           {projects.map((project) => (
             <article
               key={project.title}
-              className={`group relative flex flex-col justify-between p-7 rounded-2xl border card-hover overflow-hidden ${project.span}`}
-              style={{
-                background: 'var(--brand-bg)',
-                borderColor: 'var(--brand-border)',
-              }}
+              className={`group relative rounded-2xl overflow-hidden bg-card border border-border card-hover shadow-sm cursor-pointer ${project.span ?? ''}`}
             >
-              {/* Top accent bar */}
-              <div
-                className="absolute top-0 left-0 h-1 w-full"
-                style={{ background: project.accent }}
-                aria-hidden="true"
+              {/* Image */}
+              <Image
+                src={project.image}
+                alt={project.alt}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 50vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
 
-              <div className="flex flex-col gap-4">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex flex-col gap-1">
-                    <span
-                      className="text-xs font-semibold uppercase tracking-widest"
-                      style={{ color: project.accent }}
-                    >
-                      {project.category}
-                    </span>
-                    <h3
-                      className="font-serif text-xl font-bold"
-                      style={{ color: 'var(--brand-text)' }}
-                    >
-                      {project.title}
-                    </h3>
-                  </div>
-                  <div
-                    className="flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-full border transition-all duration-200 group-hover:scale-110"
-                    style={{
-                      borderColor: project.accent,
-                      color: project.accent,
-                    }}
-                    aria-hidden="true"
-                  >
-                    <ArrowUpRight className="w-4 h-4" />
-                  </div>
-                </div>
-                <p
-                  className="text-sm leading-relaxed"
-                  style={{ color: 'var(--brand-text-muted)' }}
-                >
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/60 transition-all duration-300" />
+
+              {/* Category badge */}
+              <div className="absolute top-4 left-4 z-10">
+                <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur text-xs font-semibold text-foreground">
+                  {project.category}
+                </span>
+              </div>
+
+              {/* Arrow icon */}
+              <div className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-accent flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 scale-75 group-hover:scale-100">
+                <ArrowUpRight className="w-4 h-4 text-white" aria-hidden="true" />
+              </div>
+
+              {/* Content overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 z-10 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                <h3 className="font-serif font-bold text-white text-xl mb-1">
+                  {project.title}
+                </h3>
+                <p className="text-white/80 text-sm leading-relaxed">
                   {project.description}
                 </p>
               </div>

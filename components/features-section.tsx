@@ -1,79 +1,98 @@
-import { Rocket, Target, Zap } from "lucide-react"
+import { Target, Monitor, TrendingUp } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 
-const features = [
+interface Feature {
+  icon: LucideIcon
+  title: string
+  description: string
+  color: string
+  bg: string
+}
+
+const features: Feature[] = [
   {
-    Icon: Rocket,
-    title: "Launch-Ready in 4 Weeks",
+    icon: Target,
+    title: 'Brand Identity Design',
     description:
-      "Complete brand identity and website delivered fast, so you can start making sales immediately.",
-    color: "text-primary",
-    bg: "bg-primary/10",
-    border: "border-primary/20",
-    shadow: "hover:shadow-primary/20",
+      'Create memorable logos, color palettes, and brand guidelines that make your startup stand out in competitive markets.',
+    color: 'text-primary',
+    bg: 'bg-primary/10',
   },
   {
-    Icon: Target,
-    title: "Conversion-Focused Design",
+    icon: Monitor,
+    title: 'Web Design & Development',
     description:
-      "Every pixel serves a purpose. My designs don't just look good—they turn visitors into customers.",
-    color: "text-secondary",
-    bg: "bg-secondary/10",
-    border: "border-secondary/20",
-    shadow: "hover:shadow-secondary/20",
+      'Design conversion-focused websites that look stunning and perform flawlessly across all devices and browsers.',
+    color: 'text-accent',
+    bg: 'bg-accent/10',
   },
   {
-    Icon: Zap,
-    title: "Startup DNA",
+    icon: TrendingUp,
+    title: 'Startup-Focused Approach',
     description:
-      "I speak startup. No corporate bureaucracy, just bold decisions and results that fuel your growth.",
-    color: "text-accent",
-    bg: "bg-accent/10",
-    border: "border-accent/20",
-    shadow: "hover:shadow-accent/20",
+      'Understand the unique challenges of early-stage companies and deliver designs that grow with your business.',
+    color: 'text-primary',
+    bg: 'bg-primary/10',
   },
 ]
 
-export function FeaturesSection() {
+export default function FeaturesSection() {
   return (
     <section
       id="features"
-      className="py-24 lg:py-32 bg-gradient-subtle"
-      aria-label="Why startups choose Jane"
+      className="section-pad bg-secondary"
+      aria-labelledby="features-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center mb-16">
-          <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-3">
-            Why Jane
-          </p>
-          <h2 className="font-serif text-4xl sm:text-5xl font-bold text-foreground text-balance">
-            Why Startups <span className="text-gradient-primary">Choose Jane</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wide uppercase mb-4">
+            What I Do
+          </div>
+          <h2
+            id="features-heading"
+            className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-foreground tracking-tight text-balance"
+          >
+            Design Solutions That{' '}
+            <span className="text-gradient-primary">Drive Results</span>
           </h2>
         </div>
 
-        {/* Feature cards */}
-        <div className="grid md:grid-cols-3 gap-8">
-          {features.map(({ Icon, title, description, color, bg, border, shadow }) => (
-            <article
-              key={title}
-              className={`relative bg-card rounded-3xl p-8 border ${border} hover:shadow-xl ${shadow} transition-all duration-300 hover:-translate-y-1 group`}
-            >
-              {/* Icon */}
-              <div className={`inline-flex p-3 rounded-2xl ${bg} mb-6`}>
-                <Icon className={`w-7 h-7 ${color}`} aria-hidden="true" />
-              </div>
-
-              <h3 className="font-serif text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-200">
-                {title}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">{description}</p>
-
-              {/* Hover accent line */}
+        {/* Feature grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {features.map((feature, index) => {
+            const Icon = feature.icon
+            return (
               <div
-                className={`absolute bottom-0 left-8 right-8 h-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${bg} scale-x-0 group-hover:scale-x-100 origin-left`}
-              />
-            </article>
-          ))}
+                key={feature.title}
+                className="group relative bg-card rounded-2xl p-8 border border-border card-hover shadow-sm"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                {/* Decorative corner */}
+                <div className="absolute top-0 right-0 w-20 h-20 overflow-hidden rounded-2xl pointer-events-none">
+                  <div className="absolute -top-10 -right-10 w-20 h-20 bg-gradient-subtle rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+
+                {/* Icon */}
+                <div
+                  className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${feature.bg} mb-6`}
+                >
+                  <Icon className={`w-6 h-6 ${feature.color}`} aria-hidden="true" />
+                </div>
+
+                {/* Content */}
+                <h3 className="font-serif font-bold text-xl text-foreground mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed text-sm">
+                  {feature.description}
+                </p>
+
+                {/* Hover accent line */}
+                <div className="absolute bottom-0 left-8 right-8 h-0.5 bg-gradient-brand rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>

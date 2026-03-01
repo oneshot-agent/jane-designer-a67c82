@@ -1,10 +1,11 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Space_Grotesk, Inter } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  variable: '--font-display',
+  variable: '--font-heading',
   display: 'swap',
 })
 
@@ -17,14 +18,14 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Jane Designer — Bold Brands That Demand Attention',
   description:
-    'Creative designer specializing in brand identity and web design for startups. I transform startup visions into powerful brand identities and websites that convert visitors into customers.',
+    'Creative designer specializing in brand identity and web design for startups. Transform your startup vision into an unforgettable brand that converts customers from day one.',
   keywords: [
     'brand identity design',
-    'web design',
-    'startup design',
+    'web design for startups',
+    'startup branding',
     'logo design',
-    'UI/UX design',
-    'brand strategy',
+    'landing page design',
+    'Jane Designer',
   ],
   authors: [{ name: 'Jane Designer' }],
   creator: 'Jane Designer',
@@ -36,24 +37,32 @@ export const metadata: Metadata = {
     description:
       'Creative designer specializing in brand identity and web design for startups.',
     siteName: 'Jane Designer',
+    images: [
+      {
+        url: 'https://images.unsplash.com/photo-1710799885122-428e63eff691?w=1200&q=80',
+        width: 1200,
+        height: 630,
+        alt: 'Jane Designer — Creative Brand & Web Design',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Jane Designer — Bold Brands That Demand Attention',
     description:
       'Creative designer specializing in brand identity and web design for startups.',
-    creator: '@janedesigner',
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: { index: true, follow: true },
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-  },
+}
+
+export const viewport: Viewport = {
   themeColor: '#6366F1',
+  width: 'device-width',
+  initialScale: 1,
 }
 
 export default function RootLayout({
@@ -65,6 +74,7 @@ export default function RootLayout({
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <body className="font-sans antialiased bg-background text-foreground">
         {children}
+        <Analytics />
       </body>
     </html>
   )

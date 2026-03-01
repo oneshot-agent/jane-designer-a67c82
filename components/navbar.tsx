@@ -1,37 +1,53 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { useState } from 'react'
-import { Menu, X } from 'lucide-react'
 
 const navLinks = [
+  { label: 'Work', href: '#portfolio' },
   { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Portfolio', href: '#portfolio' },
   { label: 'Process', href: '#process' },
+  { label: 'Testimonials', href: '#testimonials' },
 ]
 
-export default function Navbar() {
-  const [open, setOpen] = useState(false)
+export function Navbar() {
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#FEFEFE]/90 backdrop-blur-md border-b border-[#6366F1]/10">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-white/90 backdrop-blur-md shadow-sm border-b border-border'
+          : 'bg-transparent'
+      }`}
+    >
+      <nav
+        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-18"
+        aria-label="Main navigation"
+      >
         {/* Logo */}
         <Link
           href="/"
-          className="font-display font-bold text-xl tracking-tight text-[#1E293B] hover:text-[#6366F1] transition-colors"
+          className="font-heading text-xl font-bold text-foreground hover:text-primary transition-colors"
+          aria-label="Jane Designer — Home"
         >
-          Jane<span className="text-[#6366F1]">.</span>
+          <span className="text-primary">J</span>ane Designer
         </Link>
 
         {/* Desktop nav */}
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden md:flex items-center gap-8" role="list">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="text-sm font-medium text-[#1E293B]/70 hover:text-[#6366F1] transition-colors"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link.label}
               </Link>
@@ -42,45 +58,59 @@ export default function Navbar() {
         {/* CTA */}
         <div className="hidden md:block">
           <Link
-            href="mailto:hello@janedesigner.com"
-            className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-semibold bg-[#EC4899] text-white hover:bg-[#db2777] transition-colors shadow-sm shadow-[#EC4899]/30"
+            href="mailto:jane@janedesigner.com"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent text-white text-sm font-semibold hover:bg-amber-600 transition-colors shadow-md"
           >
-            Let&apos;s Talk
+            Start a Project
           </Link>
         </div>
 
-        {/* Mobile hamburger */}
+        {/* Mobile menu toggle */}
         <button
-          className="md:hidden p-2 rounded-lg text-[#1E293B] hover:bg-[#F1F5F9] transition-colors"
-          onClick={() => setOpen(!open)}
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
+          className="md:hidden p-2 rounded-lg text-foreground hover:bg-muted transition-colors"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-expanded={menuOpen}
+          aria-label="Toggle navigation menu"
         >
-          {open ? <X size={20} /> : <Menu size={20} />}
+          <span className="sr-only">Toggle menu</span>
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            {menuOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
         </button>
       </nav>
 
       {/* Mobile menu */}
-      {open && (
-        <div className="md:hidden bg-[#FEFEFE] border-b border-[#6366F1]/10 px-4 pb-5">
-          <ul className="flex flex-col gap-4 pt-4">
+      {menuOpen && (
+        <div className="md:hidden bg-white border-b border-border px-4 pb-4 shadow-lg">
+          <ul className="flex flex-col gap-2" role="list">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="block text-base font-medium text-[#1E293B]/70 hover:text-[#6366F1] transition-colors"
+                  className="block px-3 py-2.5 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-lg transition-colors"
+                  onClick={() => setMenuOpen(false)}
                 >
                   {link.label}
                 </Link>
               </li>
             ))}
-            <li>
+            <li className="mt-2">
               <Link
-                href="mailto:hello@janedesigner.com"
-                className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-semibold bg-[#EC4899] text-white hover:bg-[#db2777] transition-colors"
+                href="mailto:jane@janedesigner.com"
+                className="block w-full text-center px-5 py-3 rounded-full bg-accent text-white text-sm font-semibold hover:bg-amber-600 transition-colors"
+                onClick={() => setMenuOpen(false)}
               >
-                Let&apos;s Talk
+                Start a Project
               </Link>
             </li>
           </ul>

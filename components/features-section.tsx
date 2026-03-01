@@ -1,98 +1,105 @@
-import { Target, Monitor, TrendingUp } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+import { Palette, Monitor, TrendingUp } from 'lucide-react'
 
-interface Feature {
-  icon: LucideIcon
-  title: string
-  description: string
-  color: string
-  bg: string
-}
-
-const features: Feature[] = [
+const features = [
   {
-    icon: Target,
+    icon: Palette,
     title: 'Brand Identity Design',
     description:
-      'Create memorable logos, color palettes, and brand guidelines that make your startup stand out in competitive markets.',
-    color: 'text-primary',
-    bg: 'bg-primary/10',
+      'Complete visual identity systems including logos, color palettes, and brand guidelines that make your startup memorable.',
+    color: '#6366F1',
+    bg: '#EEF2FF',
   },
   {
     icon: Monitor,
     title: 'Web Design & Development',
     description:
-      'Design conversion-focused websites that look stunning and perform flawlessly across all devices and browsers.',
-    color: 'text-accent',
-    bg: 'bg-accent/10',
+      'Responsive websites that convert visitors into customers, optimized for performance and user experience.',
+    color: '#8B5CF6',
+    bg: '#F3EEFF',
   },
   {
     icon: TrendingUp,
-    title: 'Startup-Focused Approach',
+    title: 'Growth-Focused Strategy',
     description:
-      'Understand the unique challenges of early-stage companies and deliver designs that grow with your business.',
-    color: 'text-primary',
-    bg: 'bg-primary/10',
+      'Design solutions backed by user research and market analysis to help your startup scale effectively.',
+    color: '#F59E0B',
+    bg: '#FFFBEB',
   },
 ]
 
-export default function FeaturesSection() {
+export function FeaturesSection() {
   return (
     <section
-      id="features"
-      className="section-pad bg-secondary"
+      id="services"
+      className="py-24 lg:py-32 bg-background"
       aria-labelledby="features-heading"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wide uppercase mb-4">
-            What I Do
-          </div>
+          <span className="inline-block text-sm font-semibold text-primary uppercase tracking-widest mb-3">
+            Services
+          </span>
           <h2
             id="features-heading"
-            className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-foreground tracking-tight text-balance"
+            className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-balance"
           >
-            Design Solutions That{' '}
-            <span className="text-gradient-primary">Drive Results</span>
+            What I Deliver for Your Startup
           </h2>
+          <div
+            className="mt-4 mx-auto h-1 w-16 rounded-full"
+            style={{ background: 'linear-gradient(90deg, #6366F1, #8B5CF6)' }}
+            aria-hidden="true"
+          />
         </div>
 
-        {/* Feature grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {features.map((feature, index) => {
+        {/* Features grid */}
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+          {features.map((feature) => {
             const Icon = feature.icon
             return (
-              <div
+              <article
                 key={feature.title}
-                className="group relative bg-card rounded-2xl p-8 border border-border card-hover shadow-sm"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="group relative bg-card rounded-2xl p-8 border border-border hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300"
               >
-                {/* Decorative corner */}
-                <div className="absolute top-0 right-0 w-20 h-20 overflow-hidden rounded-2xl pointer-events-none">
-                  <div className="absolute -top-10 -right-10 w-20 h-20 bg-gradient-subtle rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-
                 {/* Icon */}
                 <div
-                  className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${feature.bg} mb-6`}
+                  className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110 duration-300"
+                  style={{ background: feature.bg }}
+                  aria-hidden="true"
                 >
-                  <Icon className={`w-6 h-6 ${feature.color}`} aria-hidden="true" />
+                  <Icon className="w-7 h-7" style={{ color: feature.color }} />
                 </div>
 
-                {/* Content */}
-                <h3 className="font-serif font-bold text-xl text-foreground mb-3">
+                <h3 className="font-heading text-xl font-semibold text-foreground mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed text-sm">
+                <p className="text-muted-foreground leading-relaxed text-base">
                   {feature.description}
                 </p>
 
                 {/* Hover accent line */}
-                <div className="absolute bottom-0 left-8 right-8 h-0.5 bg-gradient-brand rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-              </div>
+                <div
+                  className="absolute bottom-0 left-8 right-8 h-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{ background: `linear-gradient(90deg, ${feature.color}, transparent)` }}
+                  aria-hidden="true"
+                />
+              </article>
             )
           })}
+        </div>
+
+        {/* Bottom accent */}
+        <div className="mt-16 text-center">
+          <p className="text-muted-foreground text-base">
+            Ready to transform your startup&apos;s visual identity?{' '}
+            <a
+              href="mailto:jane@janedesigner.com"
+              className="text-primary font-semibold hover:underline"
+            >
+              Let&apos;s start a conversation.
+            </a>
+          </p>
         </div>
       </div>
     </section>

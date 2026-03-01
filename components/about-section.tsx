@@ -1,89 +1,92 @@
 import Image from 'next/image'
 
 const stats = [
-  { number: '150+', label: 'Brands Launched' },
-  { number: '98%', label: 'Client Satisfaction' },
-  { number: '3x', label: 'Average ROI Increase' },
+  { number: '50+', label: 'Startups Launched' },
+  { number: '150%', label: 'Average Engagement Increase' },
+  { number: '8', label: 'Years Experience' },
+  { number: '95%', label: 'Client Retention Rate' },
 ]
 
-export default function AboutSection() {
+export function AboutSection() {
   return (
-    <section id="about" className="py-24 lg:py-32 bg-[#F1F5F9]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Image column */}
+    <section
+      id="about"
+      className="py-24 lg:py-32"
+      style={{ background: '#F8FAFF' }}
+      aria-labelledby="about-heading"
+    >
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Image side */}
           <div className="relative order-2 lg:order-1">
-            {/* Geometric accent */}
-            <div
-              className="absolute -top-6 -left-6 w-48 h-48 rounded-2xl z-0"
-              style={{ background: 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%)', opacity: 0.15 }}
-              aria-hidden="true"
-            />
-            <div
-              className="absolute -bottom-6 -right-6 w-32 h-32 rounded-xl z-0"
-              style={{ background: 'linear-gradient(135deg, #EC4899 0%, #F43F5E 100%)', opacity: 0.15 }}
-              aria-hidden="true"
-            />
-            <div className="relative z-10 rounded-2xl overflow-hidden shadow-xl border border-white/80">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/15">
               <Image
-                src="https://images.unsplash.com/photo-1525199896530-b1d87c75c887?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBoZWFkc2hvdCUyMGRlc2lnbmVyJTIwcG9ydHJhaXQlMjBzdHVkaW98ZW58MHwwfHx8MTc3MjE0MjUwNnww&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Jane Designer — Portrait"
-                width={540}
-                height={640}
-                className="w-full object-cover aspect-[4/5]"
+                src="https://images.unsplash.com/photo-1768471125958-78556538fadc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBkZXNpZ25lciUyMHBvcnRyYWl0JTIwY3JlYXRpdmUlMjB3b3Jrc3BhY2V8ZW58MHwwfHx8MTc3MjMyOTc0Nnww&ixlib=rb-4.1.0&q=80&w=1080"
+                alt="Jane Designer — professional designer at her creative workspace"
+                width={1080}
+                height={1080}
+                className="w-full h-auto object-cover aspect-square"
+              />
+              {/* Accent border overlay */}
+              <div
+                className="absolute inset-0 rounded-2xl pointer-events-none"
+                style={{ boxShadow: 'inset 0 0 0 1px rgba(99,102,241,0.2)' }}
+                aria-hidden="true"
               />
             </div>
 
-            {/* Floating badge */}
-            <div className="absolute bottom-6 left-6 z-20 bg-white rounded-2xl shadow-xl px-5 py-4 border border-[#6366F1]/10">
-              <p className="font-display font-bold text-2xl text-[#6366F1]">8+</p>
-              <p className="text-xs text-[#1E293B]/60 font-medium mt-0.5">Years of Experience</p>
-            </div>
+            {/* Decorative element */}
+            <div
+              className="absolute -bottom-6 -right-6 w-48 h-48 rounded-2xl -z-10 opacity-50"
+              style={{ background: 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%)' }}
+              aria-hidden="true"
+            />
           </div>
 
-          {/* Content column */}
-          <div className="order-1 lg:order-2 flex flex-col gap-6">
-            {/* Section label */}
-            <div className="inline-flex items-center gap-2 w-fit px-3 py-1.5 rounded-full bg-[#6366F1]/10 border border-[#6366F1]/20">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#6366F1]" aria-hidden="true" />
-              <span className="text-xs font-semibold tracking-widest uppercase text-[#6366F1]">About Me</span>
-            </div>
-
-            <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-[#1E293B] text-balance leading-tight">
-              Transforming Ideas Into{' '}
-              <span className="gradient-text-primary">Visual Stories</span>
+          {/* Content side */}
+          <div className="order-1 lg:order-2">
+            <span className="inline-block text-sm font-semibold text-primary uppercase tracking-widest mb-3">
+              About Jane
+            </span>
+            <h2
+              id="about-heading"
+              className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance"
+            >
+              Designed for Startup Success
             </h2>
-
-            <p className="text-[#1E293B]/65 leading-relaxed text-base sm:text-lg">
-              I&apos;m Jane Designer, a creative professional with 8+ years of experience
-              helping startups establish their visual identity. I specialize in creating
-              cohesive brand systems and user-friendly websites that resonate with target
-              audiences and drive business growth.
+            <div
+              className="mb-6 h-1 w-16 rounded-full"
+              style={{ background: 'linear-gradient(90deg, #6366F1, #8B5CF6)' }}
+              aria-hidden="true"
+            />
+            <p className="text-muted-foreground text-base leading-relaxed mb-8">
+              With 8+ years of experience in brand design and web development, I specialize in
+              helping startups establish strong visual identities that drive business growth.
+              I&apos;ve worked with 50+ startups across tech, healthcare, finance, and e-commerce
+              sectors, delivering designs that not only look great but perform measurably better.
+              My approach combines creative vision with data-driven strategy to ensure every design
+              decision supports your business goals.
             </p>
 
-            <p className="text-[#1E293B]/65 leading-relaxed">
-              My approach blends strategic thinking with visual craft — every design
-              decision is grounded in your business goals and your customers&apos; needs.
-            </p>
-
-            {/* Skills pills */}
-            <div className="flex flex-wrap gap-2">
-              {['Brand Strategy', 'Logo Design', 'Web Design', 'Typography', 'UX/UI', 'Motion'].map((skill) => (
-                <span
-                  key={skill}
-                  className="px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-[#6366F1]/15 text-[#6366F1]"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 mt-4 pt-6 border-t border-[#1E293B]/10">
+            {/* Stats grid */}
+            <div className="grid grid-cols-2 gap-4">
               {stats.map((stat) => (
-                <div key={stat.label} className="flex flex-col gap-1">
-                  <span className="font-display font-bold text-3xl text-[#6366F1]">{stat.number}</span>
-                  <span className="text-xs text-[#1E293B]/55 leading-snug">{stat.label}</span>
+                <div
+                  key={stat.label}
+                  className="bg-card rounded-xl border border-border p-5 hover:border-primary/30 transition-colors"
+                >
+                  <p
+                    className="font-heading text-3xl font-bold mb-1"
+                    style={{
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundImage: 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%)',
+                      backgroundClip: 'text',
+                    }}
+                  >
+                    {stat.number}
+                  </p>
+                  <p className="text-sm text-muted-foreground leading-snug">{stat.label}</p>
                 </div>
               ))}
             </div>

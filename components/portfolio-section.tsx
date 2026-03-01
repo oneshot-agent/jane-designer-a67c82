@@ -4,131 +4,135 @@ import { ArrowUpRight } from 'lucide-react'
 const projects = [
   {
     title: 'TechFlow Startup',
-    category: 'Brand Identity & Web Design',
-    description:
-      'Complete rebrand and website redesign resulting in 250% increase in lead generation within 6 months.',
-    tags: ['SaaS', 'B2B', 'Tech'],
-    result: '+250% leads',
-    color: '#6366F1',
+    category: 'Brand Identity & Website',
+    description: 'Complete rebrand increased user engagement by 150% and conversion rates by 40%.',
+    stat: '+150% Engagement',
+    statColor: '#6366F1',
+    image:
+      'https://images.unsplash.com/photo-1658863025658-4a259cc68fc9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxwb3J0Zm9saW8lMjBzaG93Y2FzZSUyMGRlc2lnbiUyMHByb2plY3RzfGVufDB8MHx8fDE3NzIzMjk3NDZ8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    cols: 'md:col-span-2',
+    height: 'h-72 md:h-80',
   },
   {
-    title: 'GreenSpace Co.',
-    category: 'Brand Identity',
-    description:
-      'Sustainable brand identity for eco-friendly startup, leading to successful $2M seed funding round.',
-    tags: ['Sustainability', 'B2C', 'Retail'],
-    result: '$2M Seed Raise',
-    color: '#10B981',
-  },
-  {
-    title: 'DataViz Platform',
+    title: 'EcoVenture',
     category: 'Web Design',
-    description:
-      'User-centered website design that improved user engagement by 180% and reduced bounce rate by 45%.',
-    tags: ['Analytics', 'B2B', 'Platform'],
-    result: '+180% engagement',
-    color: '#EC4899',
+    description: 'Responsive e-commerce site generated $100K in first quarter after launch.',
+    stat: '$100K Q1',
+    statColor: '#8B5CF6',
+    image: '/placeholder.svg?height=400&width=400',
+    cols: 'md:col-span-1',
+    height: 'h-72 md:h-80',
   },
   {
-    title: 'HealthTech Innovators',
-    category: 'Complete Branding',
-    description:
-      'End-to-end branding solution from naming to digital presence, facilitating successful market entry.',
-    tags: ['Healthcare', 'B2B', 'Innovation'],
-    result: 'Successful Launch',
-    color: '#8B5CF6',
+    title: 'FinanceFlow',
+    category: 'Brand Identity',
+    description: 'Professional financial services rebrand attracted 200+ new clients in 6 months.',
+    stat: '200+ Clients',
+    statColor: '#F59E0B',
+    image: '/placeholder.svg?height=400&width=400',
+    cols: 'md:col-span-1',
+    height: 'h-64 md:h-72',
+  },
+  {
+    title: 'HealthTech Pro',
+    category: 'Web Design',
+    description: 'Medical platform redesign improved user retention by 75% and reduced bounce rate.',
+    stat: '+75% Retention',
+    statColor: '#6366F1',
+    image: '/placeholder.svg?height=500&width=700',
+    cols: 'md:col-span-2',
+    height: 'h-64 md:h-72',
   },
 ]
 
-export default function PortfolioSection() {
+export function PortfolioSection() {
   return (
-    <section id="portfolio" className="py-24 lg:py-32 bg-[#F1F5F9]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
-          <div className="flex flex-col gap-4">
-            <div className="inline-flex items-center gap-2 w-fit px-3 py-1.5 rounded-full bg-[#6366F1]/10 border border-[#6366F1]/20">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#6366F1]" aria-hidden="true" />
-              <span className="text-xs font-semibold tracking-widest uppercase text-[#6366F1]">Portfolio</span>
-            </div>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-[#1E293B] text-balance leading-tight">
-              Recent Work That{' '}
-              <span className="gradient-text-primary">Delivers Results</span>
-            </h2>
-          </div>
-          <p className="text-[#1E293B]/60 max-w-xs sm:text-right leading-relaxed text-sm">
-            Every project is built around measurable outcomes and strategic clarity.
-          </p>
-        </div>
-
-        {/* Featured image */}
-        <div className="relative mb-10 rounded-2xl overflow-hidden shadow-xl border border-white/80 aspect-[16/6]">
-          <Image
-            src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&h=800&fit=crop&q=80"
-            alt="Portfolio preview — creative design work samples"
-            fill
-            className="object-cover"
+    <section
+      id="portfolio"
+      className="py-24 lg:py-32"
+      style={{ background: '#F8FAFF' }}
+      aria-labelledby="portfolio-heading"
+    >
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section header */}
+        <div className="text-center mb-16">
+          <span className="inline-block text-sm font-semibold text-primary uppercase tracking-widest mb-3">
+            Portfolio
+          </span>
+          <h2
+            id="portfolio-heading"
+            className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-balance"
+          >
+            Recent Projects That Drove Results
+          </h2>
+          <div
+            className="mt-4 mx-auto h-1 w-16 rounded-full"
+            style={{ background: 'linear-gradient(90deg, #6366F1, #8B5CF6)' }}
+            aria-hidden="true"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1E293B]/70 via-transparent to-transparent" />
-          <div className="absolute bottom-6 left-8">
-            <p className="text-white/80 text-sm font-medium">Selected Work — 2024</p>
-          </div>
         </div>
 
-        {/* Project cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {/* Masonry grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {projects.map((project) => (
             <article
               key={project.title}
-              className="group relative bg-white rounded-2xl border border-[#1E293B]/8 p-7 hover:shadow-xl hover:shadow-[#6366F1]/8 hover:border-[#6366F1]/25 transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+              className={`group relative rounded-2xl overflow-hidden bg-card border border-border cursor-pointer ${project.cols}`}
             >
-              {/* Top row */}
-              <div className="flex items-start justify-between gap-4 mb-4">
-                <div className="flex flex-col gap-1.5">
-                  <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: project.color }}>
+              {/* Image */}
+              <div className={`relative ${project.height} overflow-hidden`}>
+                <Image
+                  src={project.image}
+                  alt={`${project.title} — ${project.category} project`}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 50vw"
+                />
+                {/* Overlay */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{ background: 'rgba(99,102,241,0.75)' }}
+                  aria-hidden="true"
+                />
+                {/* View icon on hover */}
+                <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                  <ArrowUpRight className="w-5 h-5 text-primary" aria-hidden="true" />
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-5">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                     {project.category}
                   </span>
-                  <h3 className="font-display font-bold text-xl text-[#1E293B]">{project.title}</h3>
+                  <span
+                    className="text-xs font-bold px-2.5 py-1 rounded-full"
+                    style={{ color: project.statColor, background: `${project.statColor}15` }}
+                  >
+                    {project.stat}
+                  </span>
                 </div>
-                <span
-                  className="flex-shrink-0 w-9 h-9 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                  style={{ backgroundColor: project.color + '18' }}
-                  aria-hidden="true"
-                >
-                  <ArrowUpRight size={16} style={{ color: project.color }} />
-                </span>
+                <h3 className="font-heading text-lg font-semibold text-foreground mb-1.5">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {project.description}
+                </p>
               </div>
-
-              <p className="text-sm text-[#1E293B]/60 leading-relaxed mb-5">{project.description}</p>
-
-              {/* Footer row */}
-              <div className="flex items-center justify-between gap-4">
-                <div className="flex flex-wrap gap-1.5">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2.5 py-1 rounded-full text-xs font-medium bg-[#F1F5F9] text-[#1E293B]/60"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <span
-                  className="flex-shrink-0 text-xs font-bold px-3 py-1.5 rounded-full"
-                  style={{ backgroundColor: project.color + '15', color: project.color }}
-                >
-                  {project.result}
-                </span>
-              </div>
-
-              {/* Colored strip on left edge */}
-              <div
-                className="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl"
-                style={{ backgroundColor: project.color }}
-                aria-hidden="true"
-              />
             </article>
           ))}
+        </div>
+
+        {/* CTA */}
+        <div className="mt-12 text-center">
+          <a
+            href="mailto:jane@janedesigner.com"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-primary text-white font-semibold text-base hover:bg-indigo-600 transition-all hover:shadow-lg hover:shadow-primary/30"
+          >
+            Start Your Project
+            <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+          </a>
         </div>
       </div>
     </section>

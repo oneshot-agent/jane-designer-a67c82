@@ -1,101 +1,107 @@
 import Image from 'next/image'
-import { CheckCircle2 } from 'lucide-react'
 
 const stats = [
-  { number: '50+', label: 'Startups Launched' },
-  { number: '5 Years', label: 'Design Experience' },
-  { number: '98%', label: 'Client Satisfaction' },
-]
-
-const highlights = [
-  'Strategic brand identity systems',
-  'Conversion-focused web design',
-  'Startup-specific design packages',
-  'Data-driven design decisions',
+  { number: '200+', label: 'Startups Launched', color: 'text-primary' },
+  { number: '6', label: 'Years Experience', color: 'text-secondary' },
+  { number: '340%', label: 'Avg. Conversion Increase', color: 'text-accent' },
+  { number: '2-3', label: 'Week Delivery', color: 'text-primary' },
 ]
 
 export function AboutSection() {
   return (
     <section
       id="about"
-      className="py-24 md:py-32 bg-[#FEFEFE]"
+      className="py-24 lg:py-32 bg-background overflow-hidden"
       aria-labelledby="about-heading"
     >
-      <div className="container mx-auto px-6 md:px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Image col */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          {/* Image column */}
           <div className="relative order-2 lg:order-1">
-            <div className="relative rounded-2xl overflow-hidden shadow-xl ring-1 ring-[#6366F1]/10">
-              <Image
-                src="https://images.unsplash.com/photo-1764737740462-2a310c7b2c39?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBoZWFkc2hvdCUyMGZlbWFsZSUyMGRlc2lnbmVyJTIwY3JlYXRpdmUlMjB3b3Jrc3BhY2V8ZW58MHwwfHx8MTc3MjEzNDE1NXww&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Jane Designer in her creative workspace"
-                width={1080}
-                height={720}
-                className="w-full h-auto object-cover"
-              />
-            </div>
-            {/* Floating accent card */}
-            <div className="absolute -bottom-6 -right-6 bg-white rounded-xl p-5 shadow-xl ring-1 ring-border hidden md:block">
-              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-2">
-                Trusted by
-              </p>
-              <p className="font-serif font-bold text-2xl text-[#6366F1]">50+</p>
-              <p className="text-sm text-[#1E293B] font-medium">Growing Startups</p>
-            </div>
-            {/* Geometric accent */}
+            {/* Background decoration */}
             <div
-              className="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-[#E0E7FF] -z-10"
+              className="absolute -top-6 -left-6 w-full h-full rounded-3xl bg-gradient-to-br from-primary/10 to-secondary/10"
               aria-hidden="true"
             />
+
+            {/* Main image */}
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/5">
+              <Image
+                src="https://images.unsplash.com/photo-1768471125958-78556538fadc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBkZXNpZ25lciUyMHBvcnRyYWl0JTIwY3JlYXRpdmUlMjB3b3Jrc3BhY2V8ZW58MHwwfHx8MTc3MjMyOTc0Nnww&ixlib=rb-4.1.0&q=80&w=1080"
+                alt="Jane Designer in her creative workspace"
+                width={540}
+                height={660}
+                className="w-full object-cover aspect-[4/5]"
+              />
+            </div>
+
+            {/* Floating experience card */}
+            <div
+              className="absolute -bottom-6 -right-6 bg-card border border-border rounded-2xl shadow-xl px-6 py-5 max-w-[200px]"
+              aria-hidden="true"
+            >
+              <div className="font-display font-bold text-4xl text-primary mb-1">200+</div>
+              <div className="text-sm text-muted-foreground font-medium leading-tight">
+                Startups launched successfully
+              </div>
+            </div>
           </div>
 
-          {/* Content col */}
+          {/* Content column */}
           <div className="order-1 lg:order-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#E0E7FF] text-[#6366F1] text-xs font-semibold uppercase tracking-wider mb-6">
-              About Me
+            <div className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-100 px-4 py-2 rounded-full text-sm font-medium text-primary mb-6">
+              <span className="geo-dot" aria-hidden="true" />
+              About Jane
             </div>
 
             <h2
               id="about-heading"
-              className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#1E293B] text-balance leading-tight mb-6"
+              className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground text-balance mb-6"
             >
-              Building Brands That Connect
+              The Designer Behind{' '}
+              <span className="gradient-text-primary">Bold Brands</span>
             </h2>
 
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-8 text-pretty">
-              I&apos;m Jane Designer, a creative professional specializing in brand
-              identity and web design for startups. With a focus on strategic design
-              thinking, I help emerging companies establish their visual presence and
-              create digital experiences that resonate with their target audience. My
-              approach combines creativity with business strategy to deliver designs
-              that not only look great but drive real results.
+            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+              I&apos;m Jane, and I believe every startup deserves a brand as ambitious as their
+              vision. Over 6 years, I&apos;ve helped 200+ startups transform from unknown entities
+              to recognized brands that customers trust and investors notice.
             </p>
 
-            {/* Highlights */}
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10" role="list">
-              {highlights.map((item) => (
-                <li key={item} className="flex items-center gap-2.5 text-sm text-[#1E293B]">
-                  <CheckCircle2
-                    className="w-4 h-4 text-[#6366F1] shrink-0"
-                    aria-hidden="true"
-                  />
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-12">
+              My approach is simple: understand your business goals, then design with purpose. No
+              fluff, no endless revisions—just bold, strategic design that drives results.
+            </p>
 
-            {/* Stats row */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-border">
+            {/* Stats grid */}
+            <dl className="grid grid-cols-2 gap-6">
               {stats.map((stat) => (
-                <div key={stat.label}>
-                  <p className="font-serif font-bold text-2xl md:text-3xl text-[#6366F1]">
+                <div
+                  key={stat.label}
+                  className="bg-card border border-border rounded-2xl px-6 py-5 hover:border-primary/30 transition-colors duration-200"
+                >
+                  <dt className="text-sm text-muted-foreground font-medium mb-1">{stat.label}</dt>
+                  <dd className={`font-display font-bold text-3xl ${stat.color}`}>
                     {stat.number}
-                  </p>
-                  <p className="text-xs md:text-sm text-muted-foreground mt-1">
-                    {stat.label}
-                  </p>
+                  </dd>
                 </div>
               ))}
+            </dl>
+
+            {/* CTA */}
+            <div className="mt-10 flex flex-wrap gap-4">
+              <a
+                href="mailto:jane@janedesigner.com"
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold text-sm px-6 py-3.5 rounded-full hover:bg-indigo-600 transition-all duration-200 shadow-md hover:shadow-lg"
+              >
+                Work With Me
+              </a>
+              <a
+                href="#portfolio"
+                className="inline-flex items-center gap-2 bg-transparent text-foreground font-semibold text-sm px-6 py-3.5 rounded-full border border-border hover:border-primary hover:text-primary transition-all duration-200"
+              >
+                View Portfolio
+              </a>
             </div>
           </div>
         </div>

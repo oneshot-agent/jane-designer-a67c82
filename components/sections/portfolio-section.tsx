@@ -3,128 +3,131 @@ import { ArrowUpRight } from 'lucide-react'
 
 const projects = [
   {
-    title: 'TechFlow Startup',
+    title: 'TechFlow SaaS',
+    description: 'Complete rebrand increased user signups by 340% in first quarter',
     category: 'Brand Identity + Web Design',
-    description:
-      'Complete rebrand and website redesign resulting in 150% increase in lead generation and successful Series A funding.',
-    image:
-      'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=800&h=600&fit=crop&q=80',
-    color: 'from-[#6366F1]/20 to-[#6366F1]/5',
-    tag: 'Case Study',
+    stat: '+340%',
+    statLabel: 'User Signups',
+    accentColor: 'bg-primary',
+    height: 'lg',
   },
   {
-    title: 'EcoVenture',
-    category: 'Brand Identity',
-    description:
-      'Sustainable brand identity design that helped secure $2M in initial funding and establish market credibility.',
-    image:
-      'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&h=600&fit=crop&q=80',
-    color: 'from-emerald-100/60 to-emerald-50/20',
-    tag: 'Brand Identity',
+    title: 'GreenStart Marketplace',
+    description: 'E-commerce platform design that generated $2M in first-year sales',
+    category: 'Web Design + UX',
+    stat: '$2M',
+    statLabel: 'First Year Sales',
+    accentColor: 'bg-secondary',
+    height: 'sm',
   },
   {
-    title: 'FinanceFlow',
-    category: 'Web Design',
-    description:
-      'User-centered web design that improved conversion rates by 200% and reduced bounce rate by 45%.',
-    image:
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80',
-    color: 'from-amber-100/60 to-amber-50/20',
-    tag: 'Web Design',
+    title: 'FinanceForward App',
+    description: 'Mobile-first brand and interface design for Series A funded fintech',
+    category: 'Brand Identity + App Design',
+    stat: 'Series A',
+    statLabel: 'Funded',
+    accentColor: 'bg-accent',
+    height: 'sm',
   },
   {
-    title: 'HealthTech Pro',
+    title: 'LocalEats Platform',
+    description: 'Restaurant discovery app that reached 50K downloads in 3 months',
     category: 'Brand Identity + Web Design',
-    description:
-      'Medical startup branding and web platform design, leading to successful product launch and 10,000+ user signups.',
-    image:
-      'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop&q=80',
-    color: 'from-sky-100/60 to-sky-50/20',
-    tag: 'Full Package',
+    stat: '50K',
+    statLabel: 'Downloads',
+    accentColor: 'bg-primary',
+    height: 'lg',
   },
 ]
-
-const categoryColors: Record<string, string> = {
-  'Brand Identity + Web Design': 'bg-[#E0E7FF] text-[#6366F1]',
-  'Brand Identity': 'bg-emerald-50 text-emerald-700',
-  'Web Design': 'bg-amber-50 text-amber-700',
-  'Full Package': 'bg-sky-50 text-sky-700',
-}
 
 export function PortfolioSection() {
   return (
     <section
       id="portfolio"
-      className="py-24 md:py-32 bg-[#FEFEFE]"
+      className="py-24 lg:py-32 bg-background"
       aria-labelledby="portfolio-heading"
     >
-      <div className="container mx-auto px-6 md:px-8 lg:px-12">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section header */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#E0E7FF] text-[#6366F1] text-xs font-semibold uppercase tracking-wider mb-6">
-              Portfolio
+            <div className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-100 px-4 py-2 rounded-full text-sm font-medium text-primary mb-6">
+              <span className="geo-dot" aria-hidden="true" />
+              Selected Work
             </div>
             <h2
               id="portfolio-heading"
-              className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#1E293B] text-balance leading-tight"
+              className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground text-balance"
             >
-              Recent Work &amp;{' '}
-              <span className="text-[#6366F1]">Success Stories</span>
+              Brands I&apos;ve{' '}
+              <span className="gradient-text-primary">Brought to Life</span>
             </h2>
           </div>
-          <p className="text-base text-muted-foreground max-w-sm leading-relaxed text-pretty md:text-right">
-            Every project tells a story of transformation and growth.
+          <p className="max-w-sm text-muted-foreground leading-relaxed lg:text-right">
+            Each project is a partnership built on strategy, creativity, and measurable results.
           </p>
         </div>
 
-        {/* Project grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project) => (
-            <article
+        {/* Masonry grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {projects.map((project, index) => (
+            <div
               key={project.title}
-              className="group relative bg-white rounded-2xl overflow-hidden border border-border hover:border-[#6366F1]/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              className={`group relative rounded-2xl overflow-hidden bg-card border border-border card-hover ${
+                index % 3 === 0 ? 'md:row-span-1' : ''
+              }`}
             >
               {/* Image */}
-              <div className="relative h-56 md:h-64 overflow-hidden">
+              <div
+                className={`relative overflow-hidden ${
+                  project.height === 'lg' ? 'h-72 sm:h-80' : 'h-56 sm:h-64'
+                }`}
+              >
                 <Image
-                  src={project.image}
-                  alt={`${project.title} project preview`}
+                  src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&h=800&fit=crop&q=80"
+                  alt={`${project.title} project showcase`}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-                <div
-                  className={`absolute inset-0 bg-gradient-to-b ${project.color}`}
-                  aria-hidden="true"
-                />
-              </div>
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
 
-              {/* Content */}
-              <div className="p-6 md:p-8">
-                <div className="flex items-start justify-between gap-4 mb-3">
-                  <div>
-                    <span
-                      className={`inline-block text-xs font-semibold px-2.5 py-1 rounded-full ${categoryColors[project.category] ?? 'bg-muted text-muted-foreground'} mb-2`}
-                    >
-                      {project.category}
-                    </span>
-                    <h3 className="font-serif text-xl font-bold text-[#1E293B]">
-                      {project.title}
-                    </h3>
-                  </div>
-                  <span
-                    className="shrink-0 w-9 h-9 flex items-center justify-center rounded-full bg-muted text-muted-foreground group-hover:bg-[#6366F1] group-hover:text-white transition-colors duration-200"
-                    aria-hidden="true"
-                  >
-                    <ArrowUpRight className="w-4 h-4" />
+                {/* Category badge */}
+                <div className="absolute top-4 left-4">
+                  <span className="inline-flex items-center bg-white/95 backdrop-blur-sm text-foreground text-xs font-semibold px-3 py-1.5 rounded-full border border-border">
+                    {project.category}
                   </span>
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {project.description}
-                </p>
+
+                {/* Arrow icon */}
+                <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <ArrowUpRight size={18} className="text-white" aria-hidden="true" />
+                </div>
+
+                {/* Content overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <h3 className="font-display text-xl font-bold text-white mb-1">
+                    {project.title}
+                  </h3>
+                  <p className="text-white/75 text-sm leading-relaxed">{project.description}</p>
+                </div>
               </div>
-            </article>
+
+              {/* Stat bar */}
+              <div className="flex items-center justify-between px-6 py-4 bg-card border-t border-border">
+                <div className="flex items-center gap-3">
+                  <div
+                    className={`w-2 h-2 rounded-full ${project.accentColor}`}
+                    aria-hidden="true"
+                  />
+                  <span className="text-sm text-muted-foreground">{project.statLabel}</span>
+                </div>
+                <span className="font-display font-bold text-lg text-foreground">
+                  {project.stat}
+                </span>
+              </div>
+            </div>
           ))}
         </div>
       </div>

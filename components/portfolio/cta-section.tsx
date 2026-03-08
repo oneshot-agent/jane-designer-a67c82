@@ -1,88 +1,75 @@
-import Image from 'next/image'
-import { ArrowRight, Eye } from 'lucide-react'
+import Link from 'next/link'
+import { ArrowRight, Sparkles } from 'lucide-react'
 
-export default function CtaSection() {
+export function CtaSection() {
   return (
     <section
       id="contact"
-      className="py-24 lg:py-32"
+      className="py-24 md:py-32"
+      style={{ background: 'oklch(0.975 0.01 262)' }}
       aria-labelledby="cta-heading"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="relative rounded-3xl overflow-hidden">
-          {/* Background image */}
-          <div className="absolute inset-0" aria-hidden="true">
-            <Image
-              src="https://images.unsplash.com/photo-1764737740462-2a310c7b2c39?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxib2xkJTIwY3JlYXRpdmUlMjBkZXNpZ24lMjBzdHVkaW8lMjBjYWxsJTIwdG8lMjBhY3Rpb258ZW58MHwwfHx8MTc3MjMzMDMyN3ww&ixlib=rb-4.1.0&q=80&w=1080"
-              alt=""
-              fill
-              className="object-cover"
-            />
-            {/* Overlay */}
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  'linear-gradient(135deg, rgba(99,102,241,0.92) 0%, rgba(139,92,246,0.88) 50%, rgba(236,72,153,0.92) 100%)',
-              }}
-            />
-          </div>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* Decorative icon */}
+        <div
+          className="inline-flex w-16 h-16 rounded-2xl items-center justify-center mb-8 text-white"
+          style={{ background: 'linear-gradient(135deg, #6366F1, #8B5CF6)' }}
+          aria-hidden="true"
+        >
+          <Sparkles className="w-7 h-7" />
+        </div>
 
-          {/* Content */}
-          <div className="relative z-10 flex flex-col items-center text-center gap-8 py-20 lg:py-28 px-8">
-            <div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold"
-              style={{
-                backgroundColor: 'rgba(255,255,255,0.15)',
-                color: '#fff',
-                backdropFilter: 'blur(8px)',
-              }}
-            >
+        <h2
+          id="cta-heading"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground text-balance leading-tight mb-6"
+          style={{ fontFamily: 'var(--font-heading)' }}
+        >
+          Ready to Build a Brand That{' '}
+          <span style={{ color: '#6366F1' }}>Stands Out?</span>
+        </h2>
+
+        <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-10 text-pretty">
+          Let's create a compelling brand identity and website that helps your startup achieve its
+          growth goals.
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link
+            href="mailto:jane@janedesigner.com"
+            className="group inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-white text-base transition-all duration-200 hover:scale-105 hover:shadow-xl active:scale-95"
+            style={{
+              background: '#F59E0B',
+              boxShadow: '0 4px 20px rgba(245,158,11,0.4)',
+            }}
+          >
+            Start Your Project
+            <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
+          </Link>
+          <Link
+            href="#portfolio"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-base border-2 border-primary text-primary transition-all duration-200 hover:bg-primary hover:text-white hover:scale-105 active:scale-95"
+          >
+            View Portfolio
+          </Link>
+        </div>
+
+        {/* Trust indicators */}
+        <div className="flex items-center justify-center gap-8 mt-12 pt-10 border-t border-border">
+          {[
+            { label: '50+', sub: 'Startups Launched' },
+            { label: '5★', sub: 'Average Rating' },
+            { label: '24hr', sub: 'Response Time' },
+          ].map((item) => (
+            <div key={item.label} className="flex flex-col items-center gap-1">
               <span
-                className="w-2 h-2 rounded-full animate-pulse"
-                style={{ backgroundColor: 'var(--brand-accent)' }}
-                aria-hidden="true"
-              />
-              Available for new projects
-            </div>
-
-            <h2
-              id="cta-heading"
-              className="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl text-white text-balance max-w-3xl"
-            >
-              Ready to Make{' '}
-              <span style={{ color: 'var(--brand-accent)' }}>Your Mark?</span>
-            </h2>
-
-            <p className="text-white/80 text-lg sm:text-xl leading-relaxed max-w-2xl">
-              Let&apos;s create a brand that&apos;s impossible to ignore and a website that converts
-              from day one.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center gap-4">
-              <a
-                href="mailto:jane@janedesigner.com"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-base transition-all duration-200 hover:scale-105 hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-2"
-                style={{
-                  backgroundColor: 'var(--brand-accent)',
-                  color: 'var(--brand-text)',
-                  boxShadow: '0 4px 24px rgba(6, 255, 165, 0.4)',
-                }}
-                aria-label="Start Your Project — send an email to Jane"
+                className="text-2xl font-bold"
+                style={{ fontFamily: 'var(--font-heading)', color: '#6366F1' }}
               >
-                Start Your Project
-                <ArrowRight size={18} aria-hidden="true" />
-              </a>
-              <a
-                href="#portfolio"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-base border-2 border-white/30 text-white transition-all duration-200 hover:border-white/60 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2"
-                aria-label="View More Work — jump to portfolio section"
-              >
-                <Eye size={18} aria-hidden="true" />
-                View More Work
-              </a>
+                {item.label}
+              </span>
+              <span className="text-xs text-muted-foreground">{item.sub}</span>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

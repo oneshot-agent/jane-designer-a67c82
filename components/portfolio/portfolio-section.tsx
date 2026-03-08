@@ -4,156 +4,149 @@ import { ArrowUpRight } from 'lucide-react'
 const projects = [
   {
     title: 'TechFlow Startup',
-    category: 'Brand Identity + Web Design',
-    description: 'Complete rebrand that increased customer inquiries by 300% in first month.',
-    highlight: '+300% inquiries',
-    highlightColor: 'var(--brand-primary)',
-    size: 'large',
+    category: 'Brand Identity & Web Design',
+    description:
+      'Complete rebrand and website redesign that increased user engagement by 150% and conversion rates by 40%.',
+    tags: ['Branding', 'Web Design', 'UX/UI'],
+    result: '+150% Engagement',
+    color: '#6366F1',
   },
   {
-    title: 'GreenSpace Co',
+    title: 'GreenSpace Co.',
     category: 'Brand Identity',
-    description: 'Bold visual identity that helped secure $2M seed funding round.',
-    highlight: '$2M raised',
-    highlightColor: 'var(--brand-accent)',
-    size: 'small',
+    description:
+      'Sustainable brand identity that helped secure $2M in Series A funding within 6 months of launch.',
+    tags: ['Logo Design', 'Brand Strategy', 'Print Design'],
+    result: '$2M Funding',
+    color: '#8B5CF6',
   },
   {
-    title: 'DataDash',
+    title: 'DataViz Pro',
     category: 'Web Design',
-    description: 'Landing page redesign that boosted conversion rates from 2% to 12%.',
-    highlight: '2% → 12% CVR',
-    highlightColor: 'var(--brand-secondary)',
-    size: 'small',
+    description:
+      'SaaS platform redesign that reduced bounce rate by 60% and improved user onboarding completion by 80%.',
+    tags: ['Web Design', 'UX Research', 'Conversion Optimization'],
+    result: '-60% Bounce Rate',
+    color: '#6366F1',
   },
   {
-    title: 'MindfulTech',
-    category: 'Brand Identity + Web Design',
-    description: 'Full brand launch that generated 500+ signups in first week.',
-    highlight: '500+ signups',
-    highlightColor: 'var(--brand-primary)',
-    size: 'large',
+    title: 'Wellness Hub',
+    category: 'Brand Identity & Web Design',
+    description:
+      'Health tech startup branding and website that attracted 10K+ users in the first month post-launch.',
+    tags: ['Branding', 'Web Design', 'Mobile Design'],
+    result: '10K+ First Month',
+    color: '#8B5CF6',
   },
 ]
 
-const gradients = [
-  'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-  'linear-gradient(135deg, #06FFA5 0%, #00D9E8 100%)',
-  'linear-gradient(135deg, #EC4899 0%, #F97316 100%)',
-  'linear-gradient(135deg, #6366F1 0%, #EC4899 100%)',
-]
-
-export default function PortfolioSection() {
+export function Portfolio() {
   return (
     <section
       id="portfolio"
-      className="py-24 lg:py-32"
-      style={{ backgroundColor: 'var(--surface-elevated)' }}
+      className="py-24 md:py-32 bg-background"
       aria-labelledby="portfolio-heading"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16">
-          <div>
-            <p
-              className="text-sm font-semibold uppercase tracking-widest mb-3"
-              style={{ color: 'var(--brand-primary)' }}
-            >
-              Portfolio
-            </p>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section header */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+          <div className="max-w-xl">
+            <div className="inline-flex items-center gap-2 mb-4">
+              <div className="w-8 h-0.5 rounded-full" style={{ background: '#6366F1' }} aria-hidden="true" />
+              <span className="text-sm font-semibold tracking-widest uppercase" style={{ color: '#6366F1' }}>
+                Portfolio
+              </span>
+            </div>
             <h2
               id="portfolio-heading"
-              className="font-heading font-bold text-4xl sm:text-5xl text-balance"
-              style={{ color: 'var(--brand-text)' }}
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground text-balance leading-tight"
+              style={{ fontFamily: 'var(--font-heading)' }}
             >
-              Brands I&apos;ve{' '}
-              <span className="gradient-text">Launched</span>
+              Recent Projects That{' '}
+              <span style={{ color: '#6366F1' }}>Drove Real Results</span>
             </h2>
           </div>
-          <p className="text-muted-foreground max-w-xs leading-relaxed">
-            Each project is built with one goal: results that move the needle for your startup.
-          </p>
+          {/* Feature image badge */}
+          <div className="relative w-40 h-24 md:w-52 md:h-32 rounded-2xl overflow-hidden shadow-lg flex-shrink-0 hidden sm:block" aria-hidden="true">
+            <Image
+              src="https://images.unsplash.com/photo-1613759612065-d5971d32ca49?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxwb3J0Zm9saW8lMjBtb2NrdXBzJTIwYnJhbmQlMjBpZGVudGl0eSUyMHdlYiUyMGRlc2lnbiUyMHN0YXJ0dXAlMjBwcm9qZWN0c3xlbnwwfDB8fHwxNzczMDA4NDQ4fDA&ixlib=rb-4.1.0&q=80&w=1080"
+              alt="Portfolio mockups"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 768px) 160px, 208px"
+            />
+          </div>
         </div>
 
-        {/* Showcase image */}
-        <div className="relative rounded-2xl overflow-hidden mb-10 shadow-xl">
-          <Image
-            src="https://images.unsplash.com/photo-1763705857736-2b4f16a33758?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NjU4Mzl8MHwxfHNlYXJjaHwxfHxwb3J0Zm9saW8lMjBzaG93Y2FzZSUyMGJyYW5kJTIwaWRlbnRpdHklMjB3ZWIlMjBkZXNpZ24lMjBwcm9qZWN0c3xlbnwwfDB8fHwxNzcyMzMwMzI2fDA&ixlib=rb-4.1.0&q=80&w=1080"
-            alt="Portfolio showcase — brand identity and web design projects"
-            width={1080}
-            height={480}
-            className="w-full h-48 sm:h-64 lg:h-80 object-cover"
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                'linear-gradient(180deg, transparent 40%, rgba(250,251,255,0.95) 100%)',
-            }}
-            aria-hidden="true"
-          />
-        </div>
-
-        {/* Masonry grid */}
-        <div className="columns-1 sm:columns-2 gap-6 space-y-6">
-          {projects.map((project, i) => (
-            <article
+        {/* Projects grid */}
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8" role="list">
+          {projects.map((project) => (
+            <li
               key={project.title}
-              className="card-hover break-inside-avoid rounded-2xl overflow-hidden bg-card border border-border group"
+              className="group relative bg-white rounded-3xl border border-border shadow-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
-              {/* Color swatch header */}
+              {/* Top color bar */}
               <div
-                className="h-32 sm:h-40 flex items-center justify-center p-8"
-                style={{ background: gradients[i] }}
+                className="h-1.5 w-full"
+                style={{ background: `linear-gradient(90deg, ${project.color}, ${project.color}80)` }}
                 aria-hidden="true"
-              >
-                <span className="font-heading font-bold text-2xl sm:text-3xl text-white/90 text-center">
-                  {project.title}
-                </span>
-              </div>
-
-              {/* Content */}
-              <div className="p-6 flex flex-col gap-3">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <span
-                      className="inline-block text-xs font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full mb-2"
-                      style={{
-                        backgroundColor: 'var(--primary-light)',
-                        color: 'var(--brand-primary)',
-                      }}
-                    >
-                      {project.category}
-                    </span>
-                    <h3
-                      className="font-heading font-bold text-lg"
-                      style={{ color: 'var(--brand-text)' }}
-                    >
-                      {project.title}
-                    </h3>
-                  </div>
-                  <div
-                    className="w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 flex-shrink-0"
-                    style={{ backgroundColor: 'var(--brand-primary)' }}
-                    aria-hidden="true"
+              />
+              <div className="p-8 flex flex-col gap-4">
+                {/* Category & result badge */}
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-semibold tracking-wide uppercase text-muted-foreground">
+                    {project.category}
+                  </span>
+                  <span
+                    className="text-xs font-bold px-3 py-1 rounded-full text-white"
+                    style={{ background: project.color }}
                   >
-                    <ArrowUpRight size={14} className="text-white" />
-                  </div>
+                    {project.result}
+                  </span>
                 </div>
-                <p className="text-muted-foreground text-sm leading-relaxed">
+
+                {/* Title */}
+                <h3
+                  className="text-xl font-bold text-foreground transition-colors group-hover:text-primary"
+                  style={{ fontFamily: 'var(--font-heading)' }}
+                >
+                  {project.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-sm text-muted-foreground leading-relaxed flex-1">
                   {project.description}
                 </p>
-                <div
-                  className="inline-flex items-center gap-1.5 text-sm font-bold mt-1"
-                  style={{ color: project.highlightColor }}
-                >
-                  <span>↑</span>
-                  <span>{project.highlight}</span>
+
+                {/* Tags & arrow */}
+                <div className="flex items-center justify-between pt-2">
+                  <ul className="flex flex-wrap gap-2" role="list">
+                    {project.tags.map((tag) => (
+                      <li
+                        key={tag}
+                        className="text-xs font-medium px-3 py-1 rounded-full border"
+                        style={{
+                          borderColor: `${project.color}40`,
+                          color: project.color,
+                          background: `${project.color}0d`,
+                        }}
+                      >
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+                  <div
+                    className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110"
+                    style={{ background: `${project.color}15`, color: project.color }}
+                    aria-hidden="true"
+                  >
+                    <ArrowUpRight className="w-4 h-4" />
+                  </div>
                 </div>
               </div>
-            </article>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   )

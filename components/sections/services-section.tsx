@@ -1,152 +1,162 @@
-import { Palette, Monitor, Package, Check } from 'lucide-react'
+import { Palette, Monitor, Smartphone, Check } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 
-const services = [
+interface Service {
+  icon: LucideIcon
+  title: string
+  description: string
+  features: string[]
+  accent: string
+  bg: string
+  border: string
+}
+
+const services: Service[] = [
   {
     icon: Palette,
     title: 'Brand Identity Design',
     description:
-      'Logo, color palette, typography, and brand guidelines that make you unforgettable.',
+      'Logo design, color palettes, typography, and brand guidelines that establish your unique market position.',
     features: [
-      'Logo design & variations',
-      'Brand style guide',
-      'Business card design',
-      'Social media templates',
+      'Logo & Visual Identity',
+      'Brand Guidelines',
+      'Marketing Collateral',
+      'Brand Strategy',
     ],
-    popular: false,
-    accent: 'text-primary',
-    accentBg: 'bg-indigo-50',
-    accentBorder: 'border-indigo-100',
-    badge: null,
+    accent: 'text-[var(--brand-primary)]',
+    bg: 'bg-[var(--brand-primary)]',
+    border: 'hover:border-[var(--brand-primary)]/40',
   },
   {
     icon: Monitor,
-    title: 'Website Design & Development',
+    title: 'Web Design & Development',
     description:
-      'Responsive websites built to convert visitors into paying customers.',
+      'High-converting websites optimized for user experience and business growth.',
     features: [
-      'Mobile-responsive design',
-      'SEO optimization',
-      'CMS integration',
-      'Performance optimization',
+      'Responsive Web Design',
+      'User Experience (UX)',
+      'Conversion Optimization',
+      'CMS Integration',
     ],
-    popular: true,
-    accent: 'text-secondary',
-    accentBg: 'bg-pink-50',
-    accentBorder: 'border-pink-100',
-    badge: 'Most Popular',
+    accent: 'text-[var(--brand-accent)]',
+    bg: 'bg-[var(--brand-accent)]',
+    border: 'hover:border-[var(--brand-accent)]/40',
   },
   {
-    icon: Package,
-    title: 'Complete Brand Packages',
+    icon: Smartphone,
+    title: 'Digital Product Design',
     description:
-      'Everything you need to launch with confidence and compete with industry leaders.',
+      'App interfaces and digital experiences that users love and investors notice.',
     features: [
-      'Full brand identity',
-      'Website design & build',
-      'Marketing materials',
-      '3 months support',
+      'Mobile App Design',
+      'Dashboard Design',
+      'Prototype Development',
+      'User Testing',
     ],
-    popular: false,
-    accent: 'text-accent',
-    accentBg: 'bg-amber-50',
-    accentBorder: 'border-amber-100',
-    badge: 'Best Value',
+    accent: 'text-[#0EA5E9]',
+    bg: 'bg-[#0EA5E9]',
+    border: 'hover:border-[#0EA5E9]/40',
   },
 ]
 
-export function ServicesSection() {
+export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="py-24 lg:py-32 bg-slate-50"
+      className="py-24 lg:py-32 bg-[var(--brand-surface)]"
       aria-labelledby="services-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
-        <div className="text-center mb-16 lg:mb-20">
-          <div className="inline-flex items-center gap-2 bg-white border border-border shadow-sm px-4 py-2 rounded-full text-sm font-medium text-primary mb-6">
-            <span className="geo-dot" aria-hidden="true" />
-            Design Services
-          </div>
+        {/* Header */}
+        <div className="text-center mb-16">
+          <span className="inline-block text-sm font-semibold text-[var(--brand-primary)] uppercase tracking-widest mb-3">
+            Services
+          </span>
           <h2
             id="services-heading"
-            className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground text-balance"
+            className="font-heading text-4xl lg:text-5xl font-bold text-[var(--brand-text)] tracking-tight text-balance max-w-2xl mx-auto"
           >
-            Design Services That{' '}
-            <span className="gradient-text-primary">Scale Your Business</span>
+            Comprehensive Design{' '}
+            <span className="text-gradient-primary">Solutions for Startups</span>
           </h2>
         </div>
 
-        {/* Service cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {services.map((service) => {
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {services.map((service, i) => {
             const Icon = service.icon
+            const isFeatured = i === 0
             return (
-              <div
+              <article
                 key={service.title}
-                className={`relative flex flex-col bg-card rounded-2xl border overflow-hidden card-hover ${
-                  service.popular
-                    ? 'border-primary shadow-xl shadow-primary/10 ring-1 ring-primary'
-                    : 'border-border shadow-sm'
+                className={`relative rounded-2xl border border-[var(--brand-border)] ${service.border} transition-all duration-300 overflow-hidden group ${
+                  isFeatured
+                    ? 'bg-gradient-to-br from-[var(--brand-primary)] to-[var(--brand-primary-dark)] text-white shadow-brand-lg'
+                    : 'bg-white hover:shadow-brand'
                 }`}
               >
-                {/* Popular badge */}
-                {service.badge && (
-                  <div
-                    className={`absolute top-0 right-0 ${
-                      service.popular
-                        ? 'bg-gradient-brand text-white'
-                        : 'bg-amber-50 text-amber-700 border-l border-b border-amber-100'
-                    } text-xs font-bold px-3 py-1.5 rounded-bl-xl`}
-                  >
-                    {service.badge}
-                  </div>
-                )}
-
-                <div className="p-8 flex flex-col flex-1">
+                <div className="p-8">
                   {/* Icon */}
                   <div
-                    className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl ${service.accentBg} ${service.accentBorder} border mb-6`}
+                    className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${
+                      isFeatured ? 'bg-white/20' : service.bg + '/10'
+                    }`}
                   >
-                    <Icon size={26} className={service.accent} aria-hidden="true" />
+                    <Icon
+                      className={`w-7 h-7 ${isFeatured ? 'text-white' : service.accent}`}
+                      aria-hidden="true"
+                    />
                   </div>
 
-                  {/* Title & description */}
-                  <h3 className="font-display text-xl font-bold text-foreground mb-3">
+                  <h3
+                    className={`font-heading text-xl font-bold mb-3 ${
+                      isFeatured ? 'text-white' : 'text-[var(--brand-text)]'
+                    }`}
+                  >
                     {service.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed mb-8">
+                  <p
+                    className={`text-sm leading-relaxed mb-6 ${
+                      isFeatured ? 'text-white/80' : 'text-[var(--brand-text-muted)]'
+                    }`}
+                  >
                     {service.description}
                   </p>
 
                   {/* Features list */}
-                  <ul className="flex flex-col gap-3 flex-1" aria-label={`${service.title} features`}>
+                  <ul className="space-y-2.5" role="list">
                     {service.features.map((feat) => (
-                      <li key={feat} className="flex items-start gap-3">
+                      <li key={feat} className="flex items-center gap-2.5">
                         <span
-                          className={`mt-0.5 flex-shrink-0 w-5 h-5 rounded-full ${service.accentBg} ${service.accentBorder} border flex items-center justify-center`}
+                          className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${
+                            isFeatured ? 'bg-white/20' : service.bg + '/10'
+                          }`}
                           aria-hidden="true"
                         >
-                          <Check size={11} className={service.accent} strokeWidth={3} />
+                          <Check
+                            className={`w-3 h-3 ${isFeatured ? 'text-white' : service.accent}`}
+                          />
                         </span>
-                        <span className="text-sm text-foreground">{feat}</span>
+                        <span
+                          className={`text-sm font-medium ${
+                            isFeatured ? 'text-white/90' : 'text-[var(--brand-text)]'
+                          }`}
+                        >
+                          {feat}
+                        </span>
                       </li>
                     ))}
                   </ul>
-
-                  {/* CTA */}
-                  <a
-                    href="mailto:jane@janedesigner.com"
-                    className={`mt-8 inline-flex items-center justify-center font-semibold text-sm px-6 py-3.5 rounded-full transition-all duration-200 ${
-                      service.popular
-                        ? 'bg-gradient-brand text-white shadow-md hover:shadow-lg hover:-translate-y-0.5'
-                        : 'bg-muted text-foreground hover:bg-primary hover:text-primary-foreground'
-                    }`}
-                  >
-                    Get Started
-                  </a>
                 </div>
-              </div>
+
+                {/* Subtle decorative corner */}
+                <div
+                  className={`absolute -bottom-6 -right-6 w-24 h-24 rounded-full ${
+                    isFeatured ? 'bg-white/10' : service.bg + '/5'
+                  }`}
+                  aria-hidden="true"
+                />
+              </article>
             )
           })}
         </div>

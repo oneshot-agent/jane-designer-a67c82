@@ -1,75 +1,87 @@
 import Link from 'next/link'
-import { Mail, Linkedin, Twitter, Instagram } from 'lucide-react'
+import { Pen, Twitter, Linkedin, Dribbble, Instagram } from 'lucide-react'
 
-const footerLinks = {
-  Work: [
-    { label: 'Portfolio', href: '#portfolio' },
-    { label: 'Services', href: '#services' },
-    { label: 'About', href: '#about' },
-    { label: 'Testimonials', href: '#testimonials' },
-  ],
-  Services: [
-    { label: 'Brand Identity', href: '#services' },
-    { label: 'Web Design', href: '#services' },
-    { label: 'Brand Packages', href: '#services' },
-  ],
-  Contact: [
-    { label: 'jane@janedesigner.com', href: 'mailto:jane@janedesigner.com' },
-    { label: 'Book a Call', href: 'mailto:jane@janedesigner.com' },
-  ],
-}
-
-const socials = [
-  { icon: Twitter, label: 'Twitter', href: '#' },
-  { icon: Linkedin, label: 'LinkedIn', href: '#' },
-  { icon: Instagram, label: 'Instagram', href: '#' },
-  { icon: Mail, label: 'Email', href: 'mailto:jane@janedesigner.com' },
+const navColumns = [
+  {
+    title: 'Work',
+    links: [
+      { label: 'Portfolio', href: '#portfolio' },
+      { label: 'Case Studies', href: '#portfolio' },
+      { label: 'Results', href: '#about' },
+    ],
+  },
+  {
+    title: 'Services',
+    links: [
+      { label: 'Brand Identity', href: '#services' },
+      { label: 'Web Design', href: '#services' },
+      { label: 'Product Design', href: '#services' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { label: 'About', href: '#about' },
+      { label: 'Process', href: '#process' },
+      { label: 'Contact', href: 'mailto:jane@janedesigner.com' },
+    ],
+  },
 ]
 
-export function Footer() {
+const socials = [
+  { label: 'Twitter', href: '#', Icon: Twitter },
+  { label: 'LinkedIn', href: '#', Icon: Linkedin },
+  { label: 'Dribbble', href: '#', Icon: Dribbble },
+  { label: 'Instagram', href: '#', Icon: Instagram },
+]
+
+export default function Footer() {
   return (
-    <footer className="bg-slate-900 text-white" role="contentinfo">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
-        {/* Top row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+    <footer
+      className="bg-[var(--brand-text)] text-white"
+      role="contentinfo"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="font-display font-bold text-2xl tracking-tight">
-              <span className="gradient-text-primary">Jane</span> Designer
+            <Link href="/" className="flex items-center gap-2 mb-5" aria-label="Jane Designer home">
+              <span className="w-9 h-9 rounded-lg bg-gradient-brand flex items-center justify-center">
+                <Pen className="w-4 h-4 text-white" aria-hidden="true" />
+              </span>
+              <span className="font-heading font-bold text-xl tracking-tight">
+                Jane<span className="text-[var(--brand-primary-light)]">.</span>
+              </span>
             </Link>
-            <p className="mt-4 text-white/50 leading-relaxed max-w-xs">
-              Creative designer specializing in brand identity and web design for startups.
+            <p className="text-white/60 text-sm leading-relaxed max-w-xs mb-6">
+              Creative designer specializing in brand identity and web design for startups that want to grow.
             </p>
-            {/* Social links */}
-            <div className="flex items-center gap-3 mt-6">
-              {socials.map((social) => {
-                const Icon = social.icon
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    aria-label={social.label}
-                    className="w-10 h-10 rounded-full bg-white/10 border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all duration-200"
-                  >
-                    <Icon size={16} aria-hidden="true" />
-                  </a>
-                )
-              })}
+            <div className="flex gap-3">
+              {socials.map(({ label, href, Icon }) => (
+                <Link
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="w-9 h-9 rounded-lg bg-white/10 hover:bg-[var(--brand-primary)] flex items-center justify-center transition-colors duration-200"
+                >
+                  <Icon className="w-4 h-4" aria-hidden="true" />
+                </Link>
+              ))}
             </div>
           </div>
 
-          {/* Nav links */}
-          {Object.entries(footerLinks).map(([group, links]) => (
-            <div key={group}>
-              <h3 className="font-display font-semibold text-sm uppercase tracking-widest text-white/40 mb-4">
-                {group}
+          {/* Nav columns */}
+          {navColumns.map((col) => (
+            <div key={col.title}>
+              <h3 className="font-heading font-bold text-sm uppercase tracking-wider text-white/40 mb-4">
+                {col.title}
               </h3>
-              <ul className="flex flex-col gap-3">
-                {links.map((link) => (
+              <ul className="space-y-3" role="list">
+                {col.links.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-white/60 hover:text-white text-sm transition-colors duration-200 animated-underline"
+                      className="text-sm text-white/70 hover:text-white transition-colors duration-200"
                     >
                       {link.label}
                     </Link>
@@ -80,18 +92,12 @@ export function Footer() {
           ))}
         </div>
 
-        {/* Bottom row */}
-        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-white/40">
-            &copy; {new Date().getFullYear()} Jane Designer. All rights reserved.
-          </p>
-          <p className="text-sm text-white/40">
-            Designed with{' '}
-            <span className="text-secondary" aria-label="love">
-              ♥
-            </span>{' '}
-            for ambitious startups
-          </p>
+        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40">
+          <p>© {new Date().getFullYear()} Jane Designer. All rights reserved.</p>
+          <div className="flex gap-6">
+            <Link href="#" className="hover:text-white/70 transition-colors duration-200">Privacy Policy</Link>
+            <Link href="#" className="hover:text-white/70 transition-colors duration-200">Terms of Service</Link>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,91 +1,81 @@
-import { Rocket, Target, TrendingUp } from 'lucide-react'
+import { Target, Zap, TrendingUp } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 
-const features = [
-  {
-    icon: Rocket,
-    title: 'Launch-Ready Fast',
-    description:
-      'Complete brand identity and website delivered in 2-3 weeks, not months.',
-    color: 'text-primary',
-    bg: 'bg-indigo-50',
-    border: 'border-indigo-100',
-  },
+interface Feature {
+  icon: LucideIcon
+  title: string
+  description: string
+  color: string
+  bg: string
+}
+
+const features: Feature[] = [
   {
     icon: Target,
-    title: 'Conversion-Focused',
+    title: 'Strategic Brand Focus',
     description:
-      "Designs that don't just look good—they drive sales and user engagement.",
-    color: 'text-secondary',
-    bg: 'bg-pink-50',
-    border: 'border-pink-100',
+      'Every design decision aligns with your business goals and target audience, ensuring maximum market impact.',
+    color: 'text-[var(--brand-primary)]',
+    bg: 'bg-[#EEF2FF]',
+  },
+  {
+    icon: Zap,
+    title: 'Rapid Turnaround',
+    description:
+      'Get your complete brand identity and website delivered in 2-3 weeks, perfect for startup timelines.',
+    color: 'text-[var(--brand-accent)]',
+    bg: 'bg-[#FDF2F8]',
   },
   {
     icon: TrendingUp,
-    title: 'Startup-Savvy',
+    title: 'Growth-Oriented Design',
     description:
-      'I understand lean budgets and growth goals. Every design decision drives business results.',
-    color: 'text-accent',
-    bg: 'bg-amber-50',
-    border: 'border-amber-100',
+      'Designs that scale with your business, from MVP launch to Series A and beyond.',
+    color: 'text-[#0EA5E9]',
+    bg: 'bg-[#F0F9FF]',
   },
 ]
 
-export function FeaturesSection() {
+export default function FeaturesSection() {
   return (
     <section
       id="features"
-      className="py-24 lg:py-32 bg-foreground relative overflow-hidden"
+      className="py-24 lg:py-32 bg-[var(--brand-surface)]"
       aria-labelledby="features-heading"
     >
-      {/* Background decoration */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-primary/10 blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-secondary/10 blur-3xl" />
-      </div>
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
-        <div className="text-center mb-16 lg:mb-20">
-          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-2 rounded-full text-sm font-medium text-white/80 mb-6">
-            <span className="geo-dot" aria-hidden="true" />
-            Why work with me
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <span className="inline-block text-sm font-semibold text-[var(--brand-primary)] uppercase tracking-widest mb-3">
+            Why Choose Me
+          </span>
           <h2
             id="features-heading"
-            className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white text-balance"
+            className="font-heading text-4xl lg:text-5xl font-bold text-[var(--brand-text)] tracking-tight text-balance"
           >
-            Why Startups{' '}
-            <span className="gradient-text-accent">Choose My Design</span>
+            Why Startups Choose My{' '}
+            <span className="text-gradient-primary">Design Expertise</span>
           </h2>
         </div>
 
-        {/* Feature cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature) => {
             const Icon = feature.icon
             return (
               <div
                 key={feature.title}
-                className="group relative bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 card-hover"
+                className="bg-white rounded-2xl p-8 border border-[var(--brand-border)] hover:border-[var(--brand-primary)]/30 hover:shadow-brand transition-all duration-300 group"
               >
-                {/* Icon */}
-                <div
-                  className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl ${feature.bg} ${feature.border} border mb-6`}
-                >
-                  <Icon size={26} className={feature.color} aria-hidden="true" />
+                <div className={`w-14 h-14 rounded-xl ${feature.bg} flex items-center justify-center mb-6`}>
+                  <Icon className={`w-7 h-7 ${feature.color}`} aria-hidden="true" />
                 </div>
-
-                {/* Content */}
-                <h3 className="font-display text-xl font-bold text-white mb-3">
+                <h3 className="font-heading text-xl font-bold text-[var(--brand-text)] mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-white/60 leading-relaxed">{feature.description}</p>
-
-                {/* Bottom accent line */}
-                <div
-                  className={`absolute bottom-0 left-8 right-8 h-0.5 rounded-full bg-gradient-to-r from-transparent via-white/20 to-transparent`}
-                  aria-hidden="true"
-                />
+                <p className="text-[var(--brand-text-muted)] leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
             )
           })}

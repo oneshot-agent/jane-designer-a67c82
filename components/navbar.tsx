@@ -1,23 +1,24 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
+import { Menu, X } from 'lucide-react'
 
 const navLinks = [
   { label: 'Work', href: '#portfolio' },
-  { label: 'About', href: '#about' },
+  { label: 'Services', href: '#features' },
   { label: 'Process', href: '#process' },
-  { label: 'Testimonials', href: '#testimonials' },
+  { label: 'About', href: '#stats' },
 ]
 
-export function Navbar() {
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+    const handler = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', handler, { passive: true })
+    return () => window.removeEventListener('scroll', handler)
   }, [])
 
   return (
@@ -29,16 +30,15 @@ export function Navbar() {
       }`}
     >
       <nav
-        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-18"
+        className="mx-auto max-w-7xl px-6 lg:px-8 flex items-center justify-between h-16"
         aria-label="Main navigation"
       >
         {/* Logo */}
         <Link
           href="/"
-          className="font-heading text-xl font-bold text-foreground hover:text-primary transition-colors"
-          aria-label="Jane Designer — Home"
+          className="font-display font-bold text-xl text-foreground tracking-tight"
         >
-          <span className="text-primary">J</span>ane Designer
+          Jane<span className="gradient-text">Designer</span>
         </Link>
 
         {/* Desktop nav */}
@@ -59,61 +59,43 @@ export function Navbar() {
         <div className="hidden md:block">
           <Link
             href="mailto:jane@janedesigner.com"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent text-white text-sm font-semibold hover:bg-amber-600 transition-colors shadow-md"
+            className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-full bg-accent text-accent-foreground hover:bg-amber-400 transition-colors shadow-md"
           >
-            Start a Project
+            Let's Talk
           </Link>
         </div>
 
-        {/* Mobile menu toggle */}
+        {/* Mobile toggle */}
         <button
-          className="md:hidden p-2 rounded-lg text-foreground hover:bg-muted transition-colors"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-expanded={menuOpen}
-          aria-label="Toggle navigation menu"
+          className="md:hidden p-2 rounded-lg text-foreground"
+          onClick={() => setOpen(!open)}
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
         >
-          <span className="sr-only">Toggle menu</span>
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            {menuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </nav>
 
       {/* Mobile menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-white border-b border-border px-4 pb-4 shadow-lg">
-          <ul className="flex flex-col gap-2" role="list">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="block px-3 py-2.5 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-lg transition-colors"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-            <li className="mt-2">
-              <Link
-                href="mailto:jane@janedesigner.com"
-                className="block w-full text-center px-5 py-3 rounded-full bg-accent text-white text-sm font-semibold hover:bg-amber-600 transition-colors"
-                onClick={() => setMenuOpen(false)}
-              >
-                Start a Project
-              </Link>
-            </li>
-          </ul>
+      {open && (
+        <div className="md:hidden bg-white border-b border-border px-6 pb-5 pt-2 space-y-4">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              className="block text-base font-medium text-foreground py-1"
+            >
+              {link.label}
+            </Link>
+          ))}
+          <Link
+            href="mailto:jane@janedesigner.com"
+            className="inline-flex items-center justify-center w-full px-5 py-2.5 text-sm font-semibold rounded-full bg-accent text-accent-foreground"
+            onClick={() => setOpen(false)}
+          >
+            Let's Talk
+          </Link>
         </div>
       )}
     </header>

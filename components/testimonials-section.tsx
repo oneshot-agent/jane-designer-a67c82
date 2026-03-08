@@ -1,51 +1,39 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronLeft, ChevronRight, Quote } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react'
 
 const testimonials = [
   {
     quote:
-      'Jane transformed our brand from generic to unforgettable. Our customer recognition increased by 200% after the rebrand.',
+      "Jane didn't just design our brand — she transformed our entire business trajectory. The bold identity she created helped us secure $2M in funding.",
     author: 'Sarah Chen',
     title: 'CEO, TechFlow Startup',
     rating: 5,
     initials: 'SC',
-    color: '#6366F1',
+    accent: 'bg-primary',
   },
   {
     quote:
-      'The website Jane designed converted 3x better than our old site. Her strategic approach to design really shows in the results.',
-    author: 'Michael Rodriguez',
-    title: 'Founder, EcoVenture',
+      'Working with Jane was a game-changer. Her fearless approach to design helped us stand out in a crowded market and triple our conversion rates.',
+    author: 'Marcus Rodriguez',
+    title: 'Founder, GreenSpace Co',
     rating: 5,
     initials: 'MR',
-    color: '#8B5CF6',
+    accent: 'bg-secondary',
   },
   {
     quote:
-      'Professional, creative, and deadline-focused. Jane understood our vision and brought it to life perfectly.',
-    author: 'David Park',
-    title: 'CEO, FinanceFlow',
+      "Jane's bold design thinking and startup expertise delivered results beyond our wildest expectations. Best investment we made as a company.",
+    author: 'Lisa Park',
+    title: 'Co-founder, FinTech Revolution',
     rating: 5,
-    initials: 'DP',
-    color: '#F59E0B',
+    initials: 'LP',
+    accent: 'bg-accent',
   },
 ]
 
-function StarRating({ count }: { count: number }) {
-  return (
-    <div className="flex items-center gap-0.5" role="img" aria-label={`${count} out of 5 stars`}>
-      {[...Array(count)].map((_, i) => (
-        <svg key={i} className="w-5 h-5 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true">
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-      ))}
-    </div>
-  )
-}
-
-export function TestimonialsSection() {
+export default function TestimonialsSection() {
   const [current, setCurrent] = useState(0)
 
   const prev = () => setCurrent((c) => (c === 0 ? testimonials.length - 1 : c - 1))
@@ -56,136 +44,102 @@ export function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="py-24 lg:py-32 bg-background"
+      className="py-24 px-6 lg:px-8"
+      style={{ background: 'linear-gradient(135deg, #EEF2FF 0%, #FDF2F8 100%)' }}
       aria-labelledby="testimonials-heading"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
-        <div className="text-center mb-16">
-          <span className="inline-block text-sm font-semibold text-primary uppercase tracking-widest mb-3">
+      <div className="mx-auto max-w-4xl">
+        {/* Header */}
+        <div className="text-center mb-14 space-y-3">
+          <span className="inline-block text-sm font-semibold text-primary uppercase tracking-widest">
             Testimonials
           </span>
           <h2
             id="testimonials-heading"
-            className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-balance"
+            className="font-display font-bold text-4xl sm:text-5xl text-foreground text-balance"
           >
-            What Startup Founders Say
+            Founders{' '}
+            <span className="gradient-text">Love Working With Me</span>
           </h2>
-          <div
-            className="mt-4 mx-auto h-1 w-16 rounded-full"
-            style={{ background: 'linear-gradient(90deg, #6366F1, #8B5CF6)' }}
-            aria-hidden="true"
-          />
         </div>
 
-        {/* Carousel */}
-        <div className="max-w-3xl mx-auto">
-          <div className="relative bg-card rounded-3xl border border-border p-8 sm:p-12 shadow-xl">
-            {/* Quote icon */}
+        {/* Carousel card */}
+        <div className="relative bg-card rounded-3xl shadow-xl border border-border p-8 sm:p-12">
+          {/* Quote icon */}
+          <div
+            className="absolute top-8 right-8 text-primary/10"
+            aria-hidden="true"
+          >
+            <Quote size={64} strokeWidth={1} />
+          </div>
+
+          {/* Stars */}
+          <div className="flex gap-1 mb-6" aria-label={`${t.rating} out of 5 stars`}>
+            {Array.from({ length: t.rating }).map((_, i) => (
+              <Star
+                key={i}
+                size={20}
+                className="fill-accent text-accent"
+                aria-hidden="true"
+              />
+            ))}
+          </div>
+
+          {/* Quote text */}
+          <blockquote className="text-xl sm:text-2xl font-display font-medium text-foreground leading-relaxed mb-8 text-pretty">
+            "{t.quote}"
+          </blockquote>
+
+          {/* Author */}
+          <div className="flex items-center gap-4">
             <div
-              className="absolute -top-5 left-10 w-10 h-10 rounded-full flex items-center justify-center shadow-md"
-              style={{ background: 'linear-gradient(135deg, #6366F1, #8B5CF6)' }}
+              className={`w-12 h-12 rounded-full ${t.accent} flex items-center justify-center text-white font-display font-bold text-base`}
               aria-hidden="true"
             >
-              <Quote className="w-5 h-5 text-white" />
+              {t.initials}
             </div>
-
-            {/* Rating */}
-            <div className="mb-6">
-              <StarRating count={t.rating} />
+            <div>
+              <p className="font-display font-bold text-foreground">{t.author}</p>
+              <p className="text-sm text-muted-foreground">{t.title}</p>
             </div>
-
-            {/* Quote */}
-            <blockquote
-              className="font-heading text-xl sm:text-2xl font-medium text-foreground leading-snug mb-8 text-balance"
-              aria-live="polite"
-            >
-              &ldquo;{t.quote}&rdquo;
-            </blockquote>
-
-            {/* Author */}
-            <div className="flex items-center gap-4">
-              <div
-                className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0"
-                style={{ background: t.color }}
-                aria-hidden="true"
-              >
-                {t.initials}
-              </div>
-              <div>
-                <p className="font-semibold text-foreground">{t.author}</p>
-                <p className="text-sm text-muted-foreground">{t.title}</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Navigation */}
-          <div className="flex items-center justify-center gap-6 mt-8">
-            <button
-              onClick={prev}
-              className="w-11 h-11 rounded-full border-2 border-border flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary transition-colors"
-              aria-label="Previous testimonial"
-            >
-              <ChevronLeft className="w-5 h-5" aria-hidden="true" />
-            </button>
-
-            {/* Dots */}
-            <div className="flex items-center gap-2" role="tablist" aria-label="Testimonial navigation">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  role="tab"
-                  aria-selected={i === current}
-                  aria-label={`Testimonial ${i + 1} of ${testimonials.length}`}
-                  onClick={() => setCurrent(i)}
-                  className={`rounded-full transition-all duration-300 ${
-                    i === current
-                      ? 'w-8 h-3 bg-primary'
-                      : 'w-3 h-3 bg-border hover:bg-muted-foreground'
-                  }`}
-                />
-              ))}
-            </div>
-
-            <button
-              onClick={next}
-              className="w-11 h-11 rounded-full border-2 border-border flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary transition-colors"
-              aria-label="Next testimonial"
-            >
-              <ChevronRight className="w-5 h-5" aria-hidden="true" />
-            </button>
           </div>
         </div>
 
-        {/* All 3 previews on desktop */}
-        <div className="hidden lg:grid grid-cols-3 gap-6 mt-16">
-          {testimonials.map((item, i) => (
-            <button
-              key={item.author}
-              onClick={() => setCurrent(i)}
-              className={`text-left rounded-2xl border p-5 transition-all duration-300 ${
-                i === current
-                  ? 'border-primary bg-primary/5 shadow-md'
-                  : 'border-border bg-card hover:border-primary/40'
-              }`}
-              aria-label={`View testimonial from ${item.author}`}
-            >
-              <div className="flex items-center gap-3 mb-3">
-                <div
-                  className="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0"
-                  style={{ background: item.color }}
-                  aria-hidden="true"
-                >
-                  {item.initials}
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-foreground">{item.author}</p>
-                  <p className="text-xs text-muted-foreground">{item.title}</p>
-                </div>
-              </div>
-              <p className="text-sm text-muted-foreground line-clamp-2">&ldquo;{item.quote}&rdquo;</p>
-            </button>
-          ))}
+        {/* Controls */}
+        <div className="flex items-center justify-center gap-6 mt-8">
+          <button
+            onClick={prev}
+            className="w-12 h-12 rounded-full bg-card border border-border shadow-sm flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all duration-200"
+            aria-label="Previous testimonial"
+          >
+            <ChevronLeft size={20} />
+          </button>
+
+          {/* Dots */}
+          <div className="flex gap-2" role="tablist" aria-label="Testimonial navigation">
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                role="tab"
+                aria-selected={i === current}
+                aria-label={`Go to testimonial ${i + 1}`}
+                onClick={() => setCurrent(i)}
+                className={`rounded-full transition-all duration-300 ${
+                  i === current
+                    ? 'w-6 h-2.5 bg-primary'
+                    : 'w-2.5 h-2.5 bg-border hover:bg-muted-foreground'
+                }`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={next}
+            className="w-12 h-12 rounded-full bg-card border border-border shadow-sm flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all duration-200"
+            aria-label="Next testimonial"
+          >
+            <ChevronRight size={20} />
+          </button>
         </div>
       </div>
     </section>

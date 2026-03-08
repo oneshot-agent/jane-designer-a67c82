@@ -1,105 +1,95 @@
-import { Palette, Monitor, TrendingUp } from 'lucide-react'
+import { Target, Palette, Rocket } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 
-const features = [
+const features: Array<{
+  icon: LucideIcon
+  title: string
+  description: string
+  gradient: string
+}> = [
+  {
+    icon: Target,
+    title: 'Brand Strategy',
+    description:
+      'Strategic visual identities that position your startup ahead of competitors and resonate with your target market.',
+    gradient: 'from-[#6366F1] to-[#818CF8]',
+  },
   {
     icon: Palette,
-    title: 'Brand Identity Design',
+    title: 'Web Design',
     description:
-      'Complete visual identity systems including logos, color palettes, and brand guidelines that make your startup memorable.',
-    color: '#6366F1',
-    bg: '#EEF2FF',
+      'Conversion-focused websites that turn visitors into customers with bold, user-centric design principles.',
+    gradient: 'from-[#EC4899] to-[#F472B6]',
   },
   {
-    icon: Monitor,
-    title: 'Web Design & Development',
+    icon: Rocket,
+    title: 'Startup Focus',
     description:
-      'Responsive websites that convert visitors into customers, optimized for performance and user experience.',
-    color: '#8B5CF6',
-    bg: '#F3EEFF',
-  },
-  {
-    icon: TrendingUp,
-    title: 'Growth-Focused Strategy',
-    description:
-      'Design solutions backed by user research and market analysis to help your startup scale effectively.',
-    color: '#F59E0B',
-    bg: '#FFFBEB',
+      'Deep understanding of startup needs, fast timelines, and budget constraints without compromising quality.',
+    gradient: 'from-[#F59E0B] to-[#FCD34D]',
   },
 ]
 
-export function FeaturesSection() {
+export default function FeaturesSection() {
   return (
     <section
-      id="services"
-      className="py-24 lg:py-32 bg-background"
+      id="features"
+      className="py-24 px-6 lg:px-8 bg-background"
       aria-labelledby="features-heading"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <span className="inline-block text-sm font-semibold text-primary uppercase tracking-widest mb-3">
+        <div className="text-center mb-16 space-y-4">
+          <span className="inline-block text-sm font-semibold text-primary uppercase tracking-widest">
             Services
           </span>
           <h2
             id="features-heading"
-            className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-balance"
+            className="font-display font-bold text-4xl sm:text-5xl text-foreground text-balance"
           >
-            What I Deliver for Your Startup
+            Design That{' '}
+            <span className="gradient-text">Drives Results</span>
           </h2>
-          <div
-            className="mt-4 mx-auto h-1 w-16 rounded-full"
-            style={{ background: 'linear-gradient(90deg, #6366F1, #8B5CF6)' }}
-            aria-hidden="true"
-          />
+          <p className="max-w-xl mx-auto text-muted-foreground text-lg leading-relaxed">
+            Every pixel is intentional. Every design decision is backed by
+            strategy to help your startup grow faster.
+          </p>
         </div>
 
-        {/* Features grid */}
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+        {/* Feature grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature) => {
             const Icon = feature.icon
             return (
-              <article
+              <div
                 key={feature.title}
-                className="group relative bg-card rounded-2xl p-8 border border-border hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300"
+                className="group relative flex flex-col gap-5 p-8 rounded-2xl bg-card border border-border shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
                 {/* Icon */}
                 <div
-                  className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110 duration-300"
-                  style={{ background: feature.bg }}
+                  className={`w-14 h-14 rounded-xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center shadow-md`}
                   aria-hidden="true"
                 >
-                  <Icon className="w-7 h-7" style={{ color: feature.color }} />
+                  <Icon size={26} className="text-white" strokeWidth={1.75} />
                 </div>
 
-                <h3 className="font-heading text-xl font-semibold text-foreground mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed text-base">
-                  {feature.description}
-                </p>
+                <div className="space-y-2">
+                  <h3 className="font-display font-bold text-xl text-foreground">
+                    {feature.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
 
                 {/* Hover accent line */}
                 <div
-                  className="absolute bottom-0 left-8 right-8 h-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{ background: `linear-gradient(90deg, ${feature.color}, transparent)` }}
+                  className={`absolute bottom-0 left-8 right-8 h-0.5 rounded-full bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
                   aria-hidden="true"
                 />
-              </article>
+              </div>
             )
           })}
-        </div>
-
-        {/* Bottom accent */}
-        <div className="mt-16 text-center">
-          <p className="text-muted-foreground text-base">
-            Ready to transform your startup&apos;s visual identity?{' '}
-            <a
-              href="mailto:jane@janedesigner.com"
-              className="text-primary font-semibold hover:underline"
-            >
-              Let&apos;s start a conversation.
-            </a>
-          </p>
         </div>
       </div>
     </section>

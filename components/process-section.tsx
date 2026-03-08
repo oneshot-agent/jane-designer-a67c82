@@ -1,113 +1,102 @@
-import { Search, Lightbulb, Paintbrush, Rocket } from 'lucide-react'
-
 const steps = [
   {
-    icon: Search,
-    step: '01',
-    title: 'Discovery & Research',
+    number: '01',
+    title: 'Strategic Discovery',
     description:
-      'Understanding your market, competitors, and target audience to inform strategic design decisions.',
-    color: '#6366F1',
-    bg: '#EEF2FF',
+      "Deep dive into your startup's vision, target market, and competitive landscape to uncover unique positioning opportunities.",
+    color: 'text-primary',
+    bg: 'bg-primary/10',
+    border: 'border-primary/20',
   },
   {
-    icon: Lightbulb,
-    step: '02',
-    title: 'Concept Development',
+    number: '02',
+    title: 'Bold Concepts',
     description:
-      'Creating multiple design directions and concepts that align with your business goals and brand vision.',
-    color: '#8B5CF6',
-    bg: '#F3EEFF',
+      'Create fearless design concepts that break industry norms and make your brand impossible to ignore.',
+    color: 'text-secondary',
+    bg: 'bg-secondary/10',
+    border: 'border-secondary/20',
   },
   {
-    icon: Paintbrush,
-    step: '03',
-    title: 'Design & Refinement',
+    number: '03',
+    title: 'Rapid Iteration',
     description:
-      'Developing polished designs with multiple revision rounds to ensure perfect alignment with your needs.',
-    color: '#6366F1',
-    bg: '#EEF2FF',
+      'Fast-paced refinement process with continuous feedback to ensure designs exceed expectations and deadlines.',
+    color: 'text-amber-500',
+    bg: 'bg-amber-500/10',
+    border: 'border-amber-500/20',
   },
   {
-    icon: Rocket,
-    step: '04',
-    title: 'Launch & Support',
+    number: '04',
+    title: 'Launch & Optimize',
     description:
-      'Delivering final assets and providing ongoing support to ensure successful implementation and results.',
-    color: '#F59E0B',
-    bg: '#FFFBEB',
+      'Strategic rollout with performance tracking and optimization to maximize impact and ROI from day one.',
+    color: 'text-primary',
+    bg: 'bg-primary/10',
+    border: 'border-primary/20',
   },
 ]
 
-export function ProcessSection() {
+export default function ProcessSection() {
   return (
     <section
       id="process"
-      className="py-24 lg:py-32 bg-background"
+      className="py-24 px-6 lg:px-8 bg-background"
       aria-labelledby="process-heading"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
-        <div className="text-center mb-16">
-          <span className="inline-block text-sm font-semibold text-primary uppercase tracking-widest mb-3">
+      <div className="mx-auto max-w-7xl">
+        {/* Header */}
+        <div className="text-center mb-16 space-y-4">
+          <span className="inline-block text-sm font-semibold text-primary uppercase tracking-widest">
             How I Work
           </span>
           <h2
             id="process-heading"
-            className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-balance"
+            className="font-display font-bold text-4xl sm:text-5xl text-foreground text-balance"
           >
-            My Proven Design Process
+            My Bold{' '}
+            <span className="gradient-text">Design Process</span>
           </h2>
-          <div
-            className="mt-4 mx-auto h-1 w-16 rounded-full"
-            style={{ background: 'linear-gradient(90deg, #6366F1, #8B5CF6)' }}
-            aria-hidden="true"
-          />
+          <p className="max-w-xl mx-auto text-muted-foreground text-lg leading-relaxed">
+            A proven framework that delivers exceptional results — fast.
+          </p>
         </div>
 
-        {/* Timeline layout */}
-        <div className="relative">
-          {/* Connecting line — desktop */}
+        {/* Steps grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+          {/* Connector line (desktop only) */}
           <div
-            className="absolute top-12 left-0 right-0 h-0.5 hidden lg:block"
-            style={{ background: 'linear-gradient(90deg, #6366F1, #8B5CF6, #F59E0B)' }}
+            className="hidden lg:block absolute top-12 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-primary via-secondary to-amber-400 opacity-30"
             aria-hidden="true"
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
-            {steps.map((step, index) => {
-              const Icon = step.icon
-              return (
-                <article key={step.title} className="relative flex flex-col items-center text-center group">
-                  {/* Step circle */}
-                  <div className="relative mb-6 z-10">
-                    <div
-                      className="w-24 h-24 rounded-full flex items-center justify-center border-4 border-background shadow-lg transition-transform duration-300 group-hover:scale-110"
-                      style={{ background: step.bg }}
-                      aria-hidden="true"
-                    >
-                      <Icon className="w-9 h-9" style={{ color: step.color }} />
-                    </div>
-                    {/* Step number badge */}
-                    <div
-                      className="absolute -top-1 -right-1 w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-md"
-                      style={{ background: step.color }}
-                      aria-hidden="true"
-                    >
-                      {index + 1}
-                    </div>
-                  </div>
+          {steps.map((step, i) => (
+            <div
+              key={step.number}
+              className="relative flex flex-col gap-5 p-7 rounded-2xl bg-card border border-border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
+            >
+              {/* Step number */}
+              <div
+                className={`relative z-10 w-16 h-16 rounded-2xl ${step.bg} border ${step.border} flex items-center justify-center`}
+              >
+                <span
+                  className={`font-display font-bold text-2xl ${step.color}`}
+                  aria-label={`Step ${i + 1}`}
+                >
+                  {step.number}
+                </span>
+              </div>
 
-                  <h3 className="font-heading text-lg font-semibold text-foreground mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-                    {step.description}
-                  </p>
-                </article>
-              )
-            })}
-          </div>
+              <div className="space-y-2">
+                <h3 className="font-display font-bold text-lg text-foreground leading-snug">
+                  {step.title}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
